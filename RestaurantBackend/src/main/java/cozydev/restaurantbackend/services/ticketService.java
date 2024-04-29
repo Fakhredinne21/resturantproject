@@ -12,8 +12,8 @@ public class ticketService {
     public ticketService(TicketRepository ticketRepository) {
         this.ticketRepository = ticketRepository;
     }
-    public Ticket findByTicket_id(Long id) {
-        return ticketRepository.findByTicket_id(id);
+    public Ticket findByTicketid(Long id) {
+        return ticketRepository.findByTicketid(id);
     }
     public Ticket findByPrice(int price) {
         return ticketRepository.findByPrice(price);

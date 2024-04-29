@@ -15,7 +15,7 @@ public class SubscriptionService {
         this.subscriptionRepository = subscriptionRepository;
     }
     public Subscription findByCard_id(Long id) {
-        return  subscriptionRepository.findByCard_id(id);
+        return  subscriptionRepository.findByCardid(id);
     }
     public Subscription findByPriceTicket(int priceTicket) {
         return subscriptionRepository.findByPriceTicket(priceTicket);

@@ -16,19 +16,19 @@ import java.util.Date;
 public class Ticket implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Ticket_id;
+    private Long ticketid;
     private int price;
-    private boolean State;
+    private boolean state;
     @Temporal(TemporalType.DATE)
-    private Date ExpirationDate;
+    private Date expirationDate;
 
     public Ticket() {
     }
 
     public Ticket(Long Ticket_id, int price, boolean State, Date ExpirationDate) {
-        this.Ticket_id = Ticket_id;
+        this.ticketid = Ticket_id;
         this.price = price;
-        this.State = State;
-        this.ExpirationDate = ExpirationDate;
+        this.state = State;
+        this.expirationDate = ExpirationDate;
     }
 }
