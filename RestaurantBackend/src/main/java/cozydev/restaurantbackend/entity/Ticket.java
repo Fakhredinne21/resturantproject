@@ -22,13 +22,18 @@ public class Ticket implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date expirationDate;
 
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private User user;
+
     public Ticket() {
     }
 
-    public Ticket(Long Ticket_id, int price, boolean State, Date ExpirationDate) {
+    public Ticket(Long Ticket_id, int price, boolean State, Date ExpirationDate , User user) {
         this.ticketid = Ticket_id;
         this.price = price;
         this.state = State;
         this.expirationDate = ExpirationDate;
+        this.user = user;
     }
 }

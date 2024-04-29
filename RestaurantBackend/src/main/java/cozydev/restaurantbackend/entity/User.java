@@ -6,7 +6,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="User")
@@ -28,6 +30,9 @@ public class User implements Serializable {
     @Lob
     private byte[] image;
 
+    @OneToMany(mappedBy = "user")
+    private List<Ticket> tickets;
+
     public User() {
     }
 
@@ -41,5 +46,11 @@ public class User implements Serializable {
         this.status = status;
         this.date_creation = date_creation;
         this.image = image;
+        this.tickets = new ArrayList<>();
+    }
+
+    public void addTicket(Ticket ticket) {
+        tickets.add(ticket);
+        ticket.setUser(this);
     }
 }
