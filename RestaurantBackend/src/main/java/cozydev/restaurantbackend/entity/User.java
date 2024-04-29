@@ -27,4 +27,19 @@ public class User implements Serializable {
     private Date date_creation;
     @Lob
     private byte[] image;
+
+    public User() {
+    }
+
+    public User(Long id, String First_name, String Last_name, int phone_Number, String email, String password, boolean status, Date date_creation, byte[] image) {
+        this.id = id;
+        this.First_name = First_name;
+        this.Last_name = Last_name;
+        this.phone_Number = phone_Number;
+        this.email = email;
+        this.password = password;
+        this.status = status;
+        this.date_creation = date_creation;
+        this.image = image;
+    }
 }
