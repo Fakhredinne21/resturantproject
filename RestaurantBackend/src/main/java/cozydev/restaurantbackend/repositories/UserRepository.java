@@ -1,10 +1,6 @@
 package cozydev.restaurantbackend.repositories;
 
-import cozydev.restaurantbackend.entity.User;
+import cozydev.restaurantbackend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long>{
-    User findByEmail(String email);
-    User findByEmailAndPassword(String email, String password);
-
-}
+public interface UserRepository extends JpaRepository<User, Long>{}

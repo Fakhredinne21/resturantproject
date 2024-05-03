@@ -1,7 +1,8 @@
-package cozydev.restaurantbackend.entity;
+package cozydev.restaurantbackend.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -10,27 +11,19 @@ import java.util.Date;
 
 
 @Entity
-@Table(name="Subscription")
 @Getter
 @Setter
 @ToString
+@RequiredArgsConstructor
 public class Subscription implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cardid;
+    private Long cardId;
     private int priceTicket;
     @Temporal(TemporalType.DATE)
     private Date subscriptionDate;
     @Temporal(TemporalType.DATE)
     private Date endSubscriptionDate;
 
-    public Subscription() {
-    }
 
-    public Subscription(Long Card_id, int priceTicket, Date subscriptionDate, Date endSubscriptionDate) {
-        this.cardid = Card_id;
-        this.priceTicket = priceTicket;
-        this.subscriptionDate = subscriptionDate;
-        this.endSubscriptionDate = endSubscriptionDate;
-    }
 }
