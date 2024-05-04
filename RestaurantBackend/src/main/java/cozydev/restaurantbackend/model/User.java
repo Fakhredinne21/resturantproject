@@ -32,7 +32,7 @@ public class User implements Serializable {
     @Lob
     private byte[] image;
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner")
     private List<Ticket> ownerTickets;
 
 }
