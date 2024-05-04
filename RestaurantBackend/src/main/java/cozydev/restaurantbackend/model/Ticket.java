@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,7 +25,8 @@ public class Ticket implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date expirationDate;
 
-    @ManyToOne
+    @ManyToOne()
     private User owner;
+
 
 }

@@ -35,4 +35,7 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "owner")
     private List<Ticket> ownerTickets;
 
+    @ManyToMany
+    private List<Ticket> transTickets ;
+
 }
