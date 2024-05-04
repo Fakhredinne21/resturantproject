@@ -30,9 +30,9 @@ public class SubscriptionController {
         return this.subscriptionService.getSubsById(id);
     }
 
-    @GetMapping("/{date}")
-    public Optional<Subscription> getBySubscriptionDate(@PathVariable Date date){
-        return this.subscriptionService.getBySubscriptionDate(date);
+    @GetMapping("/{idSubs}/date")
+    public Date getBySubscriptionDate(@PathVariable long idSubs){
+        return this.subscriptionService.getBySubscriptionDate(idSubs);
     }
 
 }

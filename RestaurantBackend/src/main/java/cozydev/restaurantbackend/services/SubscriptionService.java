@@ -27,7 +27,15 @@ public class SubscriptionService {
     }
 
 
-    public Optional<Subscription> getBySubscriptionDate(Date date) {
-        return subscriptionRepository.findBySubscriptionDate(date);
+    public Date getBySubscriptionDate(long idSub) {
+        Optional<Subscription> optionalSubscription = subscriptionRepository.findById(idSub);
+
+        if(optionalSubscription.isPresent()){
+         Subscription subscription = optionalSubscription.get();
+         return subscription.getSubscriptionDate();
+        }else{
+            return null ;
+        }
+
     }
 }

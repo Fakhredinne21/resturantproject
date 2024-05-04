@@ -26,6 +26,8 @@ public class User implements Serializable {
     private boolean status;
     @Temporal(TemporalType.DATE)
     private Date dateCreation;
+    @Temporal(TemporalType.DATE)
+    private Date updatedAt ;
     @Lob
     private byte[] image;
 
