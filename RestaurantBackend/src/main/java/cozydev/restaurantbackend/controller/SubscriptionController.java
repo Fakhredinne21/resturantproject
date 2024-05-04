@@ -17,7 +17,7 @@ public class SubscriptionController {
     public SubscriptionController(SubscriptionService subscriptionService) {
         this.subscriptionService = subscriptionService;
     }
-
+    @GetMapping
     public List<Subscription> getAllSubs(){
         return this.subscriptionService.getAllSubs();
     }
