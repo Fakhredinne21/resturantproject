@@ -18,7 +18,6 @@ public class SubscriptionController {
         this.subscriptionService = subscriptionService;
     }
 
-    @GetMapping
     public List<Subscription> getAllSubs(){
         return this.subscriptionService.getAllSubs();
     }
@@ -27,8 +26,5 @@ public class SubscriptionController {
     public Optional<Subscription> getSubsById(long id){
         return this.subscriptionService.getSubsById(id);
     }
-
-
-
 
 }
