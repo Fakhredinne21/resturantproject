@@ -33,6 +33,6 @@ public class User implements Serializable {
     private byte[] image;
 
     @OneToMany
-    private List<Ticket> ownerTicket;
+    private List<Ticket> ownerTickets;
 
 }
