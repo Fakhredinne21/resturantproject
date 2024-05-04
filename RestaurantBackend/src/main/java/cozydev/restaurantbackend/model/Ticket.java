@@ -24,6 +24,7 @@ public class Ticket implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date expirationDate;
 
-
+    @ManyToOne
+    private User owner;
 
 }
