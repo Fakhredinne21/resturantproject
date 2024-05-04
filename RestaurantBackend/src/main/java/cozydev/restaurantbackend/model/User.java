@@ -20,7 +20,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstName;
-    private String LastName;
+    private String lastName;
     private int phoneNumber;
     private String email;
     private String password;
@@ -33,6 +33,6 @@ public class User implements Serializable {
     private byte[] image;
 
     @OneToMany
-    private List<Ticket> ticket;
+    private List<Ticket> ownerTicket;
 
 }
