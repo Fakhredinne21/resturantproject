@@ -1,8 +1,11 @@
 package cozydev.restaurantbackend.services ;
 
+import cozydev.restaurantbackend.model.User;
 import cozydev.restaurantbackend.repositories.UserRepository;
 
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -12,4 +15,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
 }

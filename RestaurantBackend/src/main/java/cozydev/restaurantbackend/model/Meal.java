@@ -1,13 +1,13 @@
 package cozydev.restaurantbackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.Collection;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +21,6 @@ public class Meal {
     private String description ;
     private long price ;
 
+    @OneToMany()
+    private List<User> users;
 }

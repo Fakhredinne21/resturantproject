@@ -24,4 +24,6 @@ public class Subscription implements Serializable {
     private Date subscriptionDate;
     @Temporal(TemporalType.DATE)
     private Date endSubscriptionDate;
+
+
 }

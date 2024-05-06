@@ -7,14 +7,11 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Getter
-@Setter
-@ToString
-@RequiredArgsConstructor
+@Entity @Getter @Setter @ToString @RequiredArgsConstructor
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +29,9 @@ public class User implements Serializable {
     @Lob
     private byte[] image;
 
-    @OneToMany(mappedBy = "owner")
-    private List<Ticket> ownerTickets;
 
-    @ManyToMany
-    private List<Ticket> transTickets ;
+
+
+
 
 }

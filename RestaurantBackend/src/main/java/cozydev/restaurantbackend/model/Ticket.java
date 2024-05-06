@@ -8,8 +8,6 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -17,16 +15,16 @@ import java.util.List;
 @RequiredArgsConstructor
 
 public class Ticket implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ticketId;
+    private Long id;
     private int price;
     private boolean state;
     @Temporal(TemporalType.DATE)
     private Date expirationDate;
 
-    @ManyToOne()
-    private User owner;
-
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
