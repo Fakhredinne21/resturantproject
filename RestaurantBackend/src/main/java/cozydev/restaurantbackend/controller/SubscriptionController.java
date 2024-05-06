@@ -35,4 +35,6 @@ public class SubscriptionController {
         return this.subscriptionService.getBySubscriptionDate(idSubs);
     }
 
+
+
 }

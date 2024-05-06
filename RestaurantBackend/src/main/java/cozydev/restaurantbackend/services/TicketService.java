@@ -2,6 +2,7 @@ package cozydev.restaurantbackend.services;
 
 
 import cozydev.restaurantbackend.model.Ticket;
+import cozydev.restaurantbackend.model.User;
 import cozydev.restaurantbackend.repositories.TicketRepository;
 import org.springframework.stereotype.Service;
 
@@ -23,4 +24,9 @@ public class TicketService {
     public Optional<Ticket> getTicketById(Long Id) {
         return this.ticketRepository.findById(Id);
     }
+
+    public List<Ticket> getTicketsByUser(User user) {
+        return this.ticketRepository.findByUser(user);
+    }
+
 }

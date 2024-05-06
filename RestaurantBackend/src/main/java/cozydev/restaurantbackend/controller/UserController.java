@@ -23,4 +23,8 @@ public class UserController {
         return userService.getUsers();
     }
 
+    public User getUserById(Long id) {
+        return userService.getUserById(id);
+    }
+
 }
