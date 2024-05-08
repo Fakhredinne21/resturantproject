@@ -1,32 +1,14 @@
 package cozydev.restaurantbackend.services;
 
 
-import cozydev.restaurantbackend.model.Ticket;
-import cozydev.restaurantbackend.model.User;
 import cozydev.restaurantbackend.repositories.TicketRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-
 @Service
-public class TicketService {
+public class ticketService {
     private final TicketRepository ticketRepository;
-    public TicketService(TicketRepository ticketRepository) {
+    public ticketService(TicketRepository ticketRepository) {
         this.ticketRepository = ticketRepository;
-    }
-
-    public List<Ticket> getTicket(){
-        return this.ticketRepository.findAll();
-    }
-
-    public Optional<Ticket> getTicketById(Long Id) {
-        return this.ticketRepository.findById(Id);
-    }
-
-    public List<Ticket> getTicketsByUser(User user) {
-        return this.ticketRepository.findByUser(user);
     }
 
 }
