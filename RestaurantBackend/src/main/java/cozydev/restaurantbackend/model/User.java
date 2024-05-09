@@ -1,5 +1,6 @@
 package cozydev.restaurantbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity @Getter @Setter @ToString @RequiredArgsConstructor
@@ -29,9 +31,7 @@ public class User implements Serializable {
     @Lob
     private byte[] image;
 
-
-
-
-
-
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference
+    private List<Ticket> tickets;
 }
