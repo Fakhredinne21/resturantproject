@@ -7,9 +7,8 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+
 
 @Entity @Getter @Setter @ToString @RequiredArgsConstructor
 public class User implements Serializable {
@@ -20,6 +19,7 @@ public class User implements Serializable {
     private String lastName;
     private int phoneNumber;
     private String email;
+    private Boolean subscription ;
     private String password;
     private boolean status;
     @Temporal(TemporalType.DATE)

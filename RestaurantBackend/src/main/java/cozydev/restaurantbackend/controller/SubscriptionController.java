@@ -1,7 +1,5 @@
 package cozydev.restaurantbackend.controller;
 
-import cozydev.restaurantbackend.model.Subscription;
-import cozydev.restaurantbackend.services.SubscriptionService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
