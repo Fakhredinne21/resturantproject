@@ -1,6 +1,6 @@
 package cozydev.restaurantbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -34,4 +34,9 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     @JsonBackReference
     private List<Ticket> tickets;
+
+    @ManyToMany
+    @JsonBackReference
+    private List<Meal> meals;
+
 }

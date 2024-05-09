@@ -1,5 +1,7 @@
 package cozydev.restaurantbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ public class Meal {
     private String description ;
     private long price ;
 
-    @OneToMany()
+    @ManyToMany(mappedBy = "meals")
+    @JsonIdentityReference
     private List<User> users;
 }
