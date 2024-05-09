@@ -2,9 +2,7 @@ package cozydev.restaurantbackend.services ;
 
 import cozydev.restaurantbackend.model.User;
 import cozydev.restaurantbackend.repositories.UserRepository;
-
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
