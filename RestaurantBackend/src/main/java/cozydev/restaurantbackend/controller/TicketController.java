@@ -1,7 +1,6 @@
 package cozydev.restaurantbackend.controller;
 
 
-import cozydev.restaurantbackend.model.Meal;
 import cozydev.restaurantbackend.model.Ticket;
 import cozydev.restaurantbackend.services.TicketService;
 import org.springframework.web.bind.annotation.*;

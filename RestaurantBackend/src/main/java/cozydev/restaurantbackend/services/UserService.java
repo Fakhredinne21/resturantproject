@@ -16,6 +16,9 @@ public class UserService {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
+    public User userCreation(User user){
+        return userRepository.save(user);
+    }
 
     public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);

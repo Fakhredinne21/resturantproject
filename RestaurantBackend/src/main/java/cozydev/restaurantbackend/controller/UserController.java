@@ -1,11 +1,8 @@
 package cozydev.restaurantbackend.controller;
 
 import cozydev.restaurantbackend.model.User;
-import cozydev.restaurantbackend.repositories.UserRepository;
 import cozydev.restaurantbackend.services.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,14 +14,20 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+    @PostMapping
+    public User userCreation(@PathVariable User user){
+        return userService.userCreation(user);
+    }
 
     @GetMapping
     public List<User> getUsers() {
         return userService.getUsers();
     }
 
-    public User getUserById(Long id) {
-        return userService.getUserById(id);
+    @GetMapping("/{userId}")
+    public User getUserById(@PathVariable  Long userId) {
+        return userService.getUserById(userId);
     }
+
 
 }
