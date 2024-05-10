@@ -5,6 +5,7 @@ import cozydev.restaurantbackend.services.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -25,7 +26,7 @@ public class UserController {
     }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable  Long userId) {
+    public Optional <User> getUserById(@PathVariable  Long userId) {
         return userService.getUserById(userId);
     }
 

@@ -39,4 +39,8 @@ public class User implements Serializable {
     @JsonBackReference
     private List<Meal> meals;
 
+    @ManyToOne()
+    @JsonManagedReference
+    private Notifcation notifcations ;
+
 }
