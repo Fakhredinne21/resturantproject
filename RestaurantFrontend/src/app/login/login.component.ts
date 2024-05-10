@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormControl, FormGroup, FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormGroup, FormBuilder, ReactiveFormsModule, Validators, FormsModule} from "@angular/forms";
 import {RouterLink} from "@angular/router";
 
 @Component({
@@ -7,7 +7,8 @@ import {RouterLink} from "@angular/router";
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    RouterLink
+    RouterLink,
+    FormsModule
 
 
   ],
@@ -18,12 +19,16 @@ export class LoginComponent {
   emailControl = new FormControl('');
   passwordControl = new FormControl('');
   formBuilder = new FormBuilder();
-  loginform: FormGroup = this.formBuilder.group({
+  loginform: FormGroup=this.formBuilder.group({
     email: this.emailControl,
     password: this.passwordControl
-  });
+  })
+  login:any={
+    email:'',
+  password:''};
   onSubmit(){
-    //implement service
+    alert(this.loginform.controls['email'].value+"   "+this.loginform.controls['password'].value);
+
   }
 
 }
