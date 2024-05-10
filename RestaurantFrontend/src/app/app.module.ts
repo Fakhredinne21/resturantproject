@@ -3,8 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SubscriptionModule } from './subscription/subscription.module';
+
 import { HttpClientModule} from "@angular/common/http";
+import { LoginModule } from './login/login.module';
+import { RegesterModule } from './regester/regester.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,8 @@ import { HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SubscriptionModule,
+    LoginModule,
+    RegesterModule,
 
   ],
   providers: [],
