@@ -7,7 +7,7 @@
       <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
 
         <label for="email-inp">Email</label>
-        <input type="email" formControlName="email" [(ngModel)]="login.email" placeholder="Email"  class="form-control"id="email-inp">
+        <input type="email" formControlName="email" [(ngModel)]="login.email" placeholder="Email"  id="email-inp">
 
         <label for="pass-inp">Password</label>
         <input type="password" formControlName="password" [(ngModel)]="login.password" placeholder="password"class="form-control" id="pass-inp">
