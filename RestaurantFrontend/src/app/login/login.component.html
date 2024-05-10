@@ -1,28 +1,20 @@
-<table>
-  <tr>
 <div id="left_side">
-<div id="login_div">
-  <div id="login_lable">
-    <label>Log-In</label>
-  </div>
-  <table>
-    <tr>
+  <div id="login_div">
+    <div id="login_lable">
+      <label>Log-In</label>
+    </div>
+    <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
       <label>Email</label><br>
 
-      <input type="email" name="email" placeholder="Email"class="in">
-    </tr>
-    <tr>
+      <input type="email" [formGroup]="loginform" placeholder="Email" class="in"><br>
       <label>Password</label><br>
+      <input type="password" [formGroup]="loginform" placeholder="password" class="in"><br>
+      <input type="submit" name="submit" value="Proceed" id="proc"><br>
+      <input type="Submit" name="create" id="Create an account" id="create">
+    </form>
+  </div>
+</div>
 
-      <input type="password" name="password" placeholder="passowd"class="in">
-    </tr>
-  </table>
-  <input type="submit" name="submit" value="Proceed"id="proc"><br>
-  <input type="Submit" name="create" id="Create an account"id="create">
-</div>
-</div>
 <div id="right_side">
   <img src="/assets/Order%20Success.svg" alt="random shit nigga">
 </div>
-  </tr>
-</table>

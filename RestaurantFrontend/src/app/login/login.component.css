@@ -1,20 +1,19 @@
-body{
+/*body{
   display: flex;
   width: 1440px;
   height: 1024px;
   justify-content: center;
   align-items: flex-start;
   background: palegreen;
-}
-#left_side{
-  display: flex;
-  width: 1440px;
-  height: 1024px;
-  justify-content: center;
-  align-items: flex-start;
-  position: fixed;
-  background: #FFF;
-}
+}#left_side{
+   display: flex;
+   width: 1440px;
+   height: 1024px;
+   justify-content: center;
+   align-items: flex-start;
+   position: fixed;
+   background: #FFF;
+ }
 #right_side{
   display: flex;
   width: 720px;
@@ -103,4 +102,4 @@ tr{
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-}
+}*/
