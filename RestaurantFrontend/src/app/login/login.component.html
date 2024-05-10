@@ -1,19 +1,20 @@
-<div id="left-side">
-  <span class="form-header">Log-In</span>
-  <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
-    <label>Email</label><br>
+<div id="left_side">
+  <div id="login_div">
+    <div id="login_lable">
+      <label>Log-In</label>
+    </div>
+    <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+      <label>Email</label><br>
 
-    <label for="email"></label>
-    <input type="email" [formGroup]="loginform" placeholder="Email" id="email" class="in"><br>
-
-    <label for="pass">Password</label>
-    <input type="password" [formGroup]="loginform" placeholder="Password" id="pass">
-
-    <input type="submit" name="submit">
-    <hr>
-    <a href="router__link" class="">Create Account</a>
-  </form>
+      <input type="email" [formGroup]="loginform" placeholder="Email" class="in"><br>
+      <label>Password</label><br>
+      <input type="password" [formGroup]="loginform" placeholder="password" class="in"><br>
+      <input type="submit" name="submit" value="Proceed" id="proc"><br>
+      <a routerLink="/signup">create an account</a>
+    </form>
+  </div>
 </div>
-<div id="right-side">
-  <img src="/assets/Order%20Success.svg" alt="">
+
+<div id="right_side">
+  <img src="/assets/Order%20Success.svg" alt="random shit nigga">
 </div>

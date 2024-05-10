@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
 
 
   ],
