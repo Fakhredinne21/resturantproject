@@ -7,10 +7,10 @@
       <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
 
         <label for="email-inp">Email</label>
-        <input type="email" formControlName="email" [(ngModel)]="login.email" placeholder="Email" id="email-inp">
+        <input type="email" formControlName="email" [(ngModel)]="login.email" placeholder="Email"  class="form-control"id="email-inp">
 
         <label for="pass-inp">Password</label>
-        <input type="password" formControlName="password" [(ngModel)]="login.password" placeholder="password" id="pass-inp">
+        <input type="password" formControlName="password" [(ngModel)]="login.password" placeholder="password"class="form-control" id="pass-inp">
 
         <input type="submit" name="submit" value="Proceed" id="proc">
         <a routerLink="/signup">create an account</a>
