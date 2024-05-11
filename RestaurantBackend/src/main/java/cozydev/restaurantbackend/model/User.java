@@ -20,6 +20,7 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     @Lob
     private byte[] profileImage;
     @Enumerated(EnumType.STRING)
