@@ -1,22 +1,26 @@
 package cozydev.restaurantbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name="Review")
+@Getter
+@Setter
 public class Review {
     @EmbeddedId
     private ReviewId id;
 
     @ManyToOne
     @MapsId("userId")
-    @JsonBackReference
+    @JsonIgnore
     private User user;
 
     @ManyToOne
     @MapsId("mealId")
-    @JsonBackReference
+    @JsonIgnore
     private Meal meal;
 
     private String rating;

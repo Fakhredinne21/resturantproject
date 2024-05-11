@@ -2,6 +2,7 @@ package cozydev.restaurantbackend.controller;
 
 
 import cozydev.restaurantbackend.model.Meal;
+import cozydev.restaurantbackend.model.ReviewId;
 import cozydev.restaurantbackend.services.MealService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,7 @@ public class MealController {
     }
 
     @PostMapping
-    public Meal mealCreation(@PathVariable Meal meal){
+    public Meal mealCreation(@RequestBody Meal meal){
         return mealService.mealCreation(meal);
     }
 
@@ -33,5 +34,9 @@ public class MealController {
         return mealService.getMealById(idMeal);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteMeal(@PathVariable Long id) {
+        mealService.deleteMeal(id);
+    }
 
 }

@@ -42,9 +42,9 @@ public class User implements Serializable {
     private List<Meal> meals;
 
     //Notifications
-    @ManyToOne()
+    @OneToMany()
     @JsonIgnore
-    private Notifcation notifcations ;
+    private List<Notifcation> notifcations ;
 
     //Review
     @OneToMany(mappedBy = "user")

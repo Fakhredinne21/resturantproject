@@ -1,6 +1,7 @@
 package cozydev.restaurantbackend.services;
 
 import cozydev.restaurantbackend.model.Meal;
+import cozydev.restaurantbackend.model.ReviewId;
 import cozydev.restaurantbackend.repositories.MealRepository;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +29,7 @@ public class MealService {
     }
 
 
+    public void deleteMeal(Long id) {
+        this.mealRepository.deleteById(id);
+    }
 }

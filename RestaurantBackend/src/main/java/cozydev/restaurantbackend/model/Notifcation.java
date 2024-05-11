@@ -22,4 +22,8 @@ public class Notifcation {
     private Type title ;
     private String text ;
 
+    @ManyToOne
+    @JsonIgnore
+    private User user;
+
 }

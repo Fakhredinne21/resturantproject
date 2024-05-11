@@ -17,6 +17,7 @@ public class TicketController {
     public TicketController(TicketService ticketService) {
         this.ticketService = ticketService;
     }
+
     @GetMapping
     public List<Ticket> getAllMeals(){
         return ticketService.getAllTicket();
