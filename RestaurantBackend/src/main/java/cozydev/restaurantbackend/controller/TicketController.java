@@ -22,10 +22,16 @@ public class TicketController {
         return ticketService.getAllTicket();
     }
 
+    @PostMapping
+    public Ticket addTicket(@RequestBody Ticket ticket) {
+        return ticketService.addTicket(ticket);
+    }
+
     @GetMapping("/{idTicket}")
     public Optional<Ticket> getMealById(@PathVariable long idTicket){
         return ticketService.getTicketById(idTicket);
     }
+
     @DeleteMapping("/{idTicket}")
     public void deleteMeal(@PathVariable long idTicket){
          ticketService.deleteTicket(idTicket);

@@ -31,4 +31,7 @@ public class TicketService {
         ticketRepository.deleteById(idTicket);
     }
 
+    public Ticket addTicket(Ticket ticket){
+        return ticketRepository.save(ticket);
+    }
 }

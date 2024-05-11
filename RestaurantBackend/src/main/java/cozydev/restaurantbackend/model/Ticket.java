@@ -1,6 +1,7 @@
 package cozydev.restaurantbackend.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -28,11 +29,11 @@ public class Ticket implements Serializable {
     private Date expirationDate;
 
     @OneToMany(mappedBy = "ticket")
-    @JsonManagedReference
+    @JsonIgnore
     private List<History> histories;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    @JsonIgnore
     private User user;
 }
