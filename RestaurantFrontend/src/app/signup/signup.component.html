@@ -1,0 +1,17 @@
+<div>
+  <form [formGroup]="signeInForm" (ngSubmit)="onSubmit()">
+    <label>First Name</label>
+    <input type="text" formControlName="firstName" [(ngModel)]="signeIn.firstName" placeholder="First Name">
+
+    <label>Last Name</label>
+    <input type="text"formControlName="lastName" [(ngModel)]="signeIn.lastName"placeholder="Last Name">
+
+    <label>Email</label>
+    <input type="email"formControlName="email"[(ngModel)]="signeIn.email"placeholder="Email">
+
+    <label>Password</label>
+    <input type="password" formControlName="password" [(ngModel)]="signeIn.password"placeholder="Password">
+    <input type="submit" value="create">
+    <a routerLink="/login">log-In</a>
+  </form>
+</div>
