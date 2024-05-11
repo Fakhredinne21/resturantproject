@@ -1,17 +1,27 @@
-<div>
-  <form [formGroup]="signeInForm" (ngSubmit)="onSubmit()">
-    <label>First Name</label>
-    <input type="text" formControlName="firstName" [(ngModel)]="signeIn.firstName" placeholder="First Name">
+<div xmlns="http://www.w3.org/1999/html">
+  <form [formGroup]="signeInForm" (ngSubmit)="createUser()">
+    <label>First Name</label><br>
+    <input type="text" formControlName="firstName" [(ngModel)]="signeIn.firstName" placeholder="First Name"><br>
 
-    <label>Last Name</label>
-    <input type="text"formControlName="lastName" [(ngModel)]="signeIn.lastName"placeholder="Last Name">
+    <label>Last Name</label><br>
+    <input type="text"formControlName="lastName" [(ngModel)]="signeIn.lastName"placeholder="Last Name"><br>
 
-    <label>Email</label>
-    <input type="email"formControlName="email"[(ngModel)]="signeIn.email"placeholder="Email">
+    <label>Email</label><br>
+    <input type="email"formControlName="email"[(ngModel)]="signeIn.email"placeholder="Email"><br>
 
-    <label>Password</label>
-    <input type="password" formControlName="password" [(ngModel)]="signeIn.password"placeholder="Password">
+    <label>Select your academic status</label><br>
+    <input type="radio" formControlName="role"[(ngModel)]="signeIn.role" value="Teacher">teacher<br>
+    <input type="radio" formControlName="role"[(ngModel)]="signeIn.role" value="Student">student<br>
+    <input type="hidden" formControlName="isSubscribed" [(ngModel)]="signeIn.isSubscribed" value="false">
+    <label>Password</label><br>
+    <input type="password" formControlName="password" [(ngModel)]="signeIn.password"placeholder="Password"><br>
     <input type="submit" value="create">
     <a routerLink="/login">log-In</a>
+    <p style="background: #32B768">
+    {{ (affichage | async)?.firstName }}
+      {{ (affichage | async)?.lastName }}
+      {{ (affichage | async)?.email }}
+      {{(affichage|async)?.password}}
+    </p>
   </form>
 </div>

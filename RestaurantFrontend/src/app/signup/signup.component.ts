@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SignupService} from "../services/signup.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-signup',
@@ -29,21 +30,22 @@ export class SignupComponent {
               private notif: MatSnackBar,
               private signupService:SignupService) {
   }
-
+  affichage!: Observable<any>;
   ngOnInit() {
     // Create the form using FormBuilder
     this.signeInForm= this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      profileImage: ['', Validators.required],
-      role: ['', Validators.required],
-      isSubscribed: ['', Validators.required]
+      password: ['', [Validators.required]],
+      profileImage: [''],
+      role: [''],
+      isSubscribed: ['']
     });
+    this.affichage = this.get(0);
   }
 
-  /*createUser() {
+  createUser() {
 
     if (this.signeInForm.valid) {
       this.signupService.createUser(this.signeIn).subscribe(
@@ -70,8 +72,6 @@ export class SignupComponent {
   }
   get(id:Number){
     return this.signupService.get(id);
-  }*/
-  onSubmit(){
-    alert(this.signeInForm.controls['email'].value+" "+this.signeInForm.controls['password'].value+" "+this.signeInForm.controls['lastname']+""+this.signeInForm.controls['firstname'].value);
   }
+
 }

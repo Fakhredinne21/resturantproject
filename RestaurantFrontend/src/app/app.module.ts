@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SignupModule } from './signup/signup.module';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SignupModule } from './signup/signup.module';
     BrowserModule,
     AppRoutingModule,
     LoginModule,
-    SignupModule
+    SignupModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()
