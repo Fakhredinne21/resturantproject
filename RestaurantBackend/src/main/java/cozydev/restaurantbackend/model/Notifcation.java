@@ -18,8 +18,8 @@ public class Notifcation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long notifId ;
-    private String title ;
+    @Enumerated(EnumType.STRING)
+    private Type title ;
     private String text ;
-
 
 }

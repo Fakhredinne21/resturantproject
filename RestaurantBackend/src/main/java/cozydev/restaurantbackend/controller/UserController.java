@@ -15,10 +15,12 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    @PostMapping
-    public User userCreation(@PathVariable User user){
+
+    @PostMapping(consumes = "application/json;application/json;charset=UTF-8")
+    public User userCreation(@RequestBody User user) {
         return userService.userCreation(user);
     }
+
 
     @GetMapping
     public List<User> getUsers() {

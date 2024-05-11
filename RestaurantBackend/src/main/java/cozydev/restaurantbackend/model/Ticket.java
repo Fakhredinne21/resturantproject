@@ -9,6 +9,8 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -24,6 +26,10 @@ public class Ticket implements Serializable {
     private boolean state;
     @Temporal(TemporalType.DATE)
     private Date expirationDate;
+
+    @OneToMany(mappedBy = "ticket")
+    @JsonManagedReference
+    private List<History> histories;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
