@@ -16,7 +16,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(consumes = "application/json;application/json;charset=UTF-8")
+    @PostMapping
     public User userCreation(@RequestBody User user) {
         return userService.userCreation(user);
     }
