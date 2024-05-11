@@ -7,6 +7,7 @@ import { LoginModule } from './login/login.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SignupModule } from './signup/signup.module';
 import {HttpClientModule} from "@angular/common/http";
+import { MealModule } from './meal/meal.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     LoginModule,
     SignupModule,
-    HttpClientModule
+    HttpClientModule,
+    MealModule
   ],
   providers: [
     provideAnimationsAsync()

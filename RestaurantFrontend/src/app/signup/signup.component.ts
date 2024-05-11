@@ -30,6 +30,7 @@ export class SignupComponent {
               private notif: MatSnackBar,
               private signupService:SignupService) {
   }
+
   affichage!: Observable<any>;
   ngOnInit() {
     // Create the form using FormBuilder
