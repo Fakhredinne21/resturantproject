@@ -16,9 +16,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
-    public User userCreation(@RequestBody User user) {
-        return userService.userCreation(user);
+    @PostMapping("/{userId}") // changed from '/userCreation' to '/{userId}
+    public User userCreation(@RequestBody User user , @PathVariable Long userId) {
+        return userService.userCreation(user , userId);
     }
 
 

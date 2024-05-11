@@ -17,7 +17,7 @@ public class UserService {
     public List<User> getUsers() {
         return userRepository.findAll();
     }
-    public User userCreation(User user){
+    public User userCreation(User user , Long userId) {
         return userRepository.save(user);
     }
 
