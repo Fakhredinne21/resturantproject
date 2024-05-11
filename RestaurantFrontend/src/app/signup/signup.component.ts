@@ -31,7 +31,12 @@ export class SignupComponent {
               private signupService:SignupService) {
   }
 
-  affichage!: Observable<any>;
+  affichage:any[]=[];
+  getAllUsers(){
+    this.signupService.getAllUsers().subscribe((res:any[])=> {
+      return this.affichage=res;
+    });
+  }
   ngOnInit() {
     // Create the form using FormBuilder
     this.signeInForm= this.fb.group({
@@ -43,7 +48,7 @@ export class SignupComponent {
       role: [''],
       isSubscribed: ['']
     });
-    this.affichage = this.get(0);
+    this.getAllUsers();
   }
 
   createUser() {

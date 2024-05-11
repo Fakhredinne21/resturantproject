@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class SignupService {
 
-  private userUrl:String="http://localhost:8081/users";
+  private userUrl="http://localhost:8081/users";
   constructor(private http:HttpClient) { }
 
   createUser(user:any):Observable<any>{
@@ -15,5 +15,8 @@ export class SignupService {
   }
   get(user:any):Observable<any>{
     return this.http.get<any>(`${this.userUrl}/${user}`);
+  }
+  getAllUsers():any{
+    return this.http.get<any[]>(this.userUrl);
   }
 }

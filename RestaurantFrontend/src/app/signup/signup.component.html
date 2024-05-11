@@ -17,11 +17,6 @@
     <input type="password" formControlName="password" [(ngModel)]="signeIn.password"placeholder="Password"><br>
     <input type="submit" value="create">
     <a routerLink="/login">log-In</a>
-    <p style="background: #32B768">
-    {{ (affichage | async)?.firstName }}
-      {{ (affichage | async)?.lastName }}
-      {{ (affichage | async)?.email }}
-      {{(affichage|async)?.password}}
-    </p>
+
   </form>
 </div>
