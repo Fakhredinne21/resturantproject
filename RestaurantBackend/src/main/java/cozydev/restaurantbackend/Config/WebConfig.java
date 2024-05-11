@@ -31,10 +31,5 @@ public class WebConfig {
             }
         };
     }
-    @Bean
-    public MappingJackson2HttpMessageConverter messageConverter() {
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setDefaultCharset(StandardCharsets.UTF_8);
-        return converter;
-    }
+
 }
