@@ -11,12 +11,13 @@ export class SignupService {
   constructor(private http:HttpClient) { }
 
   createUser(user:any):Observable<any>{
-    return this.http.post<any>(`${this.userUrl}`,user)
+    return this.http.post<any>(this.userUrl,user)
   }
-  get(user:any):Observable<any>{
-    return this.http.get<any>(`${this.userUrl}/${user}`);
+  getById(userId:Number):Observable<any>{
+    return this.http.get<any>(`${this.userUrl}/${userId}`);
   }
-  getAllUsers():any{
+  getAllUsers():Observable<any>{
     return this.http.get<any[]>(this.userUrl);
   }
+
 }

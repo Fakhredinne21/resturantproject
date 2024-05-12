@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {SignupService} from "../services/signup.service";
 import {Observable} from "rxjs";
 
@@ -15,6 +15,7 @@ export class SignupComponent {
   signeInForm!: FormGroup ;
 
   signeIn: any = {
+    id:'',
     firstName: "",
     lastName: "",
     email: "",
@@ -39,6 +40,7 @@ export class SignupComponent {
   }
   ngOnInit() {
     // Create the form using FormBuilder
+
     this.signeInForm= this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -61,7 +63,7 @@ export class SignupComponent {
             verticalPosition: 'top',
           });
           this.signeInForm.reset();
-          this.router.navigate(['/']);
+          this.router.navigate(['/home',response.id]);
         },
         error => {
           console.error("Error adding ", error);
@@ -76,8 +78,8 @@ export class SignupComponent {
       console.log(this.signeInForm.valid)
     }
   }
-  get(id:Number){
-    return this.signupService.get(id);
+  getUserById(userId:Number){
+    return this.signupService.getById(userId);
   }
 
 }
