@@ -13,6 +13,7 @@ export class LoginComponent {
   formBuilder = new FormBuilder();
   loginform !: FormGroup;
   login: any = {
+    id:'',
     email: '',
     password: ''
   };
@@ -54,6 +55,16 @@ export class LoginComponent {
             duration: 10000,
             verticalPosition: 'top',
           });
+          if(user.role==="Admin"){
+            console.log("admin");
+            this.loginform.reset();
+            this.router.navigate(['/admin',user.id]);
+          }
+          else{
+            console.log("non admin");
+            this.loginform.reset();
+            this.router.navigate(['/home',user.id]);
+          }
           // Proceed with login logic (e.g., navigate to home page)
         } else {
           // Password does not match
@@ -61,6 +72,7 @@ export class LoginComponent {
             duration: 10000,
             verticalPosition: 'top',
           });
+          this.loginform.reset();
           // Handle incorrect password (e.g., show error message)
         }
       } else {
@@ -69,7 +81,7 @@ export class LoginComponent {
           duration: 10000,
           verticalPosition: 'top',
         });
-
+        this.loginform.reset();
         // Handle user not found (e.g., show error message)
       }
     } else {
@@ -77,6 +89,7 @@ export class LoginComponent {
         duration: 4000,
         verticalPosition: 'top',
       });
+      this.loginform.reset();
     }
   }
 }
