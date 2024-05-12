@@ -99,7 +99,7 @@ p {
     width: 50%;
 }
 
-button, input, textarea, *.button, .a-button {
+button, input, textarea, *.button, .a-button, select {
     border-radius: var(--border_radius);
 }
 
@@ -173,12 +173,12 @@ h3 {
     width: inherit;
 }
 
-.labeled-input input {
+.labeled-input input, .labeled-input select {
     border: 1px solid var(--border-color);
 }
 
 /* Input Padding */
-.labeled-input input, .a-button, button {
+.labeled-input input, .a-button, button, .labeled-input select {
     padding: 1.2rem 1.6rem;
 }
 
@@ -203,6 +203,29 @@ button[type="submit"]:hover, button[type="submit"]:focus {
     align-items: center;
     display: flex;
     gap: 0.8rem;
+}
+
+select {
+    --arrow-icon: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg);
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background: var(--arrow-icon) no-repeat right 0.8em center/1.4em, linear-gradient(to left, var(--accent) 3em, var(--background) 3em);
+    color: var(--text-color);
+
+    cursor: pointer;
+}
+select::-ms-expand {
+    display: none;
+}
+select:focus {
+    outline: none;
+}
+select option {
+    color: inherit;
+    background-color: var(--background);
 }
 
 /* Input Section Ends */
