@@ -8,6 +8,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SignupModule } from './signup/signup.module';
 import {HttpClientModule} from "@angular/common/http";
 import { MealModule } from './meal/meal.module';
+import { UserhomeModule } from './userhome/userhome.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MealModule } from './meal/meal.module';
     LoginModule,
     SignupModule,
     HttpClientModule,
-    MealModule
+    MealModule,
+    UserhomeModule
   ],
   providers: [
     provideAnimationsAsync()
