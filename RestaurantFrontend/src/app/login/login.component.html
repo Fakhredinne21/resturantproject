@@ -5,7 +5,7 @@
       <label id="log">Log-In</label>
     </div>
 
-    <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginform" (ngSubmit)="correct()">
       <div>
         <label id="email" for="email-inp">Email</label><br>
         <input type="email" formControlName="email" [(ngModel)]="login.email" placeholder="Email"  id="email-inp"><br>

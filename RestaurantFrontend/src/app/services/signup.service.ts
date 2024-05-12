@@ -16,8 +16,7 @@ export class SignupService {
   getById(userId:Number):Observable<any>{
     return this.http.get<any>(`${this.userUrl}/${userId}`);
   }
-  getAllUsers():Observable<any>{
+  getAllUsers():Observable<any[]>{
     return this.http.get<any[]>(this.userUrl);
   }
-
 }

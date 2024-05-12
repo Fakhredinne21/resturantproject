@@ -10,14 +10,12 @@ import java.util.Optional;
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private final MealRepository mealRepository ;
 
     public UserService(UserRepository userRepository, MealRepository mealRepository) {
         this.userRepository = userRepository;
-        this.mealRepository = mealRepository;
     }
 
-    public List<User> getUsers() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
     public User userCreation(User user) {

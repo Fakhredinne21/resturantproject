@@ -47,7 +47,7 @@ export class SignupComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],
       profileImage: [''],
-      role: [''],
+      role: ['',[Validators.required]],
       isSubscribed: ['']
     });
     this.getAllUsers();
