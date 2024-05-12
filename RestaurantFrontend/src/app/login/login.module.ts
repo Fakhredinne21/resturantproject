@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { RightsideComponent } from './rightside/rightside.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RightsideComponent
   ],
     imports: [
         CommonModule,
@@ -16,7 +18,8 @@ import {ReactiveFormsModule} from "@angular/forms";
         ReactiveFormsModule
     ],
   exports: [
-    LoginComponent
+    LoginComponent,
+    RightsideComponent
   ]
 })
 export class LoginModule { }
