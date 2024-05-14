@@ -28,6 +28,11 @@ public class TicketController {
         return ticketService.addTicket(ticket);
     }
 
+    @PostMapping("/user/{userId}")
+    public Ticket addTicket(@RequestBody Ticket ticket ,@PathVariable Long userId) {
+        return ticketService.addTicket(ticket, userId);
+    }
+
     @GetMapping("/{idTicket}")
     public Optional<Ticket> getMealById(@PathVariable long idTicket){
         return ticketService.getTicketById(idTicket);
@@ -38,4 +43,8 @@ public class TicketController {
          ticketService.deleteTicket(idTicket);
     }
 
+    @GetMapping("/count/{idUser}")
+    public int countAllTicketByUserId(@PathVariable Long idUser){
+        return ticketService.countAllTicketByUserId(idUser);
+    }
 }
