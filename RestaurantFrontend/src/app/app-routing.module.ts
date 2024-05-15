@@ -4,8 +4,7 @@ import {SignupComponent} from "./signup/signup.component";
 import {LoginComponent} from "./login/login.component";
 import { MealComponent } from './meal/meal.component';
 import {UserhomeComponent} from "./userhome/userhome.component";
-import {AdminhomeComponent} from "./adminhome/adminhome.component";
-import {ProfileComponent} from "./adminhome/profile/profile.component";
+import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
   {path:'',redirectTo:"login",pathMatch:"full"},
@@ -13,7 +12,7 @@ const routes: Routes = [
   {path:'signup',component:SignupComponent},
   {path:'meal',component:MealComponent},
   {path:'home/:signInId',component:UserhomeComponent},
-  {path:'admin/:adminId',component:AdminhomeComponent},
+  {path:'admin/:adminId',component:AdminComponent},
 
 ];
 

@@ -5,14 +5,14 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../services/signup.service";
 import {ProfileComponent} from "./profile/profile.component";
 import {SubscriptionComponent} from "./subscription/subscription.component";
-import {AdminhomeModule} from "./adminhome.module";
+import {AdminModule} from "./admin.module";
 
 @Component({
-  selector: 'app-adminhome',
-  templateUrl: './adminhome.component.html',
-  styleUrl: './adminhome.component.css'
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrl: './admin.component.css'
 })
-export class AdminhomeComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
   adminId!: number;
   adminInfo: any = {
@@ -62,5 +62,5 @@ export class AdminhomeComponent implements OnInit {
 
   protected readonly ProfileComponent = ProfileComponent;
   protected readonly SubscriptionComponent = SubscriptionComponent;
-  protected readonly AdminhomeModule = AdminhomeModule;
+  protected readonly AdminhomeModule = AdminModule;
 }

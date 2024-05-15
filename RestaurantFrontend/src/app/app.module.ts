@@ -9,7 +9,7 @@ import { SignupModule } from './signup/signup.module';
 import {HttpClientModule} from "@angular/common/http";
 import { MealModule } from './meal/meal.module';
 import { UserhomeModule } from './userhome/userhome.module';
-import { AdminhomeModule } from './adminhome/adminhome.module';
+import {AdminModule} from "./admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { AdminhomeModule } from './adminhome/adminhome.module';
     HttpClientModule,
     MealModule,
     UserhomeModule,
-    AdminhomeModule
+    AdminModule
   ],
   providers: [
     provideAnimationsAsync()

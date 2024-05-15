@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ProfileComponent} from "./profile/profile.component";
 import {SubscriptionComponent} from "./subscription/subscription.component";
-import {AdminhomeComponent} from "./adminhome.component";
 
 const routes: Routes = [
 
@@ -14,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminhomeRoutingModule { }
+export class AdminRoutingModule { }
