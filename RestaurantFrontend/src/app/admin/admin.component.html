@@ -1,12 +1,10 @@
-<p>adminhome works!</p>
-<nav>
-  <a routerLink="/">home</a><br>
-  <a routerLink="/subscription">subscription</a><br>
-  <a [routerLink]="['/profile',adminId]">profile</a><br>
+<nav style="display: block">
+  <ul>
+    <li><a routerLink="/admin/home">Home</a></li>
+    <li><a routerLink="/admin/subscriptions">Subscriptions</a></li>
+    <li><a routerLink="/admin/profile">Profile</a></li>
+  </ul>
 </nav>
-<div>
-  <p>{{adminInfo.firstName}}</p>
-  <p>{{adminInfo.lastName}}</p>
-  <p>{{adminInfo.email}}</p>
-  <p>{{adminInfo.role}}</p>
-</div>
+
+<!-- Content area for the different components -->
+<router-outlet></router-outlet>
