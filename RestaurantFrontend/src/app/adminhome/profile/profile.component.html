@@ -1,0 +1,11 @@
+<p>profile works!</p>
+<div>
+  <p>{{adminInfo.firstName}} /// {{adminInfo.lastName}} /// {{adminInfo.email}} /// {{adminInfo.role}}</p>
+</div>
+<div>
+  <form [formGroup]="adminInfo">
+    <label>Email :</label><br>
+    <input type="email" id="email" name="email" formControlName="email" value="{{adminInfo.email}}">
+
+  </form>
+</div>

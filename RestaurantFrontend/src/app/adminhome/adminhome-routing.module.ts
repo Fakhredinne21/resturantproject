@@ -5,8 +5,9 @@ import {SubscriptionComponent} from "./subscription/subscription.component";
 import {AdminhomeComponent} from "./adminhome.component";
 
 const routes: Routes = [
-   {path:'profile/:adminId',component:ProfileComponent},
-  {path:'subscription',component:SubscriptionComponent},
+
+      {path:'profile/:adminId',component:ProfileComponent},
+      {path:'subscription',component:SubscriptionComponent},
 ];
 
 @NgModule({
