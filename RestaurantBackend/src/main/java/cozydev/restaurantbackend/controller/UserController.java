@@ -30,4 +30,14 @@ public class UserController {
     public Optional <User> getUserById(@PathVariable  Long userId) {
         return userService.getUserById(userId);
     }
+
+    @GetMapping("/Teacher")
+    public List<User> getTeachers(){
+        return userService.getTeachers();
+    }
+
+    @GetMapping("/Student")
+    public List<User> getStudent(){
+        return userService.getStudents();
+    }
 }

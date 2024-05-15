@@ -1,5 +1,6 @@
 package cozydev.restaurantbackend.services ;
 
+import cozydev.restaurantbackend.model.Role;
 import cozydev.restaurantbackend.model.User;
 import cozydev.restaurantbackend.repositories.MealRepository;
 import cozydev.restaurantbackend.repositories.UserRepository;
@@ -24,5 +25,13 @@ public class UserService {
 
     public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
+    }
+
+    public List<User> getTeachers() {
+        return this.userRepository.findAll().stream().filter(e -> e.getRole().compareTo(Role.Teacher) == 0 ).toList();
+    }
+
+    public List<User> getStudents() {
+        return this.userRepository.findAll().stream().filter(e -> e.getRole().compareTo(Role.Student) == 0 ).toList();
     }
 }
