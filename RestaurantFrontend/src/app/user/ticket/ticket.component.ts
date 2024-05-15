@@ -50,8 +50,8 @@ export class TicketComponent implements OnInit {
   buyTicket(): void {
     if (this.buyForm.valid) {
       const ticket = this.buyForm.value;
-      for (let i = 0; i < ticket.number; i++) {
-        this.ticketService.buyTicket(this.signInId).subscribe(
+      if (ticket.number <= 5) {
+        this.ticketService.buyTicket(this.signInId, ticket.number).subscribe(
           response => {
             this.snackBar.open(ticket.number + "tickets bought successfully!", "close", {
               duration: 10000,
@@ -68,9 +68,14 @@ export class TicketComponent implements OnInit {
             });
           }
         )
+      } else {
+        this.snackBar.open('You can only buy a maximum of 5 tickets at a time.', 'close', {
+          duration: 4000,
+          verticalPosition: 'top'
+        });
       }
-
-    } else {
+    }
+    else {
       this.snackBar.open('Please fill out all required fields.', 'close', {
         duration: 4000,
         verticalPosition: 'top'

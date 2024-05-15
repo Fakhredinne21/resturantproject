@@ -7,9 +7,9 @@ import {Observable} from "rxjs";
 })
 export class TicketService {
 
-  private ticketUrl:String="http://localhost:8080/Tickets";
+  private ticketUrl:String="http://localhost:8081/Tickets";
   constructor(private http:HttpClient) { }
-  buyTicket(userId:any):Observable<any>{
-    return this.http.get<any>(`${this.ticketUrl}/${userId}`)
+  buyTicket(userId:any,number:any):Observable<any>{
+    return this.http.get<any>('${this.ticketUrl}/buy/${userId}/${number}');
   }
 }
