@@ -1,85 +1,59 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {SignupService} from "../services/signup.service";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
-export class SignupComponent {
-  formBuilder = new FormBuilder();
-  signeInForm!: FormGroup ;
-
-  signeIn: any = {
-    id:'',
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    profileImage: "",
-    role: "",
-    isSubscribed:""
-  }
+export class SignupComponent implements OnInit {
+  signupForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private route: ActivatedRoute,
               private router: Router,
-              private notif: MatSnackBar,
-              private signupService:SignupService) {
-  }
+              private snackBar: MatSnackBar,
+              private signupService: SignupService) { }
 
-  affichage:any[]=[];
-  getAllUsers(){
-    this.signupService.getAllUsers().subscribe((res:any[])=> {
-      return this.affichage=res;
-    });
-  }
   ngOnInit() {
-    // Create the form using FormBuilder
-
-    this.signeInForm= this.fb.group({
+    this.signupForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      password: ['', Validators.required],
       profileImage: [''],
-      role: ['',[Validators.required]],
-      isSubscribed: ['']
+      role: ['', Validators.required],
+      isSubscribed: [false]
     });
-    this.getAllUsers();
   }
 
   createUser() {
+    if (this.signupForm.valid) {
+      const user = this.signupForm.value;
 
-    if (this.signeInForm.valid) {
-      this.signupService.createUser(this.signeIn).subscribe(
-        response => {
-          this.notif.open('Form Submitted Successfully ..!', 'close', {
-            duration: 10000,
-            verticalPosition: 'top',
+      this.signupService.createUser(user)
+        .subscribe(response => {
+            this.snackBar.open('Form Submitted Successfully!', 'close', {
+              duration: 10000,
+              verticalPosition: 'top'
+            });
+            this.signupForm.reset();
+            this.router.navigate(['/home', response.id]);
+          },
+          error => {
+            console.error("Error adding user:", error);
+            this.snackBar.open('An error occurred. Please try again.', 'close', {
+              duration: 4000,
+              verticalPosition: 'top'
+            });
           });
-          this.signeInForm.reset();
-          this.router.navigate(['/home',response.id]);
-        },
-        error => {
-          console.error("Error adding ", error);
-        }
-      );
     } else {
-      this.notif.open('fill out all the form please,', 'close', {
+      this.snackBar.open('Please fill out all required fields.', 'close', {
         duration: 4000,
-        verticalPosition: 'top',
+        verticalPosition: 'top'
       });
-      console.log(this.signeInForm.value);
-      console.log(this.signeInForm.valid)
     }
   }
-  getUserById(userId:Number){
-    return this.signupService.getById(userId);
-  }
-
 }

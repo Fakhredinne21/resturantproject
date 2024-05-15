@@ -4,16 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86604428-d0d9-4b78-8da4-02a4769673cd" name="Changes" comment="Added academic status selector">
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.html" afterDir="false" />
+    <list default="true" id="86604428-d0d9-4b78-8da4-02a4769673cd" name="Changes" comment="Structure change and Renaming the select options">
+      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Avatar.Filled=No.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Avatar.Filled=Yes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Home,Filled=No.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Home.Filled=No.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Home.Filled=Yes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Log-out, Filled=No.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Log-out, Filled=Yes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket, Filled=No.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket, Filled=Yes.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/assets/Order Success.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Authentication/Signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/Authentication/Signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +34,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -63,6 +68,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -86,6 +92,9 @@
       <workItem from="1715478269478" duration="2203000" />
       <workItem from="1715520001735" duration="7187000" />
       <workItem from="1715543394137" duration="22000" />
+      <workItem from="1715720316678" duration="4226000" />
+      <workItem from="1715756745088" duration="790000" />
+      <workItem from="1715768641672" duration="6783000" />
     </task>
     <task id="LOCAL-00001" summary="Small changes and file rename">
       <option name="closed" value="true" />
@@ -103,15 +112,35 @@
       <option name="project" value="LOCAL" />
       <updated>1715529152085</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Structure change and Renaming the select options">
+      <option name="closed" value="true" />
+      <created>1715720388729</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715720388729</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Small changes and file rename" />
     <MESSAGE value="Added academic status selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added academic status selector" />
+    <MESSAGE value="Structure change and Renaming the select options" />
+    <option name="LAST_COMMIT_MESSAGE" value="Structure change and Renaming the select options" />
   </component>
 </project>

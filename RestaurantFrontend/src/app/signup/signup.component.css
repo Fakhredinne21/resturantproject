@@ -1,8 +1,23 @@
-.signup-container {
+.signup{
   display: flex;
   height: 100vh;
+  width: 100vw;
 }
 
-.left-side {
+.left-side{
+  flex-direction: column;
+}
+
+.right-side{
+  justify-content: center;
+  align-items: center;
+}
+
+.right-side img{
   width: 65%;
+}
+
+.a-button{
+  background-color: var(--muted-background);
+  color: var(--muted-text);
 }

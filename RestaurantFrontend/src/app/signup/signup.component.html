@@ -1,80 +1,58 @@
-<!--<div xmlns="http://www.w3.org/1999/html">-->
-<!--  <form [formGroup]="signeInForm" (ngSubmit)="createUser()">-->
-<!--    <label>First Name</label><br>-->
-<!--    <input type="text" formControlName="firstName" [(ngModel)]="signeIn.firstName" placeholder="First Name"><br>-->
+<div class="signup">
+  <div class="left-side">
 
-<!--    <label>Last Name</label><br>-->
-<!--    <input type="text"formControlName="lastName" [(ngModel)]="signeIn.lastName"placeholder="Last Name"><br>-->
-
-<!--    <label>Email</label><br>-->
-<!--    <input type="email"formControlName="email"[(ngModel)]="signeIn.email" placeholder=" Email"><br>-->
-
-<!--    <label>Select your academic status</label><br>-->
-<!--    <input type="radio" formControlName="role"[(ngModel)]="signeIn.role" value="Teacher">teacher<br>-->
-<!--    <input type="radio" formControlName="role"[(ngModel)]="signeIn.role" value="Student">student<br>-->
-<!--    <input type="hidden" formControlName="isSubscribed" [(ngModel)]="signeIn.isSubscribed" value="false">-->
-<!--    <label>Password</label><br>-->
-<!--    <input type="password" formControlName="password" [(ngModel)]="signeIn.password" placeholder="Password"><br>-->
-<!--    <input type="submit" value="create">-->
-<!--    <a routerLink="/login">log-In</a>-->
-
-<!--  </form>-->
-<!--</div>-->
-
-<div class="signup-container">
-<div class="left-side">
-  <div class="logo-text f-eb">
-    <img src="assets/favicon.svg">
-    <span>UniFood</span>
-  </div>
-  <form [formGroup]="signeInForm" (ngSubmit)="createUser()" class="form form-signup">
-    <span class="form-title f-m">Sign-Up</span>
-    <div class="grp-inp">
-      <div class="row">
-        <div class="labeled-input">
-          <label>Name</label>
-          <input type="text" formControlName="firstName" [(ngModel)]="signeIn.firstName" placeholder="Input your name">
-        </div>
-
-        <div class="labeled-input">
-          <label>Lastname</label>
-          <input type="text"formControlName="lastName" [(ngModel)]="signeIn.lastName" placeholder="Input your lastname">
-        </div>
-      </div>
-
-      <div class="labeled-input">
-        <label>Email</label>
-        <input type="email"formControlName="email"[(ngModel)]="signeIn.email" placeholder="example@email.com">
-      </div>
-
-      <div class="row">
-        <div class="labeled-input">
-          <label>Password</label>
-          <input type="password" formControlName="password" [(ngModel)]="signeIn.password" placeholder="Password">
-        </div>
-
-        <div class="labeled-input">
-          <label>Confirm password</label>
-          <input type="password" class="" name="confirmation_password" placeholder="Confirm password">
-        </div>
-      </div>
-
-      <div class="labeled-input">
-        <label>Your academic status?</label>
-        <select formControlName="role" [(ngModel)]="signeIn.role">
-          <option value="Student">Student</option>
-          <option value="Teacher">Teacher</option>
-        </select>
-      </div>
-
-      <input type="hidden" formControlName="isSubscribed" [(ngModel)]="signeIn.isSubscribed" value="false">
+    <div class="logo-text f-eb">
+      <img src="/assets/favicon.svg">
+      <span>UniFood</span>
     </div>
 
+    <form [formGroup]="signupForm" (ngSubmit)="createUser()" class="form form-signup">
+      <span class="form-title f-m">Create an Account</span>
 
+      <div class="grp-inp">
+        <div class="row">
+          <div class="labeled-input">
+            <label for="firstName">Name</label>
+            <input formControlName="firstName" type="text" id="firstName" name="firstName" placeholder="Input your name" required>
+          </div>
 
-    <button type="submit" class="f-b">Proceed</button>
-    <a href="" class="a-button f-b">Log-In</a>
-  </form>
-</div>
-<app-rightside></app-rightside>
+          <div class="labeled-input">
+            <label for="lastName">Lastname</label>
+            <input formControlName="lastName" type="text" id="lastName" name="lastname" placeholder="Input your lastname" required>
+          </div>
+        </div>
+
+        <div class="labeled-input">
+          <label for="email">Email</label>
+          <input formControlName="email" type="email" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+
+        <div class="row">
+          <div class="labeled-input">
+            <label for="password">Password</label>
+            <input formControlName="password" type="password" id="password" name="password" placeholder="Password" required>
+          </div>
+
+          <div class="labeled-input">
+            <label for="confirmPassword">Confirm password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+          </div>
+        </div>
+
+        <div class="labeled-input">
+          <label for="role">Your academic status ?</label>
+          <select formControlName="role" id="role" name="role" required>
+            <option value="Student">Student</option>
+            <option value="Teacher">Teacher</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="f-b">Proceed</button>
+      <a routerLink="/login" class="a-button f-b">Log In</a>
+    </form>
+  </div>
+  <div class="right-side">
+    <img src="/assets/singup__image.svg">
+  </div>
 </div>
