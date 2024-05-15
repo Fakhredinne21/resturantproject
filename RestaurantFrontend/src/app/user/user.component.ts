@@ -5,11 +5,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../services/signup.service";
 
 @Component({
-  selector: 'app-userhome',
-  templateUrl: './userhome.component.html',
-  styleUrl: './userhome.component.css'
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css'
 })
-export class UserhomeComponent implements OnInit {
+export class UserComponent implements OnInit {
 
   signInId!:number;
 

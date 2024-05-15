@@ -8,8 +8,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SignupModule } from './signup/signup.module';
 import {HttpClientModule} from "@angular/common/http";
 import { MealModule } from './meal/meal.module';
-import { UserhomeModule } from './userhome/userhome.module';
 import {AdminModule} from "./admin/admin.module";
+import {UserModule} from "./user/user.module";
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import {AdminModule} from "./admin/admin.module";
     SignupModule,
     HttpClientModule,
     MealModule,
-    UserhomeModule,
+    UserModule,
     AdminModule
   ],
   providers: [
