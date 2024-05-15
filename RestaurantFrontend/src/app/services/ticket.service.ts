@@ -9,7 +9,7 @@ export class TicketService {
 
   private ticketUrl:String="http://localhost:8080/Tickets";
   constructor(private http:HttpClient) { }
-  buyTicket(userId:any,nbtick:number):Observable<any>{
-    return this.http.get<any>(`${this.ticketUrl}/$\{userId}${nbtick}`)
+  buyTicket(userId:any):Observable<any>{
+    return this.http.get<any>(`${this.ticketUrl}/${userId}`)
   }
 }
