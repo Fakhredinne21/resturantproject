@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, Router,RouterLink} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../services/signup.service";
+import {ProfileComponent} from "./profile/profile.component";
+import {SubscriptionComponent} from "./subscription/subscription.component";
+import {AdminhomeModule} from "./adminhome.module";
 
 @Component({
   selector: 'app-adminhome',
@@ -11,7 +14,7 @@ import {SignupService} from "../services/signup.service";
 })
 export class AdminhomeComponent implements OnInit {
 
-  adminId: number=0;
+  adminId!: number;
   adminInfo: any = {
     id: '',
     firstName: "",
@@ -56,4 +59,8 @@ export class AdminhomeComponent implements OnInit {
       }
     );
   }
+
+  protected readonly ProfileComponent = ProfileComponent;
+  protected readonly SubscriptionComponent = SubscriptionComponent;
+  protected readonly AdminhomeModule = AdminhomeModule;
 }
