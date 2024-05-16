@@ -69,14 +69,12 @@ public class TicketService {
     }
 
     public void buyTicket(Long userId, Integer count) {
-        Optional <User> optionalUser  = userRepository.findById(userId);
-        int numberOfTicketsToBuy = (count == null) ? 5 : count;
-        if (optionalUser.isPresent()){
-            for (int i = 0; i < numberOfTicketsToBuy; i++) {
-                Ticket ticket = new Ticket();
-                ticket.setUser(optionalUser.get());
-                ticketRepository.save(ticket);
-            }
+        User user = userRepository.findById(userId).orElse(null);
+        int numberOfTicketsToBuy = (count == null || count == 0) ? 5 : count;
+        for (int i = 0; i < numberOfTicketsToBuy; i++) {
+            Ticket ticket = new Ticket();
+            ticket.setUser(user);
+            ticketRepository.save(ticket);
         }
     }
 }
