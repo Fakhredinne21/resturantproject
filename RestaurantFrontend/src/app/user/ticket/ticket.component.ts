@@ -12,6 +12,7 @@ import {SignupService} from "../../services/signup.service";
   styleUrl: './ticket.component.css'
 })
 export class TicketComponent implements OnInit {
+
   signInId!: number;
   userinfo: any = {
     id: '',
@@ -25,6 +26,8 @@ export class TicketComponent implements OnInit {
   }
   buyForm!: FormGroup;
 
+
+
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -36,14 +39,13 @@ export class TicketComponent implements OnInit {
 
   ngOnInit() {
     this.buyForm = this.fb.group({
-      number: [''],
+      number:'',
     });
     this.route.params.subscribe(params => {
       console.log('Route parameters:', params);
       this.signInId = +params['signInId'];
       console.log('Extracted userId:', this.signInId);
       this.getUserDetails();
-
     });
   }
 
@@ -58,7 +60,7 @@ export class TicketComponent implements OnInit {
               verticalPosition: 'top'
             });
             this.buyForm.reset();
-            this.router.navigate(['/home', response.id]);
+            this.router.navigate(['/home', this.signInId]);
           },
           error => {
             console.error("Error buying tickets:", error);
