@@ -12,14 +12,12 @@ import java.util.Optional;
 @RequestMapping("/Tickets")
 public class TicketController {
     private final TicketService ticketService ;
-
-
     public TicketController(TicketService ticketService) {
         this.ticketService = ticketService;
     }
 
     @GetMapping
-    public List<Ticket> getAllMeals(){
+    public List<Ticket> getAllTickets(){
         return ticketService.getAllTicket();
     }
 
@@ -34,12 +32,12 @@ public class TicketController {
     }
 
     @GetMapping("/{idTicket}")
-    public Optional<Ticket> getMealById(@PathVariable long idTicket){
+    public Optional<Ticket> getTicketById(@PathVariable long idTicket){
         return ticketService.getTicketById(idTicket);
     }
 
     @DeleteMapping("/{idTicket}")
-    public void deleteMeal(@PathVariable long idTicket){
+    public void deleteTicket(@PathVariable long idTicket){
          ticketService.deleteTicket(idTicket);
     }
 

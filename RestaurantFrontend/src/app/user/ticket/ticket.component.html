@@ -1,0 +1,8 @@
+<p>ticket works!</p>
+<form [formGroup]="buyForm" (ngSubmit)="buyTicket()">
+  <div>
+    <label>how many :</label>
+    <input type="text" formControlName="number" max="5" placeholder="Subject">
+  </div>
+  <button type="submit">Create Ticket</button>
+</form>

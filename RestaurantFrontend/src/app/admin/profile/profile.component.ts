@@ -5,7 +5,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../../services/signup.service";
 
 @Component({
-  selector: 'app-profile',
+  selector: 'admin-profile',
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

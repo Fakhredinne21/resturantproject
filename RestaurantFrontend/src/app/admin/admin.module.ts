@@ -1,29 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AdminRoutingModule } from './admin-routing.module';
-import { AdminComponent } from './admin.component';
-import { SubscriptionComponent } from './subscription/subscription.component';
-import { ProfileComponent } from './profile/profile.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AdminRoutingModule} from './admin-routing.module';
+import {AdminComponent} from './admin.component';
+import {SubscriptionComponent} from './subscription/subscription.component';
+import {ProfileComponent} from './profile/profile.component';
 import {ReactiveFormsModule} from "@angular/forms";
-
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
     SubscriptionComponent,
     ProfileComponent,
-
+    HomeComponent,
   ],
-    imports: [
-        CommonModule,
-        AdminRoutingModule,
-        ReactiveFormsModule
-    ],
-  exports: [
-    AdminComponent,
-    SubscriptionComponent,
-    ProfileComponent,
-
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    ReactiveFormsModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}

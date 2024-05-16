@@ -14,7 +14,7 @@ import {AdminModule} from "./admin.module";
 })
 export class AdminComponent implements OnInit {
 
-  adminId!: number;
+  /*adminId!: number;
   adminInfo: any = {
     id: '',
     firstName: "",
@@ -27,10 +27,7 @@ export class AdminComponent implements OnInit {
   }
 
   constructor(
-    private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router,
-    private notif: MatSnackBar,
     private signupService: SignupService
   ) {}
 
@@ -58,9 +55,12 @@ export class AdminComponent implements OnInit {
         console.error("Error fetching user by ID:", error);
       }
     );
-  }
+  }*/
 
-  protected readonly ProfileComponent = ProfileComponent;
-  protected readonly SubscriptionComponent = SubscriptionComponent;
-  protected readonly AdminhomeModule = AdminModule;
+  constructor() {}
+
+  ngOnInit(): void {
+
+  };
+
 }
