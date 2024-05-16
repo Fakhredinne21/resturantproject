@@ -70,7 +70,7 @@ public class TicketService {
 
     public void buyTicket(Long userId, Integer count) {
         User user = userRepository.findById(userId).orElse(null);
-        int numberOfTicketsToBuy = (count == null) ? 5 : count;
+        int numberOfTicketsToBuy = (count == null || count == 0) ? 5 : count;
         for (int i = 0; i < numberOfTicketsToBuy; i++) {
             Ticket ticket = new Ticket();
             ticket.setUser(user);
