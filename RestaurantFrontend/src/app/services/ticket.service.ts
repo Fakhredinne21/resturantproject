@@ -7,10 +7,11 @@ import {Observable} from "rxjs";
 })
 export class TicketService {
 
-  private ticketUrl:String="http://localhost:8081/Tickets";
+  private ticketUrl="http://localhost:8081/Tickets";
+  private buy="buy";
 
   constructor(private http:HttpClient) { }
   buyTicket(userId:any,count:number):Observable<any>{
-    return this.http.get<any>(`${this.ticketUrl}/${userId}/${count}`);
+    return this.http.post<any>(`${this.ticketUrl}/${this.buy}/${userId}/${count}`,count);
   }
 }

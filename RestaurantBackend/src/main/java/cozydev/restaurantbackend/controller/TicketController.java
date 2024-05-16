@@ -51,8 +51,8 @@ public class TicketController {
         ticketService.sendTicket(senderUserId1, receiverUserId2);
     }
 
-    @PostMapping("/buy/{userId}")
-    public void buyTicket(@PathVariable Long userId, @RequestParam(required = false) Integer count){
+    @PostMapping("/buy/{userId}/{count}")
+    public void buyTicket(@PathVariable Long userId,@PathVariable Integer count){
       ticketService.buyTicket(userId, count);
     }
     
