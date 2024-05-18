@@ -81,4 +81,11 @@ public class TicketService {
         }
 
     }
+
+    public List<Ticket> getAllTicketByUserId(Long userId) {
+        return ticketRepository.findAll().stream()
+                .filter(ticket -> ticket.getUser() != null && ticket.getUser().getId().equals(userId))
+                .toList();
+    }
+
 }

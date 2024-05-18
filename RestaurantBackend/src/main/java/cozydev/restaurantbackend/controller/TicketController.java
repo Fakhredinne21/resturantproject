@@ -31,6 +31,11 @@ public class TicketController {
         return ticketService.addTicket(ticket, userId);
     }
 
+    @GetMapping("/user/{userId}")
+    public List<Ticket> getAllTicketByUserId(@PathVariable Long userId){
+        return ticketService.getAllTicketByUserId(userId);
+    }
+
     @GetMapping("/{idTicket}")
     public Optional<Ticket> getTicketById(@PathVariable long idTicket){
         return ticketService.getTicketById(idTicket);
