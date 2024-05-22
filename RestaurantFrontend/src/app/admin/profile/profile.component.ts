@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -39,6 +39,7 @@ export class ProfileComponent {
       this.getUserDetails()
     });
   };
+
   getUserDetails(): void {
     if (!this.adminId) {
       console.log('Invalid userId:', this.adminId);
