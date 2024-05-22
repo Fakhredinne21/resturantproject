@@ -1,68 +1,38 @@
-
-<!--<div class="login">-->
-<!--  <div id="left_side">-->
-
-<!--    <div id="login_lable">-->
-<!--      <label id="log">Log-In</label>-->
-<!--    </div>-->
-
-<!--    <form [formGroup]="loginform" (ngSubmit)="correct()">-->
-<!--      <div>-->
-<!--        <label id="email" for="email-inp">Email</label><br>-->
-<!--        <input type="email" formControlName="email" [(ngModel)]="login.email" placeholder="Email"  id="email-inp"><br>-->
-<!--      </div>-->
-<!--      <div>-->
-<!--        <label id="password" for="pass-inp">Password</label><br>-->
-<!--        <input type="password" formControlName="password" [(ngModel)]="login.password" placeholder="password" class="form-control" id="pass-inp">-->
-<!--      </div>-->
-<!--      <div class="forget">-->
-<!--        <div>-->
-<!--          <p>Remember Me</p>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <a id="gre" href="">Forget Password</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <Button id="proc">Proceed</Button>-->
-<!--      <Button id="sec" routerLink="/signup">create an account</Button>-->
-<!--    </form>-->
-
-<!--  </div>-->
-<!--</div>-->
-<!--<app-rightside></app-rightside>-->
-<div class="signin-container">
+<div id="Signin">
   <div class="left-side">
-  <div class="logo-text f-eb">
-    <img src="assets/favicon.svg">
-    <span>UniFood</span>
+    <div class="logo-text f-eb">
+      <img src="assets/favicon.svg">
+      <span>UniFood</span>
+    </div>
+    <form [formGroup]="loginform" (ngSubmit)="correct()" class="form form-login">
+      <span class="form-title f-m">Log-In</span>
+
+      <div class="grp-inp">
+        <div class="labeled-input">
+          <label>Email</label>
+          <input type="email" formControlName="email" [(ngModel)]="login.email" placeholder="exmple@email.com">
+        </div>
+
+        <div class="labeled-input">
+          <label>Password</label>
+          <input type="password" formControlName="password" [(ngModel)]="login.password" placeholder="password here">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="remember_me">
+          <input type="checkbox" name="remember" id="remember">
+          <label for="remember">Remember Me</label>
+        </div>
+
+        <a href="">Forget Password</a>
+      </div>
+
+      <button type="submit" class="f-b">Proceed</button>
+      <a routerLink="/signup" class="a-button f-b">Create an Account</a>
+    </form>
   </div>
-  <form [formGroup]="loginform" (ngSubmit)="correct()" class="form form-login">
-    <span class="form-title f-m">Log-In</span>
-
-    <div class="grp-inp">
-      <div class="labeled-input">
-        <label>Email</label>
-        <input type="email" formControlName="email" [(ngModel)]="login.email"  placeholder="exmple@email.com">
-      </div>
-
-      <div class="labeled-input">
-        <label>Password</label>
-        <input type="password" formControlName="password" [(ngModel)]="login.password" placeholder="password here">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="remember_me">
-        <input type="checkbox" name="remember" id="remember">
-        <label for="remember">Remember Me</label>
-      </div>
-
-      <a href="">Forget Password</a>
-    </div>
-
-    <button type="submit" class="f-b">Proceed</button>
-    <a routerLink="/signup" class="a-button f-b">Create an Account</a>
-  </form>
-</div>
-  <app-rightside></app-rightside>
+  <div class="right-side">
+    <img src="assets/login__image.svg">
+  </div>
 </div>
