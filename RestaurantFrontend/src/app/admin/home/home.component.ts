@@ -9,6 +9,9 @@ import {SignupService} from "../../services/signup.service";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+
+
   adminId!: number;
   adminInfo: any = {
     id: '',
