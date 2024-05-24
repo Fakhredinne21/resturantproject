@@ -16,7 +16,7 @@ import {DOCUMENT} from "@angular/common";
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  /*adminId!: number;
+  adminId!: number;
   adminInfo: any = {
     id: '',
     firstName: "",
@@ -27,21 +27,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     role: "",
     isSubscribed: ""
   }
-
-  constructor(
-    private route: ActivatedRoute,
-    private signupService: SignupService
-  ) {}
-
-  ngOnInit(): void {
-    // Create the form using FormBuilder
-    this.route.params.subscribe(params => {
-      console.log('Route parameters:', params);
-      this.adminId = +params['adminId'];
-      console.log('Extracted userId:', this.adminId);
-      this.getUserDetails()
-    });
-  };
   getUserDetails(): void {
     if (!this.adminId) {
       console.log('Invalid userId:', this.adminId);
@@ -57,13 +42,23 @@ export class AdminComponent implements OnInit, OnDestroy {
         console.error("Error fetching user by ID:", error);
       }
     );
-  }*/
+  }
 
   // @ts-ignore
-  constructor( @Inject(DOCUMENT) private _document ) {}
+  constructor( @Inject(DOCUMENT) private _document,
+               private route: ActivatedRoute,
+               private signupService: SignupService
+  ) {}
 
   ngOnInit() {
     this._document.body.classList.add('main-body');
+    // Create the form using FormBuilder
+    this.route.params.subscribe(params => {
+      console.log('Route parameters:', params);
+      this.adminId = +params['adminId'];
+      console.log('Extracted userId:', this.adminId);
+      this.getUserDetails()
+    });
   }
 
   ngOnDestroy() {

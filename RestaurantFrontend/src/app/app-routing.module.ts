@@ -18,9 +18,9 @@ const routes: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
       {path: '', redirectTo: "home", pathMatch: "full"},
-      {path: 'home', component: HomeComponent},
+      {path: 'home/:adminId', component: HomeComponent},
       {path: 'profile', component: ProfileComponent},
-      {path: 'subscriptions', component: SubscriptionComponent},
+      {path: 'subscriptions/:adminId', component: SubscriptionComponent},
     ]
   },
 ];
