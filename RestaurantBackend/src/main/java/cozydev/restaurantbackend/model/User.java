@@ -2,16 +2,21 @@ package cozydev.restaurantbackend.model;
 
 
 import com.fasterxml.jackson.annotation.*;
-
 import jakarta.persistence.*;
 import lombok.*;
-
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.io.Serializable;
 
 
-@Entity @Getter @Setter @ToString @RequiredArgsConstructor
-
+@Entity
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class User implements Serializable {
     //Attributes
     @Id
@@ -21,28 +26,31 @@ public class User implements Serializable {
     private String lastName;
     private String email;
     private String password;
+
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+
     @Lob
     private byte[] profileImage;
     @Enumerated(EnumType.STRING)
     private Role role;
     private Boolean isSubscribed;
 
-
-
     //Relations:
 
     //OwnerShip
-    @OneToMany(mappedBy = "user")
+   /* @OneToMany(mappedBy = "user")
     @JsonIgnore
-    private List<Ticket> tickets;
+    private List<Ticket> tickets;*/
 
     //Meals
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Meal> meals;
 
     //Notifications
-    @OneToMany()
+    @OneToMany
     @JsonIgnore
     private List<Notifcation> notifcations ;
 
@@ -51,9 +59,8 @@ public class User implements Serializable {
     @JsonIgnore
     private List<Review> reviews;
 
-//    private boolean status;
-//    @Temporal(TemporalType.DATE)
-//    private Date dateCreation;
-//    @Temporal(TemporalType.DATE)
-//    private Date updatedAt ;
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Ticket> tickets;
+
 }

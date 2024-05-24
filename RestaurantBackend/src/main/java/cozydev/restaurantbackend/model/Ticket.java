@@ -1,7 +1,6 @@
 package cozydev.restaurantbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -17,28 +16,22 @@ import java.util.List;
 @Setter
 @ToString
 @RequiredArgsConstructor
-
 public class Ticket implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private int price;
-
-    private boolean state;
-
-    private int number ;
-
-    @Temporal(TemporalType.DATE)
-    private Date expirationDate;
+    private Boolean isUsed ;
 
     @OneToMany(mappedBy = "ticket")
     @JsonIgnore
     private List<History> histories;
 
+
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "owner")
     @JsonIgnore
     private User user;
+
 }

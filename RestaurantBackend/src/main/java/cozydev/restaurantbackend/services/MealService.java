@@ -1,20 +1,21 @@
 package cozydev.restaurantbackend.services;
 
 import cozydev.restaurantbackend.model.Meal;
-import cozydev.restaurantbackend.model.ReviewId;
+import cozydev.restaurantbackend.model.User;
 import cozydev.restaurantbackend.repositories.MealRepository;
+import cozydev.restaurantbackend.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class MealService {
 
     private final MealRepository mealRepository;
-    public MealService(MealRepository mealRepository) {
-        this.mealRepository = mealRepository;
-    }
+    private final UserRepository userRepository ;
 
     //Creation
     public Meal mealCreation(Meal meal){
@@ -24,8 +25,8 @@ public class MealService {
         return mealRepository.findAll();
     }
 
-    public Optional<Meal> getMealById(long idTicket){
-        return mealRepository.findById(idTicket);
+    public Optional<Meal> getMealById(long idMeal){
+        return mealRepository.findById(idMeal);
     }
 
 

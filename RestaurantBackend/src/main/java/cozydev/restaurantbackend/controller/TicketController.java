@@ -51,9 +51,9 @@ public class TicketController {
         return ticketService.countAllTicketByUserId(idUser);
     }
 
-    @GetMapping("/{senderUserId1}/{receiverUserId2}")
-    public void sendTicket(@PathVariable Long senderUserId1, @PathVariable Long receiverUserId2){
-        ticketService.sendTicket(senderUserId1, receiverUserId2);
+    @GetMapping("/send/{senderId}/{receiverId}")
+    public void sendTicket(@PathVariable Long senderId, @PathVariable Long receiverId){
+        ticketService.sendTicket( senderId, receiverId);
     }
 
     @PostMapping("/buy/{userId}/{count}")

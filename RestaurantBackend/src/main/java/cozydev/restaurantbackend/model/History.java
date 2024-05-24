@@ -10,16 +10,23 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Entity @Getter @Setter
+@Entity
+@Getter
+@Setter
 public class History {
 
     @EmbeddedId
     private HisotryId id;
 
     @ManyToOne
-    @MapsId("userId")
+    @MapsId("receiverId")
     @JsonBackReference
-    private User user;
+    private User reciever;
+
+    @ManyToOne
+    @MapsId("senderId")
+    @JsonBackReference
+    private User sender;
 
     @ManyToOne
     @MapsId("ticketId")

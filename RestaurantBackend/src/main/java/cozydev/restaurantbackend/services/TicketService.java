@@ -1,37 +1,38 @@
 package cozydev.restaurantbackend.services;
 
+import cozydev.restaurantbackend.model.HisotryId;
+import cozydev.restaurantbackend.model.History;
 import cozydev.restaurantbackend.model.Ticket;
 import cozydev.restaurantbackend.model.User;
+import cozydev.restaurantbackend.repositories.HistoryRepository;
 import cozydev.restaurantbackend.repositories.TicketRepository;
 import cozydev.restaurantbackend.repositories.UserRepository;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class TicketService {
 
     private final TicketRepository ticketRepository ;
     private final UserRepository userRepository;
-    public TicketService(
-            UserRepository userRepository,
-            TicketRepository ticketRepository) {
-        this.ticketRepository = ticketRepository;
-        this.userRepository = userRepository;
-
-    }
-
+    private final HistoryRepository historyRepository;
+    private final Logger logger= (Logger) LoggerFactory.getLogger(TicketService.class);
 
     public List<Ticket> getAllTicket(){
         return ticketRepository.findAll();
     }
-
-
     public Optional<Ticket> getTicketById(long idTicket){
         return ticketRepository.findById(idTicket);
     }
-
 
     public void deleteTicket(long idTicket){
         ticketRepository.deleteById(idTicket);
@@ -40,6 +41,7 @@ public class TicketService {
     public Ticket addTicket(Ticket ticket){
         return ticketRepository.save(ticket);
     }
+
     public Ticket addTicket(Ticket ticket ,Long userId){
         ticket.setUser(userRepository.findById(userId).orElse(null));
         return ticketRepository.save(ticket);
@@ -51,21 +53,40 @@ public class TicketService {
                 .count();
     }
 
-    public int sendTicket(Long senderUserId1, Long receiverUserId2) {
-        User sender = userRepository.findById(senderUserId1).orElse(null);
-        if(sender.getTickets().isEmpty()){
-            return 0;
-        }
-        User receiver = userRepository.findById(receiverUserId2).orElse(null);
-        Ticket ticket = sender.getTickets().getFirst();
-        sender.getTickets().remove(ticket);
-        receiver.getTickets().add(ticket);
-        ticket.setUser(receiver); // update the ticket's user
 
-        userRepository.save(sender);
-        userRepository.save(receiver);
-        ticketRepository.save(ticket);
-        return 1;
+
+   public Boolean sendTicket(Long senderId, Long receiverId) {
+        Optional<User> Optsender = userRepository.findById(senderId);
+        Optional<User> Optreceiver = userRepository.findById(receiverId);
+
+        if (Optsender.isPresent() && Optreceiver.isPresent()){
+            User sender = Optsender.get();
+            User receiver=Optreceiver.get();
+
+            if(sender.getTickets().isEmpty()){
+                logger.warn("srnder has no tickets to transfer");
+                return false;
+            }
+
+            Ticket ticket = sender.getTickets().iterator().next();
+            sender.getTickets().remove(ticket);
+            receiver.getTickets().add(ticket);
+            ticket.setUser(receiver);
+
+            userRepository.save(sender);
+            userRepository.save(receiver);
+            ticketRepository.save(ticket);
+
+            History history = new History();
+            history.setId(new HisotryId(receiverId,senderId, ticket.getId()));
+            history.setSender(sender);
+            history.setReciever(receiver);
+            history.setTicket(ticket);
+            history.setOccuredAt(LocalDateTime.now());
+            historyRepository.save(history);
+        }
+
+       return true;
     }
 
     public void buyTicket(Long userId, Integer count) {
@@ -79,10 +100,9 @@ public class TicketService {
             }
 
         }
-
     }
 
-    public List<Ticket> getAllTicketByUserId(Long userId) {
+   public List<Ticket> getAllTicketByUserId(Long userId) {
         return ticketRepository.findAll().stream()
                 .filter(ticket -> ticket.getUser() != null && ticket.getUser().getId().equals(userId))
                 .toList();

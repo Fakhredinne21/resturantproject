@@ -19,7 +19,11 @@ export class MealComponent {
     price: ""
   }
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private router: Router, private notif: MatSnackBar, private mealService:MealService) {
+  constructor(private fb: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router,
+              private notif: MatSnackBar,
+              private mealService:MealService) {
   }
   affichage!: Observable<any>;
 

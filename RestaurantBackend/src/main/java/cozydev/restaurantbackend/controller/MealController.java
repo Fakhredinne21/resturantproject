@@ -2,8 +2,8 @@ package cozydev.restaurantbackend.controller;
 
 
 import cozydev.restaurantbackend.model.Meal;
-import cozydev.restaurantbackend.model.ReviewId;
 import cozydev.restaurantbackend.services.MealService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,13 +11,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/Meals")
+@RequiredArgsConstructor
 public class MealController {
 
     private final MealService mealService ;
 
-    public MealController(MealService mealService) {
-        this.mealService = mealService;
-    }
 
     @PostMapping
     public Meal mealCreation(@RequestBody Meal meal){
@@ -29,14 +27,14 @@ public class MealController {
         return mealService.getAllMeals();
     }
 
-    @GetMapping("/{idMeal}")
-    public Optional<Meal> getMealById(@PathVariable long idMeal){
-        return mealService.getMealById(idMeal);
+    @GetMapping("/{mealId}")
+    public Optional<Meal> getMealById(@PathVariable long mealId){
+        return mealService.getMealById(mealId);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteMeal(@PathVariable Long id) {
-        mealService.deleteMeal(id);
+    @DeleteMapping("/{mealId}")
+    public void deleteMeal(@PathVariable Long mealId) {
+        mealService.deleteMeal(mealId);
     }
 
 }
