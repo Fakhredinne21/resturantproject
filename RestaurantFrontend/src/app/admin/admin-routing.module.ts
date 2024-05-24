@@ -4,10 +4,10 @@ import {ProfileComponent} from "./profile/profile.component";
 import {SubscriptionComponent} from "./subscription/subscription.component";
 import {HomeComponent} from "./home/home.component";
 
-const routes: Routes = [/*
+const routes: Routes = [
   { path: 'home/:adminId', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'subscriptions/:adminId', component: SubscriptionComponent },*/
+  { path: 'profile/:adminId', component: ProfileComponent },
+  { path: 'subscriptions/:adminId', component: SubscriptionComponent },
 ];
 
 @NgModule({
