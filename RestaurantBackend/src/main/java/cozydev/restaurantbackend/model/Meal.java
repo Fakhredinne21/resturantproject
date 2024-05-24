@@ -30,10 +30,6 @@ public class Meal {
         private LocalDateTime createdDate ;
         private long price ;
 
-        @ManyToMany(mappedBy = "meals")
-        @JsonIgnore
-        private List<User> users;
-
         @OneToMany(mappedBy = "meal")
         @JsonIgnore
         private List<Review> reviews;

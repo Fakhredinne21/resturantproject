@@ -45,9 +45,7 @@ public class User implements Serializable {
     private List<Ticket> tickets;*/
 
     //Meals
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<Meal> meals;
+
 
     //Notifications
     @OneToMany
