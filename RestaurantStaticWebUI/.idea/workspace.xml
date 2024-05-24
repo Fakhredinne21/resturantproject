@@ -5,19 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86604428-d0d9-4b78-8da4-02a4769673cd" name="Changes" comment="Structure change and Renaming the select options">
-      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Avatar.Filled=No.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Avatar.Filled=Yes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Home,Filled=No.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Home.Filled=No.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Home.Filled=Yes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Log-out, Filled=No.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Log-out, Filled=Yes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket, Filled=No.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket, Filled=Yes.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RestaurantMobile/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../RestaurantMobile/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantBackend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantBackend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/admin.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/signup/signup.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantMobile/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantMobile/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantMobile/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantMobile/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantMobile/app/src/main/java/com/example/unifood/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantMobile/app/src/main/java/com/example/unifood/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../RestaurantMobile/app/src/main/java/com/example/unifood/components/emailTextField.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantMobile/app/src/main/java/com/example/unifood/components/emailTextField.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/admin.home.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/admin.home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Avatar, Filled=No.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Avatar.Filled=No.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Avatar, Filled=Yes.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Avatar.Filled=Yes.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Home, Filled=Yes.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Home.Filled=Yes.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Home,Filled=No.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Home.Filled=No.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Log-out, Filled=No.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Log-out.Filled=No.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Log-out, Filled=Yes.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Log-out.Filled=Yes.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket, Filled=No.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket.Filled=No.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket, Filled=Yes.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket.Filled=Yes.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +74,10 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/resturantproject/RestaurantStaticWebUI&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/resturantproject/RestaurantStaticWebUI/IMAGES/ICONS&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -72,6 +88,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\resturantproject\RestaurantStaticWebUI\IMAGES\ICONS" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -95,6 +116,11 @@
       <workItem from="1715720316678" duration="4226000" />
       <workItem from="1715756745088" duration="790000" />
       <workItem from="1715768641672" duration="6783000" />
+      <workItem from="1715798532950" duration="635000" />
+      <workItem from="1715847982359" duration="4304000" />
+      <workItem from="1715857252622" duration="17000" />
+      <workItem from="1716380343645" duration="4165000" />
+      <workItem from="1716392653759" duration="593000" />
     </task>
     <task id="LOCAL-00001" summary="Small changes and file rename">
       <option name="closed" value="true" />
