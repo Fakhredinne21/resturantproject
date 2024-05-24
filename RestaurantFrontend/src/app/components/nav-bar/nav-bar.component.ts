@@ -6,5 +6,5 @@ import {Component, Input} from '@angular/core';
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
-  @Input() id!: number;
+  @Input() id!: String;
 }

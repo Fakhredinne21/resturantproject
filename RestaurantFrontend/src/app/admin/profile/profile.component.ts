@@ -11,13 +11,13 @@ import {DOCUMENT} from "@angular/common";
 export class ProfileComponent implements OnInit, OnDestroy {
 
   // @ts-ignore
-  constructor(@Inject(DOCUMENT) private document: _document,
+  constructor(/*@Inject(DOCUMENT) private document: _document,*/
               private route: ActivatedRoute,
               private signupService: SignupService) {
   }
 
   ngOnInit() {
-    console.log(this._document.body.querySelector('app-admin'));
+    //console.log(this._document.body.querySelector('app-admin'));
 
     this.route.params.subscribe(params => {
       this.adminId = +params['adminId'];
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this._document.body.querySelector('app-admin').classList.remove('profile-loaded');
+    //this._document.body.querySelector('app-admin').classList.remove('profile-loaded');
   }
 
   adminId!: number;

@@ -4,6 +4,7 @@ import {ActivatedRoute, Router,RouterLink} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../services/signup.service";
 import {DOCUMENT} from "@angular/common";
+import {AdminIdetifierService} from "../services/admin-idetifier.service";
 
 @Component({
   selector: 'app-admin',
@@ -13,21 +14,32 @@ import {DOCUMENT} from "@angular/common";
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  adminId!: number;
+  adminId!: string;
 
   // @ts-ignore
-  constructor( @Inject(DOCUMENT) private _document,
+  constructor(
                private route: ActivatedRoute,
-               private signupService: SignupService
+               private signupService: SignupService,
+               private router: Router,
+               private adminService:AdminIdetifierService,
   ) {}
 
   ngOnInit() {
-    this._document.body.classList.add('main-body');
+    /*@Inject(DOCUMENT) private _document,*/
+    //this._document.body.classList.add('main-body');
+
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras.state as { adminId: string };
+    if (state){
+      this.adminId = state.adminId;
+      this.adminService.setadminId(this.adminId);
+    }
+    this.router.navigate(['/admin/home', this.adminId]);
   }
 
   ngOnDestroy() {
     // remove the class form body tag
-    this._document.body.classList.remove('main-body');
+    //this._document.body.classList.remove('main-body');
   }
 
 }
