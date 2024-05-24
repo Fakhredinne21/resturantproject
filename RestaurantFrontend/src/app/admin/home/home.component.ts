@@ -2,6 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {SignupService} from "../../services/signup.service";
+import { AdminIdetifierService } from '../../services/admin-idetifier.service';
 
 @Component({
   selector: 'admin-home',
@@ -12,7 +13,7 @@ export class HomeComponent {
 
 
 
-  adminId!: number;
+  adminId!: any;
   adminInfo: any = {
     id: '',
     firstName: "",
@@ -24,7 +25,7 @@ export class HomeComponent {
     isSubscribed: ""
   }
   getUserDetails(): void {
-    if (!this.adminId) {
+    if(!this.adminId) {
       console.log('Invalid userId:', this.adminId);
       return;
     }
@@ -43,18 +44,15 @@ export class HomeComponent {
   // @ts-ignore
   constructor( @Inject(DOCUMENT) private _document,
                private route: ActivatedRoute,
-               private signupService: SignupService
+               private signupService: SignupService,
+               private adminService:AdminIdetifierService,
   ) {}
 
   ngOnInit() {
     this._document.body.classList.add('main-body');
     // Create the form using FormBuilder
-    this.route.params.subscribe(params => {
-      console.log('Route parameters:', params);
-      this.adminId = +params['adminId'];
-      console.log('Extracted userId:', this.adminId);
-      this.getUserDetails()
-    });
+    this.adminId=this.adminService.getadminId();
+    this.getUserDetails()
   }
 
   ngOnDestroy() {

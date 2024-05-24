@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SignupService } from '../services/signup.service';
+import {AdminIdetifierService} from "../services/admin-idetifier.service";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private signeupService: SignupService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private adminservice:AdminIdetifierService
   ) {}
 
   ngOnInit(): void {
@@ -52,7 +54,8 @@ export class LoginComponent implements OnInit {
 
             if (user.role === 'Admin') {
               //this.router.navigate(['/admin/home', user.id]);
-              this.router.navigate(['/admin'], {state: {adminId: user.id}});
+              this.adminservice.setadminId(user.id);
+              this.router.navigate(['/admin']);
             } else {
               this.router.navigate(['/home', user.id]);
             }

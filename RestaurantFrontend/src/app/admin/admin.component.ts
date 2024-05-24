@@ -27,14 +27,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   ngOnInit() {
     /*@Inject(DOCUMENT) private _document,*/
     //this._document.body.classList.add('main-body');
-
-    const navigation = this.router.getCurrentNavigation();
-    const state = navigation?.extras.state as { adminId: string };
-    if (state){
-      this.adminId = state.adminId;
-      this.adminService.setadminId(this.adminId);
-    }
-    this.router.navigate(['/admin/home', this.adminId]);
+    this.adminId= this.adminService.getadminId();
+    this.router.navigate(['/admin/home']);
   }
 
   ngOnDestroy() {

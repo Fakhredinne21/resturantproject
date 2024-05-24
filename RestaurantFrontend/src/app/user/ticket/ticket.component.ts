@@ -13,6 +13,7 @@ import {SignupService} from "../../services/signup.service";
 })
 export class TicketComponent implements OnInit {
   tickets: any = [];
+  numberticket!:number;
   signInId!: number;
   userinfo: any = {
     id: '',
@@ -45,7 +46,6 @@ export class TicketComponent implements OnInit {
       price:"",
       user_id:""
     });
-    this.getAllTickets()
     this.route.params.subscribe(params => {
       console.log('Route parameters:', params);
       this.signInId = +params['signInId'];
@@ -54,7 +54,26 @@ export class TicketComponent implements OnInit {
       this.getUserTickets();
     });
   }
-
+  getUserTickets(): void {
+    if (!this.signInId) {
+      console.log('Invalid userId:', this.signInId);
+      return;
+    }
+    // Fetch user tickets using the service
+    this.ticketService.getAllTicketsOfUser(this.signInId).subscribe(
+      (res: any) => {
+        console.log('Fetched user tickets:', res);
+        this.tickets = res;
+        console.log('Tickets:', this.tickets);
+        if(this.tickets>0){
+          console.log('first ticket :', this.tickets[0]);
+        }
+      },
+      (error: any) => {
+        console.error("Error fetching user tickets:", error);
+      }
+    );
+  }
   buyTicket(): void {
     if (this.buyForm.valid) {
       const ticket = this.buyForm.value;
