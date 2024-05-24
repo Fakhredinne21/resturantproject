@@ -11,12 +11,17 @@ app-admin{
   width: fit-content !important;
 }
 
+.right-side{
+  padding-left: 12px;
+}
+
 .navbar{
   background: var(--background);
   padding: 1.2rem 1.8rem;
   height: 100vh;
   font-size: 1.4rem;
   border-radius: 0 var(--border_radius) var(--border_radius) 0;
+  border-right: 1px solid var(--border-color);
 }
 
 .navbar .burgerMenu{
