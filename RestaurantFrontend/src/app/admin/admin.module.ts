@@ -6,6 +6,7 @@ import {SubscriptionComponent} from './subscription/subscription.component';
 import {ProfileComponent} from './profile/profile.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HomeComponent} from './home/home.component';
+import {NavBarComponent} from "../components/nav-bar/nav-bar.component";
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import {HomeComponent} from './home/home.component';
     SubscriptionComponent,
     ProfileComponent,
     HomeComponent,
+    NavBarComponent
   ],
   imports: [
     CommonModule,

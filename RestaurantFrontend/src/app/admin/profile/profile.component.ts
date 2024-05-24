@@ -1,15 +1,34 @@
-import {Component} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../../services/signup.service";
+import {DOCUMENT} from "@angular/common";
 
 @Component({
   selector: 'admin-profile',
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit, OnDestroy {
+
+  // @ts-ignore
+  constructor(@Inject(DOCUMENT) private document: _document,
+              private route: ActivatedRoute,
+              private signupService: SignupService) {
+  }
+
+  ngOnInit() {
+    console.log(this._document.body.querySelector('app-admin'));
+
+    this.route.params.subscribe(params => {
+      this.adminId = +params['adminId'];
+      this.getUserDetails()
+    });
+  }
+
+  ngOnDestroy() {
+    this._document.body.querySelector('app-admin').classList.remove('profile-loaded');
+  }
+
   adminId!: number;
   adminInfo: any = {
     id: '',
@@ -21,24 +40,6 @@ export class ProfileComponent {
     role: "",
     isSubscribed: ""
   }
-
-  constructor(
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private notif: MatSnackBar,
-    private signupService: SignupService
-  ) {}
-
-  ngOnInit(): void {
-    // Create the form using FormBuilder
-    this.route.params.subscribe(params => {
-      console.log('Route parameters:', params);
-      this.adminId = +params['adminId'];
-      console.log('Extracted userId:', this.adminId);
-      this.getUserDetails()
-    });
-  };
 
   getUserDetails(): void {
     if (!this.adminId) {
