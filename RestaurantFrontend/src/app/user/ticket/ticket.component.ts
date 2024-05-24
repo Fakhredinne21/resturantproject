@@ -13,13 +13,6 @@ import {SignupService} from "../../services/signup.service";
 })
 export class TicketComponent implements OnInit {
   tickets: any = [];
-  ticketInfo:any={
-    id: "",
-    price:"" ,
-    state:"",
-    number:"",
-    expirationDate:""
-  }
   signInId!: number;
   userinfo: any = {
     id: '',
