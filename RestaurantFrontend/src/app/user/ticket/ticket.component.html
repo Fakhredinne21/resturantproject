@@ -6,3 +6,11 @@
   </div>
   <button type="submit">Create Ticket</button>
 </form>
+
+
+  <div *ngFor="let ticket of tickets">
+  <p>ticket list</p>
+  <p>ticket number: {{ticket.id}}</p>
+  <p>ticket price: {{ticket.price}}</p>
+  </div>
+
