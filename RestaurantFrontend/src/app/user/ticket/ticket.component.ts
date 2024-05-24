@@ -25,9 +25,7 @@ export class TicketComponent implements OnInit {
     isSubscribed: ""
   }
   buyForm!: FormGroup;
-
-
-
+  ticket!:FormGroup;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -41,6 +39,13 @@ export class TicketComponent implements OnInit {
     this.buyForm = this.fb.group({
       number:'',
     });
+    this.ticket = this.fb.group({
+      id:"",
+      experation_date:"",
+      price:"",
+      user_id:""
+    });
+    this.getAllTickets()
     this.route.params.subscribe(params => {
       console.log('Route parameters:', params);
       this.signInId = +params['signInId'];
@@ -85,26 +90,7 @@ export class TicketComponent implements OnInit {
       });
     }
   }
-  getUserTickets(): void {
-    if (!this.signInId) {
-      console.log('Invalid userId:', this.signInId);
-      return;
-    }
-    // Fetch user tickets using the service
-    this.ticketService.getAllTicketsOfUser(this.signInId).subscribe(
-      (res: any) => {
-        console.log('Fetched user tickets:', res);
-        this.tickets = res;
-        console.log('Tickets:', this.tickets);
-        if(this.tickets>0){
-          console.log('first ticket :', this.tickets[0]);
-        }
-      },
-      (error: any) => {
-        console.error("Error fetching user tickets:", error);
-      }
-    );
-  }
+
   getUserDetails(): void {
     if (!this.signInId) {
       console.log('Invalid userId:', this.signInId);
