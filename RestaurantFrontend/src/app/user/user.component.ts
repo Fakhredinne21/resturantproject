@@ -3,6 +3,8 @@ import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../services/signup.service";
+import {MealService} from "../services/meal.service";
+import {TicketService} from "../services/ticket.service";
 
 @Component({
   selector: 'app-user',
@@ -11,8 +13,14 @@ import {SignupService} from "../services/signup.service";
 })
 export class UserComponent implements OnInit {
 
+  mealInfo: any = {
+    mealId:"",
+    description: "",
+    price:""
+  }
+  userTicketNumber!:number;
   signInId!:number;
-
+  mealId=Math.floor(Math.random()*7)+1;
   signeIn: any = {
     userId:'',
     firstName: "",
@@ -27,7 +35,10 @@ export class UserComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private notif: MatSnackBar,
-              private signupService:SignupService) {
+              private signupService:SignupService,
+              private mealService:MealService,
+              private ticketService:TicketService
+  ) {
   }
 
   ngOnInit() {
@@ -36,11 +47,49 @@ export class UserComponent implements OnInit {
       console.log('Route parameters:', params);
       this.signInId = +params['signInId'];
       console.log('Extracted userId:', this.signInId);
-      this.getUserDetails()
+      this.getUserDetails();
+      this.getMealById();
+      this.userTicketNumber=this.getNumberofTickets();
     });
 
   }
+  getNumberofTickets():number{
+    if (!this.signInId) {
+      console.log('Invalid userId:', this.signInId);
+      return 0;
+    }
+    // Fetch user tickets using the service
+    this.ticketService.getAllTicketsOfUser(this.signInId).subscribe(
+      (res: any) => {
+        console.log('Fetched user tickets:', res);
+        this.userTicketNumber=res.length;
+      },
+      (error: any) => {
+        console.error("Error fetching user tickets:", error);
 
+      }
+    );
+    return this.userTicketNumber;
+  }
+
+  getMealById(): void {
+    if (!this.signInId) {
+      console.log('Invalid userId:', this.signInId);
+      return;
+    }
+    // Fetch meal details using the service
+
+    this.mealService.getMealById(this.mealId).subscribe(
+      (res: any) => {
+        console.log('Fetched meal details:', res);
+        this.mealInfo= res;
+      },
+      (error: any) => {
+        console.error("Error fetching meal by ID:", error);
+
+      }
+    );
+  }
   getUserDetails() {
     if (!this.signInId) {
       console.log('Invalid userId:', this.signInId);

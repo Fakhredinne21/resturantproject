@@ -1,0 +1,53 @@
+.navbar{
+  background: var(--background);
+  padding: 1.2rem 1.8rem;
+  height: 100vh;
+  font-size: 1.4rem;
+  border-radius: 0 var(--border_radius) var(--border_radius) 0;
+  border-right: 1px solid var(--border-color);
+}
+
+.navbar .burgerMenu{
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem 0.6rem;
+  height: 32px;
+  width: 32px;
+}
+
+.navbar .burgerMenu #line1, .navbar .burgerMenu #line2, .navbar .burgerMenu #line3{
+  border-radius: var(--border_radius);
+  height: 0.2rem;
+  width: 100%;
+  background-color: var(--color);
+}
+
+.navbar .burgerMenu #line1, .navbar .burgerMenu #line3{
+  --color: var(--text-color);
+}
+
+.navbar .burgerMenu #line2{
+  --color: var(--muted-text);
+}
+
+.navbar .burgerMenu > *:not(:first-child) {
+  margin-top: 0.4rem;
+}
+
+.menuItems{
+  padding: 0;
+  margin: 2.4rem 0;
+  list-style-type: none;
+}
+
+.menuItems .item{
+  margin: 2.4rem 0;
+}
+
+.item a{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.2rem;
+  color: var(--text-color);
+}

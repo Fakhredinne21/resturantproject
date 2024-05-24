@@ -1,95 +1,81 @@
-import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router, RouterLink} from "@angular/router";
-import {SignupService} from "../services/signup.service";
-import {MatSnackBar} from "@angular/material/snack-bar";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SignupService } from '../services/signup.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrl: './login.component.css',
 })
-export class LoginComponent {
-  formBuilder = new FormBuilder();
-  loginform !: FormGroup;
-  login: any = {
-    id:'',
-    email: '',
-    password: ''
-  };
-  Users: any[] = [];
-  getAllUsers() {
-    this.signeupService.getAllUsers().subscribe((res: any[]) => {
-      return this.Users = res;
-    });
-  }
+export class LoginComponent implements OnInit {
+  loginForm!: FormGroup;
 
-  ngOnInit() {
-    this.loginform = this.formBuilder.group({
+  constructor(
+    private fb: FormBuilder,
+    private signeupService: SignupService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      password: ['', Validators.required],
     });
-    this.getAllUsers();
-  }
-  constructor(private signeupService: SignupService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private notif: MatSnackBar,) {
   }
 
-
-
-  correct() {
-    if (this.loginform.valid) {
-      const email = this.loginform.value.email;
-      const password = this.loginform.value.password;
-
-      // Find user by email
-      const user = this.Users.find(user => user.email === email);
-
-      if (user) {
-        // User found, check password
-        if (user.password === password) {
-          // Password matches, user is authenticated
-          this.notif.open('Login Seccsesful!', 'close', {
-            duration: 10000,
-            verticalPosition: 'top',
-          });
-          if(user.role==="Admin"){
-            console.log("admin");
-            this.loginform.reset();
-            this.router.navigate(['/admin',user.id]);
-          }
-          else{
-            console.log("non admin");
-            this.loginform.reset();
-            this.router.navigate(['/home',user.id]);
-          }
-          // Proceed with login logic (e.g., navigate to home page)
-        } else {
-          // Password does not match
-          this.notif.open('Login info Error!', 'close', {
-            duration: 10000,
-            verticalPosition: 'top',
-          });
-          this.loginform.reset();
-          // Handle incorrect password (e.g., show error message)
-        }
-      } else {
-        // User not found
-        this.notif.open('User not found!', 'close', {
-          duration: 10000,
-          verticalPosition: 'top',
-        });
-        this.loginform.reset();
-        // Handle user not found (e.g., show error message)
-      }
-    } else {
-      this.notif.open('fill out all the form please,', 'close', {
+  onSubmit(): void {
+    if (this.loginForm.invalid) {
+      this.snackBar.open('Please fill out all fields correctly.', 'Close', {
         duration: 4000,
         verticalPosition: 'top',
       });
-      this.loginform.reset();
+      return;
     }
+
+    const { email, password } = this.loginForm.value;
+
+    this.signeupService.getAllUsers().subscribe({
+      next: (users: any[]) => {
+        const user = users.find((u) => u.email === email);
+
+        if (user) {
+          if (user.password === password) {
+            this.snackBar.open('Login Successful!', 'Close', {
+              duration: 3000,
+              verticalPosition: 'top',
+            });
+
+            // Store user data (e.g., in local storage) if needed
+
+            if (user.role === 'Admin') {
+              //this.router.navigate(['/admin/home', user.id]);
+              this.router.navigate(['/admin'], {state: {adminId: user.id}});
+            } else {
+              this.router.navigate(['/home', user.id]);
+            }
+          } else {
+            this.snackBar.open('Incorrect password.', 'Close', {
+              duration: 4000,
+              verticalPosition: 'top',
+            });
+          }
+        } else {
+          this.snackBar.open('User not found.', 'Close', {
+            duration: 4000,
+            verticalPosition: 'top',
+          });
+        }
+      },
+      error: (error) => {
+        console.error('Error fetching users:', error);
+        this.snackBar.open('An error occurred. Please try again later.', 'Close', {
+          duration: 4000,
+          verticalPosition: 'top',
+        });
+      },
+    });
   }
 }

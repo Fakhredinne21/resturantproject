@@ -1,0 +1,7 @@
+.profile-loaded .right-side{
+  width: -webkit-fill-available !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  padding: 3.2rem !important;
+}

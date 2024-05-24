@@ -3,10 +3,8 @@ import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute, Router,RouterLink} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../services/signup.service";
-import {ProfileComponent} from "./profile/profile.component";
-import {SubscriptionComponent} from "./subscription/subscription.component";
-import {AdminModule} from "./admin.module";
 import {DOCUMENT} from "@angular/common";
+import {AdminIdetifierService} from "../services/admin-idetifier.service";
 
 @Component({
   selector: 'app-admin',
@@ -16,59 +14,32 @@ import {DOCUMENT} from "@angular/common";
 })
 export class AdminComponent implements OnInit, OnDestroy {
 
-  /*adminId!: number;
-  adminInfo: any = {
-    id: '',
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    profileImage: "",
-    role: "",
-    isSubscribed: ""
-  }
-
-  constructor(
-    private route: ActivatedRoute,
-    private signupService: SignupService
-  ) {}
-
-  ngOnInit(): void {
-    // Create the form using FormBuilder
-    this.route.params.subscribe(params => {
-      console.log('Route parameters:', params);
-      this.adminId = +params['adminId'];
-      console.log('Extracted userId:', this.adminId);
-      this.getUserDetails()
-    });
-  };
-  getUserDetails(): void {
-    if (!this.adminId) {
-      console.log('Invalid userId:', this.adminId);
-      return;
-    }
-    // Fetch user details using the service
-    this.signupService.getById(this.adminId).subscribe(
-      (res: any) => {
-        console.log('Fetched user details:', res);
-        this.adminInfo = res;
-      },
-      (error: any) => {
-        console.error("Error fetching user by ID:", error);
-      }
-    );
-  }*/
+  adminId!: string;
 
   // @ts-ignore
-  constructor( @Inject(DOCUMENT) private _document ) {}
+  constructor(
+               private route: ActivatedRoute,
+               private signupService: SignupService,
+               private router: Router,
+               private adminService:AdminIdetifierService,
+  ) {}
 
   ngOnInit() {
-    this._document.body.classList.add('main-body');
+    /*@Inject(DOCUMENT) private _document,*/
+    //this._document.body.classList.add('main-body');
+
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras.state as { adminId: string };
+    if (state){
+      this.adminId = state.adminId;
+      this.adminService.setadminId(this.adminId);
+    }
+    this.router.navigate(['/admin/home', this.adminId]);
   }
 
   ngOnDestroy() {
     // remove the class form body tag
-    this._document.body.classList.remove('main-body');
+    //this._document.body.classList.remove('main-body');
   }
 
 }

@@ -12,7 +12,7 @@ import {SignupService} from "../../services/signup.service";
   styleUrl: './ticket.component.css'
 })
 export class TicketComponent implements OnInit {
-
+  tickets: any = [];
   signInId!: number;
   userinfo: any = {
     id: '',
@@ -25,9 +25,7 @@ export class TicketComponent implements OnInit {
     isSubscribed: ""
   }
   buyForm!: FormGroup;
-
-
-
+  ticket!:FormGroup;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -41,18 +39,26 @@ export class TicketComponent implements OnInit {
     this.buyForm = this.fb.group({
       number:'',
     });
+    this.ticket = this.fb.group({
+      id:"",
+      experation_date:"",
+      price:"",
+      user_id:""
+    });
+    this.getAllTickets()
     this.route.params.subscribe(params => {
       console.log('Route parameters:', params);
       this.signInId = +params['signInId'];
       console.log('Extracted userId:', this.signInId);
       this.getUserDetails();
+      this.getUserTickets();
     });
   }
 
   buyTicket(): void {
     if (this.buyForm.valid) {
       const ticket = this.buyForm.value;
-      if (ticket.number <= 5) {
+      if (ticket.number <6 && ticket.number >0) {
         this.ticketService.buyTicket(this.signInId, ticket.number).subscribe(
           response => {
             this.snackBar.open(ticket.number + "tickets bought successfully!", "close", {
@@ -71,7 +77,7 @@ export class TicketComponent implements OnInit {
           }
         )
       } else {
-        this.snackBar.open('You can only buy a maximum of 5 tickets at a time.', 'close', {
+        this.snackBar.open('You can only buy a positive number of tickets maxed by 5 tickets at a time.', 'close', {
           duration: 4000,
           verticalPosition: 'top'
         });
