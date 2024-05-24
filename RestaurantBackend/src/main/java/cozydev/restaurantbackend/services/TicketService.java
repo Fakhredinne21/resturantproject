@@ -25,7 +25,7 @@ public class TicketService {
     private final TicketRepository ticketRepository ;
     private final UserRepository userRepository;
     private final HistoryRepository historyRepository;
-    private final Logger logger= (Logger) LoggerFactory.getLogger(TicketService.class);
+    private final Logger logger=  LoggerFactory.getLogger(TicketService.class);
 
     public List<Ticket> getAllTicket(){
         return ticketRepository.findAll();
