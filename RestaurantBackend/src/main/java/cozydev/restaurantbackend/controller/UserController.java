@@ -36,6 +36,7 @@ public class UserController {
         return userService.getTeachers();
     }
 
+
     @GetMapping("/Student")
     public List<User> getStudent(){
         return userService.getStudents();

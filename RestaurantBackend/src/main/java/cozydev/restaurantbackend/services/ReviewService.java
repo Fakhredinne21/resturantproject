@@ -65,4 +65,20 @@ public class ReviewService {
     public void deleteReview(ReviewId id) {
         this.reviewRepository.deleteById(id);
     }
+
+    public List<Review> getReviewsByUser(Long userId) {
+        Optional<User> user = userRepository.findById(userId);
+        if (!user.isPresent()) {
+            throw new IllegalArgumentException("User not found with id " + userId);
+        }
+        return this.reviewRepository.findAll().stream().filter(review -> review.getUser().getId().equals(userId)).toList();
+    }
+
+    public List<Review> getReviewsForMeal(Long mealId) {
+        Optional<Meal> meal = mealRepository.findById(mealId);
+        if (!meal.isPresent()) {
+            throw new IllegalArgumentException("Meal not found with id " + mealId);
+        }
+        return this.reviewRepository.findAll().stream().filter(review -> review.getId().getMealId().equals(mealId)).toList();
+    }
 }
