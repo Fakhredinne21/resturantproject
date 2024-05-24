@@ -54,7 +54,7 @@ public class TicketService {
     }
 
 
-
+@Transactional
    public Boolean sendTicket(Long senderId, Long receiverId) {
         Optional<User> Optsender = userRepository.findById(senderId);
         Optional<User> Optreceiver = userRepository.findById(receiverId);

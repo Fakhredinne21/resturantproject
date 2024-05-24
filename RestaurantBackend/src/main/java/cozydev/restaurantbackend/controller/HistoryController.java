@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/History")
 @RequiredArgsConstructor
-public class HistoryService {
+public class HistoryController {
     private final HistoryRepository historyRepository ;
 
     @PostMapping
