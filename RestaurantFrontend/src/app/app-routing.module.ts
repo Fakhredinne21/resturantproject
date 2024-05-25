@@ -15,14 +15,12 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'meal', component: MealComponent},
   {path: 'home/:signInId', component: UserComponent},
-  {
-    path: 'admin', component: AdminComponent, children: [
+  {path: 'admin', component: AdminComponent, children: [
       {path: '', redirectTo: "home", pathMatch: "full"},
       {path: 'home', component: HomeComponent},
       {path: 'profile', component: ProfileComponent},
       {path: 'subscriptions', component: SubscriptionComponent},
-    ]
-  },
+    ]},
 ];
 
 @NgModule({
