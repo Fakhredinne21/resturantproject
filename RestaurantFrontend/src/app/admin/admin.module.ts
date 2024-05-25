@@ -7,6 +7,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HomeComponent} from './home/home.component';
 import {NavBarComponent} from "../components/nav-bar/nav-bar.component";
+import { MealComponent } from './meal/meal.component';
 
 @NgModule({
   declarations: [
@@ -14,12 +15,17 @@ import {NavBarComponent} from "../components/nav-bar/nav-bar.component";
     SubscriptionComponent,
     ProfileComponent,
     HomeComponent,
-    NavBarComponent
+    NavBarComponent,
+    MealComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule
+  ],
+  exports: [
+  
+    MealComponent
   ]
 })
 export class AdminModule {

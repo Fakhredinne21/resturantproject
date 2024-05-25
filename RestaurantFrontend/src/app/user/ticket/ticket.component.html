@@ -1,4 +1,12 @@
 <p>ticket works!</p>
+<nav>
+  <ul>
+    <li><a [routerLink]="['/notification',signInId]" routerLinkActive="active">Notification</a></li>
+    <li><a [routerLink]="['/ticket',signInId]" routerLinkActive="active">Ticket</a></li>
+    <li><a [routerLink]="['/profile',signInId]">profile</a></li>
+    <li><a href="#">logout</a></li>
+  </ul>
+</nav>
 <form [formGroup]="buyForm" (ngSubmit)="buyTicket()">
   <div>
     <label>how many :</label>

@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // @ts-ignore
   constructor(/*@Inject(DOCUMENT) private document: _document,*/
               private route: ActivatedRoute,
+              private router: Router,
               private signupService: SignupService) {
   }
 
@@ -42,13 +43,17 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   getUserDetails(): void {
-    if (!this.adminId) {
+    if (!this.adminId){
       console.log('Invalid userId:', this.adminId);
       return;
     }
     // Fetch user details using the service
     this.signupService.getById(this.adminId).subscribe(
       (res: any) => {
+        if(res.role !== 'admin'){
+          console.log('User is not an admin:', res);
+          this.router.navigate(['/login'])
+        }
         console.log('Fetched user details:', res);
         this.adminInfo = res;
       },

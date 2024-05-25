@@ -1,1 +1,16 @@
 <p>notification works!</p>
+<nav>
+  <ul>
+    <li><a [routerLink]="['/notification',signInId]" routerLinkActive="active">Notification</a></li>
+    <li><a [routerLink]="['/ticket',signInId]" routerLinkActive="active">Ticket</a></li>
+    <li><a [routerLink]="['/profile',signInId]">profile</a></li>
+    <li><a href="#">logout</a></li>
+  </ul>
+</nav>
+<div>
+  <p>notification list</p>
+  <div *ngFor="let notifc of notifs">
+    <p>notification number: {{notifc.title}}</p>
+    <p>notification description: {{notifc.text}}</p>
+  </div>
+</div>

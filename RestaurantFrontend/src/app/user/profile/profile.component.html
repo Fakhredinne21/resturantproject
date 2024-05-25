@@ -1,22 +1,31 @@
 <p>profile works!</p>
-
+<nav>
+  <ul>
+    <li><a [routerLink]="['/notification',signInId]" routerLinkActive="active">Notification</a></li>
+    <li><a [routerLink]="['/ticket',signInId]" routerLinkActive="active">Ticket</a></li>
+    <li><a [routerLink]="['/profile',signInId]">profile</a></li>
+    <li><a href="#">logout</a></li>
+  </ul>
+</nav>
 <form [formGroup]="changedUserInfo" (ngSubmit)="updateUserDetails()" class="form form-profile">
   <span class="form-title f-m">Update your profile</span>
   <div>
     <label>name</label>
-    <input formControlName="firstName" type="text" id="firstName" name="firstName">
+    <input formControlName="firstName" type="text" id="firstName" name="firstName" [value]="userinfo.firstName" required>
   </div>
   <div>
     <label>lastname</label>
-    <input formControlName="lastName" type="text" id="lastName" name="lastName">
+    <input formControlName="lastName" type="text" id="lastName" name="lastName" [value]="userinfo.lastName" required>
+
   </div>
   <div>
     <label>email</label>
-    <input formControlName="email" type="email" id="email" name="email">
+    <input formControlName="email" type="email" id="email" name="email" [value]="userinfo.email" required>
   </div>
   <div>
     <label>password</label>
-    <input formControlName="password" type="password" id="password" name="password">
+    <input formControlName="password" type="password" id="password" name="password" [value]="userinfo.password" required>
   </div>
   <input type="submit" value="test">
+
 </form>

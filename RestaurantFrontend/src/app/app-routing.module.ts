@@ -20,6 +20,7 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent},
       {path: 'profile', component: ProfileComponent},
       {path: 'subscriptions', component: SubscriptionComponent},
+      {path: 'meal', component: MealComponent},
     ]},
 ];
 

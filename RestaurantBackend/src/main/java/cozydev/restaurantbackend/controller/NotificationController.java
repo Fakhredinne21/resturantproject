@@ -31,9 +31,9 @@ public class NotificationController {
         return notificationService.getNotificationById(notifId);
     }
 
-    @GetMapping("/{userId}")
-    public List<Notifcation> getNotificationsByUserId(@RequestBody Long userId){
-        return this.notificationService.getNotificationsByUserId(userId);
+    @GetMapping("/notif/{userId1}")
+    public List<Notifcation> getNotificationsByUserId(@PathVariable Long userId1){
+        return this.notificationService.getNotificationsByUserId(userId1);
     }
 
     @DeleteMapping("/{notifId}")

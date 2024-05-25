@@ -7,6 +7,7 @@ import { TicketComponent } from './ticket/ticket.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ProfileComponent } from './profile/profile.component';
 import { NotificationComponent } from './notification/notification.component';
+import {MatToolbar} from "@angular/material/toolbar";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NotificationComponent } from './notification/notification.component';
   imports: [
     CommonModule,
     UserRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbar
   ],
   exports: [
     UserComponent,

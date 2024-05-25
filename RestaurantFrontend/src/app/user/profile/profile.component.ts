@@ -11,28 +11,24 @@ import {SignupService} from "../../services/signup.service";
 })
 export class ProfileComponent implements OnInit {
   signInId!: number;
-  userinfo: any;
-  changedUserInfo!: FormGroup;
-
+  userinfo: any = {
+    id: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    profileImage: "",
+    role: "",
+    isSubscribed: ""
+  }
+  changedUserInfo!:FormGroup;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
     private signupService: SignupService
-  ) {
-
-    this.changedUserInfo = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      email: [''],
-      password: [''],
-      profileImage: [''],
-      role: [''],
-      isSubscribed: ['']
-    });
-  }
-
+  ) {}
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log('Route parameters:', params);
@@ -40,8 +36,16 @@ export class ProfileComponent implements OnInit {
       console.log('Extracted userId:', this.signInId);
       this.getUserDetails();
     });
+    this.changedUserInfo = this.fb.group({
+      firstName:"",
+      lastName:"",
+      email:"",
+      password:"",
+      profileImage:"",
+      role:"",
+      isSubscribed:""
+    });
   }
-
   private getUserDetails() {
     if (!this.signInId) {
       console.log('Invalid userId:', this.signInId);
@@ -51,7 +55,6 @@ export class ProfileComponent implements OnInit {
       (response: any) => {
         console.log('User details:', response);
         this.userinfo = response;
-        this.updateFormValues();
       },
       (error: any) => {
         console.error('Failed to fetch user details:', error);
@@ -59,24 +62,16 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
-
-  private updateFormValues() {
-    this.changedUserInfo.patchValue({
-      firstName: this.userinfo.firstName,
-      lastName: this.userinfo.lastName,
-      email: this.userinfo.email,
-      password: this.userinfo.password,
-      profileImage: this.userinfo.profileImage,
-      role: this.userinfo.role,
-      isSubscribed: this.userinfo.isSubscribed
-    });
-  }
-
   updateUserDetails() {
     if (!this.signInId) {
       console.log('Invalid userId:', this.signInId);
       return;
     }
+    this.changedUserInfo.patchValue({
+        profileImage: this.userinfo.profileImage,
+        role: this.userinfo.role,
+        isSubscribed: this.userinfo.isSubscribed
+    });
     this.signupService.updateUser(this.signInId, this.changedUserInfo.value).subscribe(
       (response: any) => {
         console.log('User details updated:', response);
@@ -88,4 +83,6 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+
 }
