@@ -85,7 +85,6 @@ public class TicketService {
             history.setOccuredAt(LocalDateTime.now());
             historyRepository.save(history);
         }
-
        return true;
     }
 

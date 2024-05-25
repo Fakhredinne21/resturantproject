@@ -10,9 +10,7 @@ import lombok.*;
 @Setter
 @Embeddable
 public class HisotryId {
-
     private Long senderId;
     private Long receiverId;
     private Long ticketId;
-
 }

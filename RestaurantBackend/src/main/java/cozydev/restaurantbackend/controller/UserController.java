@@ -36,6 +36,23 @@ public class UserController {
         return userService.getTeachers();
     }
 
+    @PutMapping("/update/{userId}")
+    public User updateUser(@PathVariable Long userId, @RequestBody User userDetails) {
+        Optional<User> userOptional = userService.getUserById(userId);
+        if (!userOptional.isPresent()) {
+            throw new IllegalArgumentException("User not found");
+        }
+
+        User user = userOptional.get();
+        user.setFirstName(userDetails.getFirstName());
+        user.setLastName(userDetails.getLastName());
+        user.setEmail(userDetails.getEmail());
+        user.setPassword(userDetails.getPassword());
+        user.setRole(userDetails.getRole());
+        user.setIsSubscribed(userDetails.getIsSubscribed());
+
+        return userService.userCreation(user);
+    }
 
     @GetMapping("/Student")
     public List<User> getStudent(){
