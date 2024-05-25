@@ -1,6 +1,9 @@
 <p>userhome works!</p>
 <nav>
+  <a href="#">notification</a>
   <a [routerLink]="['/ticket',signInId]" routerLinkActive="active">Ticket</a>
+  <a [routerLink]="['/profile',signInId]">profile</a>
+  <a href="#">logout</a>
 </nav>
 <div>
   <p>{{ signeIn.firstName }}</p>
@@ -13,6 +16,9 @@
   <p>number of tickets you have : {{userTicketNumber}}</p>
 </div>
 
+<div>
+  <p>your ticket spending : {{userTicketNumber*price}}</p>
+</div>
 <div>
   <p>today's meal :</p>
   <p>{{mealInfo.description}}</p>

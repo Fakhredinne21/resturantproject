@@ -1,0 +1,24 @@
+<p>profile works!</p>
+
+<form [formGroup]="changedUserInfo" (ngSubmit)="updateUserDetails()" class="form form-profile">
+  <span class="form-title f-m">Update your profile</span>
+  <div>
+    <label>name</label>
+    <input formControlName="firstName" type="text" id="firstName" name="firstName" value="{{userinfo.firstName}}">
+  </div>
+  <div>
+    <label>lastname</label>
+    <input formControlName="lastName" type="text" id="lastName" name="lastName" value="{{userinfo.lastName}}">
+
+  </div>
+  <div>
+    <label>email</label>
+    <input formControlName="email" type="email" id="email" name="email" value="{{userinfo.email}}">
+  </div>
+  <div>
+    <label>password</label>
+    <input formControlName="password" type="password" id="password" name="password" value="{{userinfo.password}}">
+  </div>
+  <input type="submit" value="test">
+
+</form>

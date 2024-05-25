@@ -19,4 +19,7 @@ export class SignupService {
   getAllUsers():Observable<any[]>{
     return this.http.get<any[]>(this.userUrl);
   }
+  updateUser(userId: number, userDetails: any): Observable<any> {
+    return this.http.put(`${this.userUrl}/update/${userId}`, userDetails);
+  }
 }

@@ -16,8 +16,10 @@ export class UserComponent implements OnInit {
   mealInfo: any = {
     mealId:"",
     description: "",
+    created_date: "",
     price:""
   }
+  price:number=200;
   userTicketNumber!:number;
   signInId!:number;
   mealId=Math.floor(Math.random()*7)+1;
