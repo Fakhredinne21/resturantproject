@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {AdminRoutingModule} from './admin-routing.module';
 import {AdminComponent} from './admin.component';
 import {SubscriptionComponent} from './subscription/subscription.component';
@@ -10,6 +10,7 @@ import {NavBarComponent} from "../components/nav-bar/nav-bar.component";
 import { MealComponent } from './meal/meal.component';
 
 @NgModule({
+  providers: [DatePipe],
   declarations: [
     AdminComponent,
     SubscriptionComponent,
@@ -24,7 +25,7 @@ import { MealComponent } from './meal/meal.component';
     ReactiveFormsModule
   ],
   exports: [
-  
+
     MealComponent
   ]
 })
