@@ -90,6 +90,10 @@ public class TicketService {
 
     public void buyTicket(Long userId, Integer count) {
         Optional<User> optionalUser = userRepository.findById(userId);
+        if (optionalUser.isEmpty()) {
+            throw new IllegalArgumentException("User not found");
+        }
+        
         int numberOfTicketsToBuy = (count == null || count == 0) ? 5 : count;
         if(optionalUser.isPresent()){
             for (int i = 0; i < numberOfTicketsToBuy; i++) {

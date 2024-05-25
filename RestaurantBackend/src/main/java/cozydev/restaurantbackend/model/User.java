@@ -37,20 +37,6 @@ public class User implements Serializable {
     private Role role;
     private Boolean isSubscribed;
 
-    //Relations:
-
-    //OwnerShip
-   /* @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<Ticket> tickets;*/
-
-    //Meals
-
-
-    //Notifications
-    @OneToMany
-    @JsonIgnore
-    private List<Notifcation> notifcations ;
 
     //Review
     @OneToMany(mappedBy = "user")
