@@ -42,9 +42,8 @@ export class TicketComponent implements OnInit {
     });
     this.ticket = this.fb.group({
       id:"",
-      experation_date:"",
-      price:"",
-      user_id:""
+      is_used:"",
+      price:""
     });
     this.route.params.subscribe(params => {
       console.log('Route parameters:', params);
