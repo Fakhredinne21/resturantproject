@@ -1,0 +1,42 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3307/unifood
+    username: root
+    password: Linkinpark2001
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  mail:
+    host: localhost
+    port: 1025
+    username: root
+    password: Linkinpark2001
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enable: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+
+
+application:
+  security:
+    jwt:
+      secret-key: a83871dd613938d1cc6cd5073347db259e9a5f01968fa929c9e1388f845f46e5
+      expiration: 864000
+  mailing:
+    frontend:
+      activation: http://localhost:4200/activate-account
+

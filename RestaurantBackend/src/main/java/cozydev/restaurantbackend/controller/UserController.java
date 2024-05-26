@@ -31,18 +31,18 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
-    @GetMapping("/Teacher")
+  /*  @GetMapping("/Teacher")
     public List<User> getTeachers(){
         return userService.getTeachers();
     }
-
+*/
     @PutMapping("/update/{userId}")
     public User updateUser(@PathVariable Long userId, @RequestBody User userDetails) {
          return userService.updateUser(userId, userDetails);
     }
 
-    @GetMapping("/Student")
+ /*   @GetMapping("/Student")
     public List<User> getStudent(){
         return userService.getStudents();
-    }
+    }*/
 }

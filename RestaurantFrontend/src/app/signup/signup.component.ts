@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 import {SignupService} from "../services/signup.service";
+import {RegistrationRequest} from "../servs/models/registration-request";
+import {AuthenticationService} from "../servs/services/authentication.service";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 
 @Component({
@@ -12,49 +15,41 @@ import {SignupService} from "../services/signup.service";
 })
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
+  errorMsg:Array<String>=[];
 
   constructor(private fb: FormBuilder,
-              private router: Router,
+              private route: Router,
               private snackBar: MatSnackBar,
-              private signupService: SignupService) { }
+              private auth : AuthenticationService
+              ) { }
 
-  ngOnInit() {
-    this.signupForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      profileImage: [''],
-      role: ['', Validators.required],
-      isSubscribed: [false]
-    });
+  registerRequest:RegistrationRequest={
+    firstName:"",
+    lastName:"",
+    email:"",
+    password:""
   }
 
-  createUser() {
-    if (this.signupForm.valid) {
-      const user = this.signupForm.value;
+login(){
+    this.route.navigate(['login']);
+}
+registre(){
+    this.auth.register({
+      body:this.registerRequest
+  }).subscribe({
+    next:()=>{
+    this.route.navigate(['activate-account'])
+    },
+      error:(err)=>{
+          this.errorMsg = err.error.validationErrors;
+      }
+    })
+}
 
-      this.signupService.createUser(user)
-        .subscribe(response => {
-            this.snackBar.open('Form Submitted Successfully!', 'close', {
-              duration: 10000,
-              verticalPosition: 'top'
-            });
-            this.signupForm.reset();
-            this.router.navigate(['/home', response.id]);
-          },
-          error => {
-            console.error("Error adding user:", error);
-            this.snackBar.open('An error occurred. Please try again.', 'close', {
-              duration: 4000,
-              verticalPosition: 'top'
-            });
-          });
-    } else {
-      this.snackBar.open('Please fill out all required fields.', 'close', {
-        duration: 4000,
-        verticalPosition: 'top'
-      });
-    }
+  ngOnInit(): void {
   }
+
+
+
+
 }

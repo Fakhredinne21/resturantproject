@@ -1,0 +1,31 @@
+services:
+  mysql:
+    container_name: mysql-Restaurant
+    image: mysql
+    environment:
+      MYSQL_USER: username
+      MYSQL_PASSWORD: password
+      MYSQL_DATA: /var/lib/mysql/data
+      MYSQL_DB: Restaurant
+
+    volumes:
+      - mysql:/var/lib/mysql/data
+    ports:
+      - 3307:3307
+    networks:
+      - spring-Restaurant
+    restart: unless-stopped
+  mail-dev:
+    container_name: mail-dev-Restaurant
+    image: maildev/maildev
+    ports:
+      - 1025:1025
+      - 1080:1080
+
+networks:
+  spring-Restaurant:
+    driver: bridge
+
+volumes:
+  mysql:
+    driver: local

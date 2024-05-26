@@ -49,7 +49,7 @@ public class TicketService {
 
     public int countAllTicketByUserId(Long userId) {
         return (int) ticketRepository.findAll().stream()
-                .filter(ticket -> ticket.getUser() != null && ticket.getUser().getId().equals(userId))
+                .filter(ticket -> ticket.getUser() != null && ticket.getUser().getUserId().equals(userId))
                 .count();
     }
 
@@ -107,7 +107,7 @@ public class TicketService {
 
    public List<Ticket> getAllTicketByUserId(Long userId) {
         return ticketRepository.findAll().stream()
-                .filter(ticket -> ticket.getUser() != null && ticket.getUser().getId().equals(userId))
+                .filter(ticket -> ticket.getUser() != null && ticket.getUser().getUserId().equals(userId))
                 .toList();
     }
 

@@ -6,33 +6,33 @@
       <span>UniFood</span>
     </div>
 
-    <form [formGroup]="signupForm" (ngSubmit)="createUser()" class="form form-signup">
+    <form class="form form-signup">
       <span class="form-title f-m">Create an Account</span>
 
       <div class="grp-inp">
         <div class="row">
           <div class="labeled-input">
             <label for="firstName">Name</label>
-            <input formControlName="firstName" type="text" id="firstName" name="firstName" placeholder="Input your name"
+            <input [(ngModel)]="registerRequest.firstName" type="text" id="firstName" name="firstName" placeholder="Input your name"
                    required>
           </div>
 
           <div class="labeled-input">
             <label for="lastName">Lastname</label>
-            <input formControlName="lastName" type="text" id="lastName" name="lastname"
+            <input [ngModel]="registerRequest.lastName" type="text" id="lastName" name="lastname"
                    placeholder="Input your lastname" required>
           </div>
         </div>
 
         <div class="labeled-input">
           <label for="email">Email</label>
-          <input formControlName="email" type="email" id="email" name="email" placeholder="example@email.com" required>
+          <input [(ngModel)]="registerRequest.email" type="email" id="email" name="email" placeholder="example@email.com" required>
         </div>
 
         <div class="row">
           <div class="labeled-input">
             <label for="password">Password</label>
-            <input formControlName="password" type="password" id="password" name="password" placeholder="Password"
+            <input [ngModel]="registerRequest.password" type="password" id="password" name="password" placeholder="Password"
                    required>
           </div>
 

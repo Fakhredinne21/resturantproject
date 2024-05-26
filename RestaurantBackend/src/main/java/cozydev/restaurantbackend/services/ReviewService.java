@@ -71,7 +71,7 @@ public class ReviewService {
         if (!user.isPresent()) {
             throw new IllegalArgumentException("User not found with id " + userId);
         }
-        return this.reviewRepository.findAll().stream().filter(review -> review.getUser().getId().equals(userId)).toList();
+        return this.reviewRepository.findAll().stream().filter(review -> review.getUser().getUserId().equals(userId)).toList();
     }
 
     public List<Review> getReviewsForMeal(Long mealId) {

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SignupRoutingModule } from './signup-routing.module';
 import { SignupComponent } from './signup.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RightsideComponent } from './rightside/rightside.component';
 
 
@@ -15,7 +15,8 @@ import { RightsideComponent } from './rightside/rightside.component';
     imports: [
         CommonModule,
         SignupRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ],
   exports: [
     SignupComponent

@@ -28,8 +28,8 @@ public class UserService {
         user.setLastName(userDetails.getLastName());
         user.setEmail(userDetails.getEmail());
         user.setPassword(userDetails.getPassword());
-        user.setRole(userDetails.getRole());
-        user.setIsSubscribed(userDetails.getIsSubscribed());
+        /*user.setRole(userDetails.getRole());*/
+        /*user.setIsSubscribed(userDetails.getIsSubscribed());*/
 
         return userCreation(user);
     }
@@ -47,7 +47,7 @@ public class UserService {
         return userRepository.findById(id);
     }
 
-    public List<User> getTeachers() {
+  /*  public List<User> getTeachers() {
         return this.userRepository.findAll()
                 .stream()
                 .filter(e -> e.getRole().compareTo(Role.Teacher) == 0 )
@@ -59,5 +59,5 @@ public class UserService {
                 .stream()
                 .filter(e -> e.getRole().compareTo(Role.Student) == 0 )
                 .toList();
-    }
+    }*/
 }
