@@ -25,7 +25,7 @@ export class AuthenticationService extends BaseService {
   ) {
     super(config, http);
   }
-
+/*test push*/
   /** Path part for operation `register()` */
   static readonly RegisterPath = '/auth/register';
 
