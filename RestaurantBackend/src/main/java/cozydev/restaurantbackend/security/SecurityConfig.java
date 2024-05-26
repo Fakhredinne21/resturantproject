@@ -35,7 +35,6 @@ public class SecurityConfig {
                                         "/Meals/**",
                                         "/reviews/**",
                                         "/users/**",
-                                        "/v2/api-docs",
                                         "/v3/api-docs",
                                         "/v3/api-docs/**",
                                         "/swagger-resources",
