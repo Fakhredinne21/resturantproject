@@ -6,7 +6,6 @@ import { UserComponent } from './user.component';
 import { TicketComponent } from './ticket/ticket.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { ProfileComponent } from './profile/profile.component';
-import { NotificationComponent } from './notification/notification.component';
 import {MatToolbar} from "@angular/material/toolbar";
 
 
@@ -15,7 +14,7 @@ import {MatToolbar} from "@angular/material/toolbar";
     UserComponent,
     TicketComponent,
     ProfileComponent,
-    NotificationComponent,
+
 
   ],
   imports: [
@@ -28,7 +27,6 @@ import {MatToolbar} from "@angular/material/toolbar";
     UserComponent,
     TicketComponent,
     ProfileComponent,
-    NotificationComponent,
 
   ]
 })

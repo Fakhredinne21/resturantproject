@@ -4,6 +4,7 @@ import {AdminIdetifierService} from "../../services/admin-idetifier.service";
 import {MealService} from "../../services/meal.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-meal',
@@ -12,7 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class MealComponent implements OnInit{
  adminId!: string;
- createMealForm!: FormGroup;
+ mealForm!: FormGroup;
  constructor(
    private fb: FormBuilder,
    private route: ActivatedRoute,
@@ -20,27 +21,29 @@ export class MealComponent implements OnInit{
    private snackBar: MatSnackBar,
    private mealService:MealService,
    private adminService:AdminIdetifierService,
+   private datePipe: DatePipe
  ) {}
   ngOnInit() {
+   const today=this.datePipe.transform(new Date(),'yyyy-MM-dd-HH:mm:ss');
     this.adminId= this.adminService.getadminId();
-    this.createMealForm= this.fb.group({
+    this.mealForm= this.fb.group({
       meal_id:"",
       description:"",
       price:"",
-      created_date:"",
+      created_date:today ,
     });
  }
   createMeal() {
-    if (this.createMealForm.valid) {
-      const meal = this.createMealForm.value;
+    if (this.mealForm.valid) {
+      const meal = this.mealForm.value;
       this.mealService.createMeal(meal)
         .subscribe(response => {
             this.snackBar.open('Meal Created Successfully!', 'close', {
               duration: 10000,
               verticalPosition: 'top'
             });
-            this.createMealForm.reset();
-            this.router.navigate(['/admin/home', response.id]);
+            this.mealForm.reset();
+            this.router.navigate(['/admin/home']);
           },
           error => {
             console.error("Error adding meal:", error);

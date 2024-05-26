@@ -1,1 +1,13 @@
 <p>meal works!</p>
+<form [formGroup]="mealForm" (ngSubmit)="createMeal()">
+  <div>
+    <label>Description:</label>
+    <input type="text" formControlName="description" placeholder="Description">
+  </div>
+  <div>
+    <label>price</label>
+    <input type="text" formControlName="price" placeholder="Price">
+    <input type="date" formControlName="created_date" hidden>
+  </div>
+  <button type="submit">Create Meal</button>
+</form>
