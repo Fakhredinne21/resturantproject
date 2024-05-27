@@ -12,17 +12,90 @@ body {
     width: 100%;
     height: 100vh;
     padding: 3.2rem;
+    gap: 1.2rem;
 }
 
-.right-side > *:first-child{
+.right-side > *:first-child {
     display: flex;
     flex-direction: column;
 }
 
-.right-side .container .tickets{
+.right-side > .row{
+    overflow: hidden;
+}
+
+.right-side .container .tickets {
     width: fit-content;
     font-size: 2.4rem;
     color: var(--text-color);
     align-items: center;
     gap: .2rem;
+}
+
+.container {
+    padding: 1.8rem 1.8rem;
+}
+
+.right-side .stats-container{
+    max-width: 40rem;
+    width: -webkit-fill-available;
+    gap: 1.2rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.right-side .stats {
+    min-width: 20rem;
+    padding: 0;
+    justify-content: unset;
+    height: 11.2rem;
+}
+
+.right-side .stats .stats-time {
+    font-size: 1.2rem;
+    align-content: center;
+    padding: 1.2rem;
+    border-right: 1px dashed var(--border-color);
+    min-width: 11.2rem;
+    text-align: center;
+}
+
+.right-side .stats .stats-numbers{
+    width: -webkit-fill-available;
+}
+
+.right-side .stats .stats-numbers > .row{
+    height: -webkit-fill-available;
+    align-items: center;
+    padding: 1.2rem;
+    gap: 1.2rem;
+}
+
+.right-side .stats .stats-numbers > .row:first-child{
+    border-bottom: 1px solid var(--border-color);
+}
+
+.right-side .stats .stats-numbers .row .numbers-type{
+    font-size: 1.8rem;
+    color: var(--text-color);
+}
+
+.right-side .stats .stats-numbers .row .numbers-value{
+    width: fit-content;
+    align-items: center;
+    color: var(--muted-text);
+    gap: .4rem;
+}
+
+.right-side .stats .stats-numbers .row .numbers-value span{
+    font-size: 1.8rem;
+}
+
+.right-side .stats .stats-numbers .row .numbers-value .icon{
+    height: 1.8rem;
+    width: 1.8rem;
+}
+
+.right-side .stats .stats-numbers .row .numbers-value .icon .icon--fill{
+    fill: var(--muted-text);
 }

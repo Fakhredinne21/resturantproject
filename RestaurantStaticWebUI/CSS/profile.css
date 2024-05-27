@@ -14,12 +14,12 @@ body {
     padding: 3.2rem;
 }
 
-.right-side > *:first-child{
+.right-side > *:first-child {
     display: flex;
     flex-direction: column;
 }
 
-.right-side .container .tickets{
+.right-side .container .tickets {
     width: fit-content;
     font-size: 2.4rem;
     color: var(--text-color);
@@ -27,25 +27,20 @@ body {
     gap: .2rem;
 }
 
-.profile_info.container.column, .right-side{
+.profile_info.container.column, .right-side {
     gap: 3.2rem;
 }
 
-.profile_info.container.column .row, .profile_info.container.column .grp-inp{
+.profile_info.container.column .row, .profile_info.container.column .grp-inp {
     gap: 1.2rem;
 }
 
-.profile_info.container.column img{
+.profile_info.container.column img {
     height: 80px;
 }
 
-.container{
-    height: fit-content;
-    width: -webkit-fill-available;
+.container {
     padding: 1.8rem 1.8rem;
-    background: white;
-    border-radius: var(--border_radius);
-    border: 1px solid var(--border-color);
 }
 
 .grp-inp{

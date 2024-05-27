@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="86604428-d0d9-4b78-8da4-02a4769673cd" name="Changes" comment="Structure change and Renaming the select options">
-      <change afterPath="$PROJECT_DIR$/CSS/profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CSS/user.home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/IMAGES/pfp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User/profile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/User/tickets.html" afterDir="false" />
+    <list default="true" id="86604428-d0d9-4b78-8da4-02a4769673cd" name="Changes" comment="Finished the user &amp; admin profile pages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSS/admin.home.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/admin.home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/admin.profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/admin.profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/navBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/navBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket.Filled=No.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket.Filled=No.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/admin.profile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/tickets.html" beforeDir="false" afterPath="$PROJECT_DIR$/User/tickets.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +43,9 @@
     &quot;accountId&quot;: &quot;f9cc0902-1a36-4445-9986-7975c9793952&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/CSS/admin.home.css" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -113,7 +112,7 @@
       <workItem from="1716593273950" duration="374000" />
       <workItem from="1716600221491" duration="4274000" />
       <workItem from="1716760592382" duration="1537000" />
-      <workItem from="1716801717626" duration="3885000" />
+      <workItem from="1716801717626" duration="8459000" />
     </task>
     <task id="LOCAL-00001" summary="Small changes and file rename">
       <option name="closed" value="true" />
@@ -139,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715720388729</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Finished the user &amp; admin profile pages">
+      <option name="closed" value="true" />
+      <created>1716805890848</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716805890848</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +167,7 @@
     <MESSAGE value="Small changes and file rename" />
     <MESSAGE value="Added academic status selector" />
     <MESSAGE value="Structure change and Renaming the select options" />
-    <option name="LAST_COMMIT_MESSAGE" value="Structure change and Renaming the select options" />
+    <MESSAGE value="Finished the user &amp; admin profile pages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished the user &amp; admin profile pages" />
   </component>
 </project>

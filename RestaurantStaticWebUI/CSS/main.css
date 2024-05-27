@@ -311,3 +311,12 @@ select option {
 /* Logo Section End*/
 
 
+.container{
+    height: fit-content;
+    width: -webkit-fill-available;
+
+    background: white;
+    border-radius: var(--border_radius);
+    border: 1px solid var(--border-color);
+}
+
