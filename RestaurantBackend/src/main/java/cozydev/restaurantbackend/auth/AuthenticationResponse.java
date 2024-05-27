@@ -14,5 +14,6 @@ public class AuthenticationResponse {
     public AuthenticationResponse(String token, Long userId) {
         this.token = token;
         this.userId = userId;
+        //
     }
 }

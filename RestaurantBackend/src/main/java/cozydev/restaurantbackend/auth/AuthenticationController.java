@@ -18,7 +18,7 @@ public class AuthenticationController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<?> register(
             @RequestBody @Valid RegistrationRequest request) throws MessagingException {
-        authenticationService.register(request);
+        authenticationService.register(request);/**/
         return ResponseEntity.accepted().build();
     }
 
