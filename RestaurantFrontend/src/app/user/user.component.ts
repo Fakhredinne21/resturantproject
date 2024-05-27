@@ -42,12 +42,12 @@ export class UserComponent implements OnInit {
               private ticketService:TicketService
   ) {
   }
-
+  userId:number | null=null ;
   ngOnInit() {
     // Create the form using FormBuilder
-    this.route.params.subscribe(params => {
+    this.route.queryParams.subscribe(params => {
       console.log('Route parameters:', params);
-      this.signInId = +params['signInId'];
+      this.userId = +params['userId'];
       console.log('Extracted userId:', this.signInId);
       this.getUserDetails();
       this.getMealById();

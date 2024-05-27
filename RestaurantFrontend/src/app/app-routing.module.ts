@@ -15,7 +15,7 @@ const routes: Routes = [
   {path:'activate-account',component:ActivateAccountComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'home/:signinId', component: UserComponent},
+  {path: 'home/:userId', component: UserComponent},
   {path: 'admin', component: AdminComponent, children: [
       {path: '', redirectTo: "home", pathMatch: "full"},
       {path: 'home', component: HomeComponent},

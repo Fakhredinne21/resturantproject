@@ -15,7 +15,7 @@ import {TokenService} from "../servs/token/token.service";
 })
 export class LoginComponent implements OnInit {
 
-  signInId!:number;
+  signinId!:number;
   authRequest:AuthenticationRequest={
     email:'',
     password:''
@@ -27,20 +27,30 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const userIdStr = localStorage.getItem('userId');
+    if (userIdStr) {
+      this.signinId = parseInt(userIdStr, 10);
+    }
   }
 
   register(){
     this.router.navigate(['signup'])
   }
   login(){
+    console.log(this.authRequest); // Log the request payload
     this.authService.authenticate({
-      body:this.authRequest
+      body: this.authRequest
     }).subscribe({
-      next:(res)=>{
+      next: (res) => {
         this.tokenService.token = res.token as string;
-        this.router.navigate(['home',this.signInId]);
+        localStorage.setItem('userId', res.userId.toString()); // Save userId to localStorage
+        this.router.navigate(['home/:userId'], { queryParams: { userId: res.userId } });
+      },
+      error: (err) => {
+        console.error('Authentication error:', err);
       }
-    })
+    });
   }
+
   protected readonly requestAnimationFrame = requestAnimationFrame;
 }

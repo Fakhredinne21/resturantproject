@@ -1,5 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface AuthenticationResponse {
-  token?: string;
+  token: string;
+  userId:number;
+
 }
