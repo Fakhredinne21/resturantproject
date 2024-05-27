@@ -8,5 +8,11 @@ import lombok.Setter;
 @Setter
 @Builder
 public class AuthenticationResponse {
-    private String token ;
+    private String token;
+    private Long userId;
+
+    public AuthenticationResponse(String token, Long userId) {
+        this.token = token;
+        this.userId = userId;
+    }
 }

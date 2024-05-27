@@ -1,5 +1,4 @@
 package cozydev.restaurantbackend.auth;
-
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
@@ -18,8 +17,7 @@ public class AuthenticationController {
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<?> register(
-            @RequestBody @Valid RegistrationRequest request
-    ) throws MessagingException {
+            @RequestBody @Valid RegistrationRequest request) throws MessagingException {
         authenticationService.register(request);
         return ResponseEntity.accepted().build();
     }

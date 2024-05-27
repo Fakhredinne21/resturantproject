@@ -91,18 +91,15 @@ public class AuthenticationService {
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         var auth = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
-                        request.getPassword()
-                )
-        );
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         var claims = new HashMap<String, Object>();
         var user = ((User)auth.getPrincipal());
         claims.put("fullName",user.fullName());
         var jwtToken = jwtService.generateToken(claims,user);
-
         return AuthenticationResponse.builder()
-                .token(jwtToken).build();
+                .token(jwtToken)
+                .userId(user.getUserId())
+                .build();
     }
 
     public void activateAccount(String token) throws MessagingException {
