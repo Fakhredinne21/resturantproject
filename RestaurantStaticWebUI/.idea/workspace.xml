@@ -5,23 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86604428-d0d9-4b78-8da4-02a4769673cd" name="Changes" comment="Structure change and Renaming the select options">
-      <change afterPath="$PROJECT_DIR$/CSS/admin.profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CSS/navBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/repositories/HistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/repositories/HistoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/services/HistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantBackend/src/main/java/cozydev/restaurantbackend/services/HistoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/admin.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/admin.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/admin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/admin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/profile/profile.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/profile/profile.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/profile/profile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/admin/profile/profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/components/nav-bar/nav-bar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/components/nav-bar/nav-bar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/services/admin-idetifier.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/services/adminIdentifier.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RestaurantFrontend/src/app/shared/model/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../RestaurantFrontend/src/app/shared/model/user.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CSS/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CSS/user.home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/IMAGES/pfp.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/profile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/User/tickets.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSS/admin.home.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/admin.home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/admin.profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/admin.profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/navBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/navBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket.Filled=No.svg" beforeDir="false" afterPath="$PROJECT_DIR$/IMAGES/ICONS/name=Ticket.Filled=No.svg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +75,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\resturantproject\RestaurantStaticWebUI\CSS" />
+      <recent name="D:\resturantproject\RestaurantStaticWebUI\User" />
+      <recent name="D:\resturantproject\RestaurantStaticWebUI" />
       <recent name="D:\resturantproject\RestaurantStaticWebUI\Admin" />
       <recent name="D:\resturantproject\RestaurantStaticWebUI\IMAGES\ICONS" />
     </key>
@@ -115,6 +112,8 @@
       <workItem from="1716592938869" duration="314000" />
       <workItem from="1716593273950" duration="374000" />
       <workItem from="1716600221491" duration="4274000" />
+      <workItem from="1716760592382" duration="1537000" />
+      <workItem from="1716801717626" duration="3885000" />
     </task>
     <task id="LOCAL-00001" summary="Small changes and file rename">
       <option name="closed" value="true" />

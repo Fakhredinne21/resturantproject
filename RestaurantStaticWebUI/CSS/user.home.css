@@ -1,0 +1,7 @@
+body {
+    background: var(--muted-background);
+}
+
+.left-side {
+    width: fit-content !important;
+}

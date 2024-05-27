@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UniFood | Dashboard</title>
+    <title>UniFood | Profile</title>
     <link rel="stylesheet" href="../CSS/main.css">
     <link rel="stylesheet" href="../CSS/navBar.css">
-    <link rel="stylesheet" href="../CSS/admin.home.css">
+    <link rel="stylesheet" href="../CSS/profile.css">
 </head>
 <body>
 <div class="left-side">
@@ -185,6 +185,37 @@
                 </svg>
             </div>
         </div>
+    </div>
+
+    <div class="profile_info container column">
+        <div class="row">
+            <img src="../IMAGES/pfp.png" alt="Green profile flat picture circular">
+            <div class="labeled-input">
+                <label>Email</label>
+                <input type="email" class="" name="email" placeholder="exmple@email.com">
+            </div>
+        </div>
+
+        <div class="grp-inp">
+            <div class="labeled-input">
+                <label>Current Password</label>
+                <input type="password" class="" name="email" placeholder="example@email.com">
+            </div>
+
+            <div class="row">
+                <div class="labeled-input">
+                    <label>New Password</label>
+                    <input type="password" class="" name="password" placeholder="Password">
+                </div>
+
+                <div class="labeled-input">
+                    <label>Confirm password</label>
+                    <input type="password" class="" name="confirmation_password" placeholder="Confirm password">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">Save Changes</button>
     </div>
 </div>
 </body>
