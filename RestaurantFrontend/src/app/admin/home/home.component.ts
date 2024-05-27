@@ -11,8 +11,6 @@ import { AdminIdetifierService } from '../../services/admin-idetifier.service';
 })
 export class HomeComponent {
 
-
-
   adminId!: any;
   adminInfo: any = {
     id: '',

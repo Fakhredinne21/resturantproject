@@ -4,18 +4,18 @@
       <img src="assets/favicon.svg">
       <span>UniFood</span>
     </div>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form form-login">
+    <div class="form form-login">
       <span class="form-title f-m">Log-In</span>
 
       <div class="grp-inp">
         <div class="labeled-input">
           <label for="email">Email</label>
-          <input type="email" id="email" formControlName="email" placeholder="exmple@email.com">
+          <input type="email" id="email" [(ngModel)]="authRequest.email" placeholder="exmple@email.com">
         </div>
 
         <div class="labeled-input">
           <label for="password">Password</label>
-          <input type="password" id="password" formControlName="password" placeholder="password here">
+          <input type="password" id="password" [(ngModel)]="authRequest.password" placeholder="password here">
         </div>
       </div>
 
@@ -28,9 +28,9 @@
         <a href="">Forgot Password</a>
       </div>
 
-      <button type="submit" class="f-b">Proceed</button>
-      <a routerLink="/signup" class="a-button f-b">Create an Account</a>
-    </form>
+      <button (click)="login()" class="f-b">Proceed</button>
+      <a (click)="register()" class="a-button f-b">Create an Account</a>
+    </div>
   </div>
   <div class="right-side">
     <img src="assets/login__image.svg">

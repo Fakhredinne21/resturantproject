@@ -8,12 +8,14 @@ import {HomeComponent} from "./admin/home/home.component";
 import {ProfileComponent} from "./admin/profile/profile.component";
 import {SubscriptionComponent} from "./admin/subscription/subscription.component";
 import {MealComponent} from "./admin/meal/meal.component";
+import {ActivateAccountComponent} from "./activate-account/activate-account.component";
 
 const routes: Routes = [
   {path: '', redirectTo: "login", pathMatch: "full"},
+  {path:'activate-account',component:ActivateAccountComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'home/:signInId', component: UserComponent},
+  {path: 'home/:signinId', component: UserComponent},
   {path: 'admin', component: AdminComponent, children: [
       {path: '', redirectTo: "home", pathMatch: "full"},
       {path: 'home', component: HomeComponent},

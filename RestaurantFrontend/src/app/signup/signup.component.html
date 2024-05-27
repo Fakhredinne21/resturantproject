@@ -6,7 +6,7 @@
       <span>UniFood</span>
     </div>
 
-    <form class="form form-signup">
+    <div class="form form-signup">
       <span class="form-title f-m">Create an Account</span>
 
       <div class="grp-inp">
@@ -19,7 +19,7 @@
 
           <div class="labeled-input">
             <label for="lastName">Lastname</label>
-            <input [ngModel]="registerRequest.lastName" type="text" id="lastName" name="lastname"
+            <input [(ngModel)]="registerRequest.lastName" type="text" id="lastName" name="lastname"
                    placeholder="Input your lastname" required>
           </div>
         </div>
@@ -32,30 +32,18 @@
         <div class="row">
           <div class="labeled-input">
             <label for="password">Password</label>
-            <input [ngModel]="registerRequest.password" type="password" id="password" name="password" placeholder="Password"
+            <input [(ngModel)]="registerRequest.password" type="password" id="password" name="password" placeholder="Password"
                    required>
           </div>
-
-          <div class="labeled-input">
-            <label for="confirmPassword">Confirm password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
-          </div>
-        </div>
-
-        <div class="labeled-input">
-          <label for="role">Your academic status ?</label>
-          <select formControlName="role" id="role" name="role" required>
-            <option value="Student">Student</option>
-            <option value="Teacher">Teacher</option>
-          </select>
         </div>
       </div>
 
-      <button type="submit" class="f-b">Proceed</button>
-      <a routerLink="/login" class="a-button f-b">Log In</a>
-    </form>
+      <button (click)="register()" class="f-b">Proceed</button>
+      <a (click)="login()" class="a-button f-b">Log In</a>
+    </div>
   </div>
   <div class="right-side">
     <img src="/assets/singup__image.svg">
   </div>
 </div>
+

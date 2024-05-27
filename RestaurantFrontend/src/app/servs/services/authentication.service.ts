@@ -19,10 +19,7 @@ import { Register$Params } from '../fn/authentication/register';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService extends BaseService {
-  constructor(config: ApiConfiguration,
-              http: HttpClient,
-              auth: AuthenticationService
-  ) {
+  constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
   }
 /*test push*/
@@ -35,7 +32,8 @@ export class AuthenticationService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  register$Response(params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<{}>> {
+  register$Response(params: Register$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+  }>> {
     return register(this.http, this.rootUrl, params, context);
   }
 
@@ -45,21 +43,14 @@ export class AuthenticationService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  register(params: Register$Params, context?: HttpContext): Observable<{}> {
+  register(params: Register$Params, context?: HttpContext): Observable<{
+  }> {
     return this.register$Response(params, context).pipe(
-      map((response: StrictHttpResponse<{ roles: string[] }>) => response.body
-    {
-      if (response.body && response.body.roles) {
-        return response.body.roles;
-      } else {
-        throw new Error('roles not found in the response');
-      }
-    }
-  )
-  )
-    ;
+      map((r: StrictHttpResponse<{}>): {
+      } => r.body)
+    );
   }
-}
+
   /** Path part for operation `authenticate()` */
   static readonly AuthenticatePath = '/auth/authenticate';
 

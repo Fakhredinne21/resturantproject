@@ -9,10 +9,12 @@ import { SignupModule } from './signup/signup.module';
 import {HttpClientModule} from "@angular/common/http";
 import {AdminModule} from "./admin/admin.module";
 import {UserModule} from "./user/user.module";
+import {ActivateAccountModule} from "./activate-account/activate-account.module";
+import {CodeInputComponent} from "angular-code-input";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,11 +23,15 @@ import {UserModule} from "./user/user.module";
     SignupModule,
     HttpClientModule,
     UserModule,
-    AdminModule
+    AdminModule,
+    ActivateAccountModule
   ],
   providers: [
     provideAnimationsAsync()
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+
+  ]
 })
 export class AppModule { }

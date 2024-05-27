@@ -1,11 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
-import {SignupService} from "../services/signup.service";
 import {RegistrationRequest} from "../servs/models/registration-request";
 import {AuthenticationService} from "../servs/services/authentication.service";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 
 
 @Component({
@@ -14,12 +10,10 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
   styleUrl: './signup.component.css'
 })
 export class SignupComponent implements OnInit {
-  signupForm!: FormGroup;
-  errorMsg:Array<String>=[];
 
-  constructor(private fb: FormBuilder,
+
+  constructor(
               private route: Router,
-              private snackBar: MatSnackBar,
               private auth : AuthenticationService
               ) { }
 
@@ -29,11 +23,12 @@ export class SignupComponent implements OnInit {
     email:"",
     password:""
   }
+  errorMsg: Array<String> = [];
 
 login(){
     this.route.navigate(['login']);
 }
-registre(){
+register(){
     this.auth.register({
       body:this.registerRequest
   }).subscribe({

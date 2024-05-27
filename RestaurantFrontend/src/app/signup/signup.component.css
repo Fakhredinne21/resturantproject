@@ -1,4 +1,5 @@
 .signup{
+  border: solid 1px red;
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -21,3 +22,4 @@
   background-color: var(--muted-background);
   color: var(--muted-text);
 }
+
