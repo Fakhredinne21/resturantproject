@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
     created_date: "",
     price:""
   }
+
   price:number=200;
   userTicketNumber!:number;
   signInId!:number;
@@ -93,19 +94,18 @@ export class UserComponent implements OnInit {
     );
   }
   getUserDetails() {
-    if (!this.signInId) {
-      console.log('Invalid userId:', this.signInId);
+    if (!this.userId) {
+      console.log('Invalid userId:', this.userId);
       return;
     }
     // Fetch user details using the service
-    this.signupService.getById(this.signInId).subscribe(
+    this.signupService.getById(this.userId).subscribe(
       (res: any) => {
         console.log('Fetched user details:', res);
-        this.signeIn = res;
+        this.signeIn = res;  // Store the fetched user details
       },
       (error: any) => {
         console.error("Error fetching user by ID:", error);
-
       }
     );
   }
