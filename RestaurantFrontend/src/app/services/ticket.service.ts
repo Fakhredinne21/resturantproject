@@ -7,7 +7,7 @@ import {Observable} from "rxjs";
 })
 export class TicketService {
 
-  private ticketUrl="http://localhost:8081/Tickets";
+  private ticketUrl="http://localhost:8081/api/v1/Tickets";
   private buy="buy";
   private user="user";
 

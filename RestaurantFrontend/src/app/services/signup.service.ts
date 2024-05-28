@@ -16,10 +16,9 @@ export class SignupService {
   getById(userId:Number):Observable<any>{
     return this.http.get<any>(`${this.userUrl}/${userId}`);
   }
-  getAllUsers():Observable<any[]>{
+  /*getAllUsers():Observable<any[]>{
     return this.http.get<any[]>(this.userUrl);
-  }
-
+  }*/
   updateUser(userId: number, userDetails: any): Observable<any> {
     return this.http.put(`${this.userUrl}/update/${userId}`, userDetails);
   }

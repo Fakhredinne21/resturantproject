@@ -22,7 +22,6 @@ export class UserComponent implements OnInit {
 
   price:number=200;
   userTicketNumber!:number;
-  signInId!:number;
   mealId=Math.floor(Math.random()*7)+1;
   signeIn: any = {
     userId:'',
@@ -49,7 +48,7 @@ export class UserComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       console.log('Route parameters:', params);
       this.userId = +params['userId'];
-      console.log('Extracted userId:', this.signInId);
+      console.log('Extracted userId:', this.userId);
       this.getUserDetails();
       this.getMealById();
       this.userTicketNumber=this.getNumberofTickets();
@@ -57,12 +56,12 @@ export class UserComponent implements OnInit {
 
   }
   getNumberofTickets():number{
-    if (!this.signInId) {
-      console.log('Invalid userId:', this.signInId);
+    if (!this.userId) {
+      console.log('Invalid userId:', this.userId);
       return 0;
     }
     // Fetch user tickets using the service
-    this.ticketService.getAllTicketsOfUser(this.signInId).subscribe(
+    this.ticketService.getAllTicketsOfUser(this.userId).subscribe(
       (res: any) => {
         console.log('Fetched user tickets:', res);
         this.userTicketNumber=res.length;
@@ -76,8 +75,8 @@ export class UserComponent implements OnInit {
   }
 
   getMealById(): void {
-    if (!this.signInId) {
-      console.log('Invalid userId:', this.signInId);
+    if (!this.userId) {
+      console.log('Invalid userId:', this.userId);
       return;
     }
     // Fetch meal details using the service
@@ -106,6 +105,7 @@ export class UserComponent implements OnInit {
       },
       (error: any) => {
         console.error("Error fetching user by ID:", error);
+
       }
     );
   }

@@ -19,7 +19,7 @@ services:
     container_name: mail-dev-Restaurant
     image: maildev/maildev
     ports:
-      - 1025:1025
+      - 2025:2025
       - 1080:1080
 
 networks:

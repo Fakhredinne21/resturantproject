@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class MealService {
 
 
-  private userUrl:String="http://localhost:8081/Meals";
+  private userUrl:String="http://localhost:8081/api/v1/Meals";
 
   constructor(private http:HttpClient) { }
 

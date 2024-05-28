@@ -1,8 +1,8 @@
 <p>ticket works!</p>
 <nav>
   <ul>
-    <li><a [routerLink]="['/ticket',signInId]" routerLinkActive="active">Ticket</a></li>
-    <li><a [routerLink]="['/profile',signInId]">profile</a></li>
+    <li><a [routerLink]="['/ticket',userId]" routerLinkActive="active">Ticket</a></li>
+    <li><a [routerLink]="['/profile',userId]">profile</a></li>
     <li><a href="#">logout</a></li>
   </ul>
 </nav>
@@ -14,9 +14,5 @@
   <button type="submit">Create Ticket</button>
 </form>
 
-<p>ticket list</p>
-  <div *ngFor="let ticket of tickets">
-
-  <p>ticket number: {{ticket.id}}</p>
-  </div>
+<p>number of tickets </p>
 

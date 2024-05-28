@@ -10,16 +10,16 @@ import {SignupService} from "../../services/signup.service";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  signInId!: number;
+  userId!: number;
   userinfo: any = {
-    id: '',
+    userId:'',
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     profileImage: "",
     role: "",
-    isSubscribed: ""
+    isSubscribed:""
   }
   changedUserInfo!:FormGroup;
   constructor(
@@ -32,26 +32,29 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       console.log('Route parameters:', params);
-      this.signInId = +params['signInId'];
-      console.log('Extracted userId:', this.signInId);
-      this.getUserDetails();
+      this.userId = +params['userId'];
+      console.log('Extracted userId:', this.userId);
     });
+
+    this.getUserDetails();
+
     this.changedUserInfo = this.fb.group({
-      firstName:"",
-      lastName:"",
-      email:"",
-      password:"",
-      profileImage:"",
-      role:"",
-      isSubscribed:""
+      firstName:'',
+      lastName:'',
+      email:'',
+      password:'',
+      profileImage:'',
+      role:'',
+      isSubscribed:''
     });
   }
+
   private getUserDetails() {
-    if (!this.signInId) {
-      console.log('Invalid userId:', this.signInId);
+    if (!this.userId) {
+      console.log('Invalid userId:', this.userId);
       return;
     }
-    this.signupService.getById(this.signInId).subscribe(
+    this.signupService.getById(this.userId).subscribe(
       (response: any) => {
         console.log('User details:', response);
         this.userinfo = response;
@@ -63,26 +66,36 @@ export class ProfileComponent implements OnInit {
     );
   }
   updateUserDetails() {
-    if (!this.signInId) {
-      console.log('Invalid userId:', this.signInId);
+    if (!this.userId) {
+      console.log('Invalid userId:', this.userId);
       return;
     }
     this.changedUserInfo.patchValue({
-        profileImage: this.userinfo.profileImage,
-        role: this.userinfo.role,
-        isSubscribed: this.userinfo.isSubscribed
+      profileImage: this.userinfo.profileImage,
+      role: this.userinfo.role,
+      isSubscribed: this.userinfo.isSubscribed
     });
-    this.signupService.updateUser(this.signInId, this.changedUserInfo.value).subscribe(
-      (response: any) => {
-        console.log('User details updated:', response);
-        this.snackBar.open('User details updated', 'Close');
-      },
-      (error: any) => {
-        console.error('Failed to update user details:', error);
-        this.snackBar.open('Failed to update user details', 'Close');
-      }
-    );
+    if (this.changedUserInfo.value.firstName === '') {
+      this.changedUserInfo.patchValue({firstName: this.userinfo.firstName});
+    }
+    if (this.changedUserInfo.value.lastName === '') {
+      this.changedUserInfo.patchValue({lastName: this.userinfo.lastName});
+    }
+    if (this.changedUserInfo.value.email === '') {
+      this.changedUserInfo.patchValue({email: this.userinfo.email});
+    }
+    if (this.changedUserInfo.value.password === '') {
+      this.changedUserInfo.patchValue({password: this.userinfo.password});
+      this.signupService.updateUser(this.userId, this.changedUserInfo.value).subscribe(
+        (response: any) => {
+          console.log('User details updated:', response);
+          this.snackBar.open('User details updated', 'Close');
+        },
+        (error: any) => {
+          console.error('Failed to update user details:', error);
+          this.snackBar.open('Failed to update user details', 'Close');
+        }
+      );
+    }
   }
-
-
 }

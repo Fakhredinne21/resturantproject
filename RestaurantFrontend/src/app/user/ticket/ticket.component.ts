@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TicketService} from "../../services/ticket.service";
 import {SignupService} from "../../services/signup.service";
+import {TicketControllerService} from "../../servs/services/ticket-controller.service";
+import {UserControllerService} from "../../servs/services/user-controller.service";
 
 
 @Component({
@@ -12,9 +14,8 @@ import {SignupService} from "../../services/signup.service";
   styleUrl: './ticket.component.css'
 })
 export class TicketComponent implements OnInit {
-  tickets: any = [];
   numberticket!:number;
-  signInId!: number;
+  userId!: number;
   userinfo: any = {
     id: '',
     firstName: "",
@@ -32,34 +33,56 @@ export class TicketComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
-    private ticketService: TicketService,
-    private signupService: SignupService) {
+    private ticketservice: TicketService,
+    private signupService: UserControllerService) {
   }
 
   ngOnInit() {
     this.buyForm = this.fb.group({
       number:'',
     });
-    this.ticket = this.fb.group({
-      id:"",
-      is_used:"",
-      price:""
-    });
     this.route.params.subscribe(params => {
       console.log('Route parameters:', params);
-      this.signInId = +params['signInId'];
-      console.log('Extracted userId:', this.signInId);
+      this.userId = +params['userId'];
+      console.log('Extracted userId:', this.userId);
       this.getUserDetails();
-      this.getUserTickets();
+
     });
   }
-  getUserTickets(): void {
-    if (!this.signInId) {
-      console.log('Invalid userId:', this.signInId);
+  getUserDetails(): void {
+    if (!this.userId) {
+      console.log('Invalid userId:', this.userId);
+      return;
+    }
+    // Fetch user details using the service
+    this.signupService.getUserById({userId:this.userId}).subscribe(
+      (res: any) => {
+        console.log('Fetched user details:', res);
+        this.userinfo = res;
+      },
+      (error: any) => {
+        console.error("Error fetching user by ID:", error);
+      }
+    );
+  }
+
+  /*buyTicket():void{
+    this.ticketservice.buyTicket({userId:this.userinfo.id,count:this.numberticket}).subscribe({ next:(res)=>{
+      this.snackBar.open(this.numberticket + "tickets bought successfully!", "close", {
+        duration: 10000,
+        verticalPosition: 'top'
+      });
+      this.router.navigate(['/ticket', this.userId]);
+    }
+    });
+  }*/
+  /*getUserTickets(): void {
+    if (!this.userId) {
+      console.log('Invalid userId:', this.userId);
       return;
     }
     // Fetch user tickets using the service
-    this.ticketService.getAllTicketsOfUser(this.signInId).subscribe(
+    this.ticketService.getAllTicketsOfUser(this.userId).subscribe(
       (res: any) => {
         console.log('Fetched user tickets:', res);
         this.tickets = res;
@@ -72,19 +95,19 @@ export class TicketComponent implements OnInit {
         console.error("Error fetching user tickets:", error);
       }
     );
-  }
+  }*/
   buyTicket(): void {
     if (this.buyForm.valid) {
       const ticket = this.buyForm.value;
       if (ticket.number <6 && ticket.number >0) {
-        this.ticketService.buyTicket(this.signInId, ticket.number).subscribe(
+        this.ticketservice.buyTicket(this.userId, ticket.number).subscribe(
           response => {
             this.snackBar.open(ticket.number + "tickets bought successfully!", "close", {
               duration: 10000,
               verticalPosition: 'top'
             });
             this.buyForm.reset();
-            this.router.navigate(['/home', this.signInId]);
+            this.router.navigate(['home/:userId'], { queryParams: { userId: this.userId } });
           },
           error => {
             console.error("Error buying tickets:", error);
@@ -109,13 +132,13 @@ export class TicketComponent implements OnInit {
     }
   }
 
-  getUserDetails(): void {
-    if (!this.signInId) {
-      console.log('Invalid userId:', this.signInId);
+  /*getUserDetails(): void {
+    if (!this.userId) {
+      console.log('Invalid userId:', this.userId);
       return;
     }
     // Fetch user details using the service
-    this.signupService.getById(this.signInId).subscribe(
+    this.signupService.getById(this.userId).subscribe(
       (res: any) => {
         console.log('Fetched user details:', res);
         this.userinfo = res;
@@ -124,5 +147,5 @@ export class TicketComponent implements OnInit {
         console.error("Error fetching user by ID:", error);
       }
     );
-  }
+  }*/
 }

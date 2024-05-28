@@ -15,7 +15,7 @@ import {TokenService} from "../servs/token/token.service";
 })
 export class LoginComponent implements OnInit {
 
-  signinId!:number;
+  signInId!:number;
   authRequest:AuthenticationRequest={
     email:'',
     password:''
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const userIdStr = localStorage.getItem('userId');
     if (userIdStr) {
-      this.signinId = parseInt(userIdStr, 10);
+      this.signInId = parseInt(userIdStr, 10);
     }
   }
 
