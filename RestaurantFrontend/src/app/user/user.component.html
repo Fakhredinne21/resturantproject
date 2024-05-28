@@ -1,10 +1,9 @@
 <p>userhome works!</p>
 <nav>
   <ul>
-    <li><a [routerLink]="['/notification',userId]" routerLinkActive="active">Notification</a></li>
     <li><a [routerLink]="['/ticket',userId]" routerLinkActive="active">Ticket</a></li>
     <li><a [routerLink]="['/profile',userId]">profile</a></li>
-    <li><a href="#">logout</a></li>
+    <li><a (click)="logout()">logout</a></li>
   </ul>
 </nav>
 <div>

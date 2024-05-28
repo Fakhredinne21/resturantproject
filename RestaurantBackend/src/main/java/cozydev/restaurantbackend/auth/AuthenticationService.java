@@ -2,6 +2,7 @@ package cozydev.restaurantbackend.auth;
 
 import cozydev.restaurantbackend.email.EmailService;
 import cozydev.restaurantbackend.email.EmailTemplateName;
+import cozydev.restaurantbackend.model.Role;
 import cozydev.restaurantbackend.model.Token;
 import cozydev.restaurantbackend.model.User;
 import cozydev.restaurantbackend.repositories.RoleRepository;
@@ -10,6 +11,7 @@ import cozydev.restaurantbackend.repositories.UserRepository;
 import cozydev.restaurantbackend.security.JwtService;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.sql.ast.tree.expression.Collation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,8 +21,10 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -37,8 +41,14 @@ public class AuthenticationService {
     private String activationUrl ;
 
     public void register(RegistrationRequest request) throws MessagingException {
-        var userRole = roleRepository.findByName("USER")
-                .orElseThrow(()->new IllegalStateException(("Role User was not found")));
+        Role userRole;
+        if("ADMIN".equalsIgnoreCase(request.getRole())){
+            userRole = roleRepository.findByName("ADMIN")
+                    .orElseThrow(()->new IllegalStateException("ADMIN not found"));
+        }else {
+            userRole = roleRepository.findByName("USER")
+                    .orElseThrow(() -> new IllegalStateException("Role User was not found"));
+        }
         var user = User.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
@@ -92,13 +102,21 @@ public class AuthenticationService {
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         var auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        var user = (User) auth.getPrincipal();
+
+        // Extract roles as list of strings
+        List<String> roles = user.getRoles().stream()
+                .map(Role::getName)
+                .collect(Collectors.toList());
+
         var claims = new HashMap<String, Object>();
-        var user = ((User)auth.getPrincipal());
-        claims.put("fullName",user.fullName());
-        var jwtToken = jwtService.generateToken(claims,user);
+        claims.put("fullName", user.fullName());
+        var jwtToken = jwtService.generateToken(claims, user);
+
         return AuthenticationResponse.builder()
                 .token(jwtToken)
-                .userId(user.getUserId())//
+                .userId(user.getUserId())
+                .roles(roles)  // Directly assign roles
                 .build();
     }
 

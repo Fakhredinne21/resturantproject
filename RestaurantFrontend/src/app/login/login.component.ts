@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   signInId!:number;
   authRequest:AuthenticationRequest={
     email:'',
-    password:''
+    password:'',
   }
   constructor(
     private router: Router,
@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
   register(){
     this.router.navigate(['signup'])
   }
+
   login(){
     console.log(this.authRequest); // Log the request payload
     this.authService.authenticate({
@@ -43,8 +44,16 @@ export class LoginComponent implements OnInit {
     }).subscribe({
       next: (res) => {
         this.tokenService.token = res.token as string;
-        localStorage.setItem('userId', res.userId.toString()); // Save userId to localStorage
-        this.router.navigate(['home/:userId'], { queryParams: { userId: res.userId } });
+        localStorage.setItem('userId', res.userId.toString());
+
+        if(res.roles.includes("ADMIN")){
+          this.router.navigate([`/admin/home/:userId`], { queryParams: { userId: res.userId } });
+        }else if(res.roles.includes("USER")){
+          this.router.navigate([`home/:userId`], { queryParams: { userId: res.userId } });
+        }else{
+          console.error('unknow role');
+        }
+
       },
       error: (err) => {
         console.error('Authentication error:', err);

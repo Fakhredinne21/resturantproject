@@ -21,7 +21,8 @@ export class SignupComponent implements OnInit {
     firstName:"",
     lastName:"",
     email:"",
-    password:""
+    password:"",
+    role:""
   }
   errorMsg: Array<String> = [];
 

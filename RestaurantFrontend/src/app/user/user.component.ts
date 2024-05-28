@@ -5,6 +5,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../services/signup.service";
 import {MealService} from "../services/meal.service";
 import {TicketService} from "../services/ticket.service";
+import {TokenService} from "../servs/token/token.service";
+import {RegistrationRequest} from "../servs/models/registration-request";
 
 @Component({
   selector: 'app-user',
@@ -12,6 +14,15 @@ import {TicketService} from "../services/ticket.service";
   styleUrl: './user.component.css'
 })
 export class UserComponent implements OnInit {
+
+  registerRequest:RegistrationRequest={
+    firstName:"",
+    lastName:"",
+    email:"",
+    password:"",
+    role:""
+  }
+  private signInId!:number ;
 
   mealInfo: any = {
     mealId:"",
@@ -21,8 +32,10 @@ export class UserComponent implements OnInit {
   }
 
   price:number=200;
+
   userTicketNumber!:number;
   mealId=Math.floor(Math.random()*7)+1;
+
   signeIn: any = {
     userId:'',
     firstName: "",
@@ -36,13 +49,18 @@ export class UserComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
-              private notif: MatSnackBar,
               private signupService:SignupService,
               private mealService:MealService,
-              private ticketService:TicketService
+              private ticketService:TicketService,
+              private tokenService:TokenService
   ) {
   }
   userId:number | null=null ;
+  logout(){
+    localStorage.removeItem('userId');
+    this.tokenService.token == null ;
+    this.router.navigate(['login']);
+  }
   ngOnInit() {
     // Create the form using FormBuilder
     this.route.queryParams.subscribe(params => {
@@ -55,6 +73,8 @@ export class UserComponent implements OnInit {
     });
 
   }
+
+
   getNumberofTickets():number{
     if (!this.userId) {
       console.log('Invalid userId:', this.userId);

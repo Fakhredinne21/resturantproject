@@ -10,7 +10,6 @@ import {HttpClientModule} from "@angular/common/http";
 import {AdminModule} from "./admin/admin.module";
 import {UserModule} from "./user/user.module";
 import {ActivateAccountModule} from "./activate-account/activate-account.module";
-import {CodeInputComponent} from "angular-code-input";
 
 @NgModule({
   declarations: [

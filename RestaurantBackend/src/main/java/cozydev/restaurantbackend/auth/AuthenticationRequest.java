@@ -18,4 +18,5 @@ public class AuthenticationRequest {
     @NotBlank(message = "password is mendatory")
     @Size(min = 8,message = "Password should be 8 caracteres long minimum")
     private String password ;
+    private String role;
 }

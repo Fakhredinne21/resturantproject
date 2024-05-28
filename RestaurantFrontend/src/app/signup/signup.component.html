@@ -36,6 +36,14 @@
                    required>
           </div>
         </div>
+        <div class="labeled-input">
+          <label>Your academic status ?</label>
+          <select [(ngModel)]="registerRequest.role">
+            <option  value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+        </div>
+
       </div>
 
       <button (click)="register()" class="f-b">Proceed</button>
