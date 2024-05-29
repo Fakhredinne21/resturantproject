@@ -4,6 +4,7 @@ import cozydev.restaurantbackend.model.Role;
 import cozydev.restaurantbackend.model.User;
 
 import cozydev.restaurantbackend.repositories.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -12,9 +13,11 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User updateUser(Long id, User userDetails) {
@@ -27,7 +30,8 @@ public class UserService {
         user.setFirstName(userDetails.getFirstName());
         user.setLastName(userDetails.getLastName());
         user.setEmail(userDetails.getEmail());
-        user.setPassword(userDetails.getPassword());
+
+        user.setPassword(passwordEncoder.encode(userDetails.getPassword()));
         /*user.setRole(userDetails.getRole());*/
         /*user.setIsSubscribed(userDetails.getIsSubscribed());*/
 

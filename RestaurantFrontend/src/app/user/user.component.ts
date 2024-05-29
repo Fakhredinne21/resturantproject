@@ -34,7 +34,7 @@ export class UserComponent implements OnInit {
   price:number=200;
 
   userTicketNumber!:number;
-  mealId=Math.floor(Math.random()*7)+1;
+  mealId=1;
 
   signeIn: any = {
     userId:'',

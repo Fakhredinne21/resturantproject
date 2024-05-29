@@ -3,6 +3,8 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../../services/signup.service";
+import {UserControllerService} from "../../servs/services/user-controller.service";
+import {UpdateUser$Params} from "../../servs/fn/user-controller/update-user";
 
 @Component({
   selector: 'app-profile',
@@ -27,7 +29,9 @@ export class ProfileComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
-    private signupService: SignupService
+    private signupService: SignupService,
+    private userService: UserControllerService
+
   ) {}
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -39,6 +43,7 @@ export class ProfileComponent implements OnInit {
     this.getUserDetails();
 
     this.changedUserInfo = this.fb.group({
+      userId:'',
       firstName:'',
       lastName:'',
       email:'',
@@ -71,6 +76,7 @@ export class ProfileComponent implements OnInit {
       return;
     }
     this.changedUserInfo.patchValue({
+      userId: this.userinfo.userId,
       profileImage: this.userinfo.profileImage,
       role: this.userinfo.role,
       isSubscribed: this.userinfo.isSubscribed
@@ -84,9 +90,11 @@ export class ProfileComponent implements OnInit {
     if (this.changedUserInfo.value.email === '') {
       this.changedUserInfo.patchValue({email: this.userinfo.email});
     }
-    if (this.changedUserInfo.value.password === '') {
-      this.changedUserInfo.patchValue({password: this.userinfo.password});
-      this.signupService.updateUser(this.userId, this.changedUserInfo.value).subscribe(
+    const params:UpdateUser$Params = {
+      userId: this.userId,
+      body: this.changedUserInfo.value
+    }
+      this.userService.updateUser(params).subscribe(
         (response: any) => {
           console.log('User details updated:', response);
           this.snackBar.open('User details updated', 'Close');
@@ -98,4 +106,3 @@ export class ProfileComponent implements OnInit {
       );
     }
   }
-}

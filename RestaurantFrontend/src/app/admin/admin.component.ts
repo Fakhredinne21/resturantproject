@@ -5,6 +5,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../services/signup.service";
 import {DOCUMENT} from "@angular/common";
 import {AdminIdetifierService} from "../services/admin-idetifier.service";
+import {TicketControllerService} from "../servs/services/ticket-controller.service";
 
 @Component({
   selector: 'app-admin',
@@ -16,12 +17,13 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   adminId!: string;
 
-  // @ts-ignore
   constructor(
                private route: ActivatedRoute,
                private signupService: SignupService,
                private router: Router,
                private adminService:AdminIdetifierService,
+               private ticketService :TicketControllerService,
+               
   ) {}
 
   ngOnInit() {
