@@ -2,7 +2,6 @@ package cozydev.restaurantbackend.controller;
 
 
 import cozydev.restaurantbackend.model.History;
-import cozydev.restaurantbackend.repositories.HistoryRepository;
 import cozydev.restaurantbackend.services.HistoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -28,8 +27,4 @@ public class HistoryController {
         return historyService.getHistoriesByDate(date);
     }
 
-    @GetMapping("/history/{userId}")
-    public List<History> getHistoriesByUserId(@PathVariable Long userId) {
-        return historyService.getHistoriesByUserId(userId);
-    }
 }

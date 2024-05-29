@@ -1,5 +1,6 @@
 package cozydev.restaurantbackend.repositories;
 
+import cozydev.restaurantbackend.model.History;
 import cozydev.restaurantbackend.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
