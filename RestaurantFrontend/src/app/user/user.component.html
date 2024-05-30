@@ -1,26 +1,7 @@
-<p>userhome works!</p>
-<nav>
-  <ul>
-    <li><a [routerLink]="['/ticket',userId]" routerLinkActive="active">Ticket</a></li>
-    <li><a [routerLink]="['/profile',userId]">profile</a></li>
-    <li><a (click)="logout()">logout</a></li>
-  </ul>
-</nav>
-<div>
-  <p>{{ signeIn.firstName }}</p>
-  <p>{{ signeIn.lastName }}</p>
-  <p> {{ signeIn.email }}</p>
-  <p>{{signeIn.role}}</p>
+<div class="left-side">
+  <app-nav-bar [role]="'user'"></app-nav-bar>
 </div>
 
-<div>
-  <p>number of tickets you have : {{userTicketNumber}}</p>
-</div>
-
-<div>
-  <p>your ticket spending : {{userTicketNumber*price}}</p>
-</div>
-<div>
-  <p>today's meal :</p>
-  <p>{{mealInfo.description}}</p>
+<div class="right-side">
+  <router-outlet></router-outlet>
 </div>

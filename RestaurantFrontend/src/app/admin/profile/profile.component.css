@@ -1,4 +1,4 @@
-.profile-loaded .right-side{
+user-profile .right-side{
   width: -webkit-fill-available !important;
   display: flex !important;
   flex-direction: column !important;

@@ -1,0 +1,18 @@
+body{
+  background: var(--muted-background) !important;
+}
+
+app-user{
+  display: flex;
+  flex-direction: row;
+}
+
+.left-side{
+  width: fit-content !important;
+}
+
+.right-side{
+  padding-left: 12px;
+  width: 100%;
+  height: 100vh;
+}

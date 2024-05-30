@@ -8,19 +8,31 @@ import {HomeComponent} from "./admin/home/home.component";
 import {ProfileComponent} from "./admin/profile/profile.component";
 import {MealComponent} from "./admin/meal/meal.component";
 import {ActivateAccountComponent} from "./activate-account/activate-account.component";
+import {TicketComponent} from "./user/ticket/ticket.component";
+import {UserHomeComponent} from "./user/home/home.component";
+import {UserProfileComponent} from "./user/profile/profile.component";
 
 const routes: Routes = [
   {path: '', redirectTo: "login", pathMatch: "full"},
-  {path:'activate-account',component:ActivateAccountComponent},
+  {path: 'activate-account', component: ActivateAccountComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'user/:userId', component: UserComponent},
-  {path: 'admin', component: AdminComponent, children: [
+  {
+    path: 'user', component: UserComponent, children: [
+      {path: '', redirectTo: "home", pathMatch: "full"},
+      {path: 'home', component: UserHomeComponent},
+      {path: 'ticket', component: TicketComponent},
+      {path: 'profile', component: UserProfileComponent}
+    ]
+  },
+  {
+    path: 'admin', component: AdminComponent, children: [
       {path: '', redirectTo: "home", pathMatch: "full"},
       {path: 'home', component: HomeComponent},
-      {path: 'profile', component: ProfileComponent},
-      {path:'meals',component:MealComponent}
-    ]},
+      {path: 'meals', component: MealComponent},
+      {path: 'profile', component: ProfileComponent}
+    ]
+  },
 ];
 
 @NgModule({

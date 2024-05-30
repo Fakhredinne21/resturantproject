@@ -1,0 +1,28 @@
+.ticket_input.row.container > div{
+  height: 7.2rem;
+  width: 7.2rem;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.ticket_input.row.container > div input{
+  position: absolute;
+  width: 50%;
+  font-size: 2.8rem;
+  background: none;
+  font-weight: 700;
+  color: var(--accent);
+  height: fit-content;
+}
+
+.ticket_input.row.container > div svg{
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+}

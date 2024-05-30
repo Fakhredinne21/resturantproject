@@ -1,56 +1,59 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../../services/signup.service";
 import {UserControllerService} from "../../servs/services/user-controller.service";
 import {UpdateUser$Params} from "../../servs/fn/user-controller/update-user";
+import {UserIdentifierService} from "../../services/userIdentifier.service";
 
 @Component({
-  selector: 'app-profile',
+  selector: 'user-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class ProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
   userId!: number;
+
   userinfo: any = {
-    userId:'',
+    userId: '',
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     profileImage: "",
     role: "",
-    isSubscribed:""
+    isSubscribed: ""
   }
-  changedUserInfo!:FormGroup;
+
+  changedUserInfo!: FormGroup;
+
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private snackBar: MatSnackBar,
     private signupService: SignupService,
-    private userService: UserControllerService
+    private userService: UserControllerService,
+    private userIdentifierSevice: UserIdentifierService
+  ) {
+  }
 
-  ) {}
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      console.log('Route parameters:', params);
-      this.userId = +params['userId'];
-      console.log('Extracted userId:', this.userId);
-    });
+    this.userId = this.userIdentifierSevice.getUserId();
 
     this.getUserDetails();
 
     this.changedUserInfo = this.fb.group({
-      userId:'',
-      firstName:'',
-      lastName:'',
-      email:'',
-      password:'',
-      profileImage:'',
-      role:'',
-      isSubscribed:''
+      userId: '',
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      profileImage: '',
+      role: '',
+      isSubscribed: ''
     });
   }
 
@@ -70,6 +73,7 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
   updateUserDetails() {
     if (!this.userId) {
       console.log('Invalid userId:', this.userId);
@@ -90,19 +94,19 @@ export class ProfileComponent implements OnInit {
     if (this.changedUserInfo.value.email === '') {
       this.changedUserInfo.patchValue({email: this.userinfo.email});
     }
-    const params:UpdateUser$Params = {
+    const params: UpdateUser$Params = {
       userId: this.userId,
       body: this.changedUserInfo.value
     }
-      this.userService.updateUser(params).subscribe(
-        (response: any) => {
-          console.log('User details updated:', response);
-          this.snackBar.open('User details updated', 'Close');
-        },
-        (error: any) => {
-          console.error('Failed to update user details:', error);
-          this.snackBar.open('Failed to update user details', 'Close');
-        }
-      );
-    }
+    this.userService.updateUser(params).subscribe(
+      (response: any) => {
+        console.log('User details updated:', response);
+        this.snackBar.open('User details updated', 'Close');
+      },
+      (error: any) => {
+        console.error('Failed to update user details:', error);
+        this.snackBar.open('Failed to update user details', 'Close');
+      }
+    );
   }
+}

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {AdminIdetifierService} from "../../services/admin-idetifier.service";
+import {Router} from "@angular/router";
+import {AdminIdentifierService} from "../../services/adminIdentifier.service";
 import {MealService} from "../../services/meal.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -11,35 +11,31 @@ import {DatePipe} from "@angular/common";
   templateUrl: './meal.component.html',
   styleUrl: './meal.component.css'
 })
-export class MealComponent implements OnInit{
- adminId!: number;
- userId!: number;
- mealForm!: FormGroup;
- constructor(
-   private fb: FormBuilder,
-   private route: ActivatedRoute,
-   private router: Router,
-   private snackBar: MatSnackBar,
-   private mealService:MealService,
-   private adminService:AdminIdetifierService,
-   private datePipe: DatePipe
- ) {}
+export class MealComponent implements OnInit {
+  userId!: number;
+  mealForm!: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private mealService: MealService,
+    private adminService: AdminIdentifierService,
+    private datePipe: DatePipe
+  ) {
+  }
+
   ngOnInit() {
-   const today=this.datePipe.transform(new Date(),'yyyy-MM-dd-HH:mm:ss');
-    const userIdStr = localStorage.getItem('userId');
-    if (userIdStr) {
-      this.userId = parseInt(userIdStr, 10);
-      console.log('Extracted userId:', this.userId);
-    }
-   this.adminId= this.adminService.getadminId();
-   console.log('Extracted adminId:', this.adminId);
-    this.mealForm= this.fb.group({
-      meal_id:"",
-      description:"",
-      price:"",
-      created_date:today ,
+    const today = this.datePipe.transform(new Date(), 'yyyy-MM-dd-HH:mm:ss');
+    this.userId = parseInt(this.adminService.getAdminId());
+    this.mealForm = this.fb.group({
+      meal_id: "",
+      description: "",
+      price: "",
+      created_date: today,
     });
- }
+  }
+
   createMeal() {
     if (this.mealForm.valid) {
       const meal = this.mealForm.value;
@@ -50,7 +46,7 @@ export class MealComponent implements OnInit{
               verticalPosition: 'top'
             });
             this.mealForm.reset();
-            this.router.navigate(['/admin/home']);
+            this.router.navigate(['admin/home']);
           },
           error => {
             console.error("Error adding meal:", error);
