@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userId', res.userId.toString());
 
         if(res.roles.includes("ADMIN")){
-          this.router.navigate([`admin/home/:userId`], { queryParams: { userId: res.userId } });
+          this.router.navigate([`admin/home`]);
         }else if(res.roles.includes("USER")){
           this.router.navigate([`home/:userId`], { queryParams: { userId: res.userId } });
         }else{

@@ -16,9 +16,8 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'user/:userId', component: UserComponent},
   {path: 'admin', component: AdminComponent, children: [
-
-      {path: '', redirectTo: "home/:userId", pathMatch: "full"},
-      {path: 'home/:userId', component: HomeComponent},
+      {path: '', redirectTo: "home", pathMatch: "full"},
+      {path: 'home', component: HomeComponent},
       {path: 'profile', component: ProfileComponent},
       {path:'meals',component:MealComponent}
     ]},

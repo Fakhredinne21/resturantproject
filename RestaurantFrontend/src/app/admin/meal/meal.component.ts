@@ -12,7 +12,8 @@ import {DatePipe} from "@angular/common";
   styleUrl: './meal.component.css'
 })
 export class MealComponent implements OnInit{
- adminId!: string;
+ adminId!: number;
+ userId!: number;
  mealForm!: FormGroup;
  constructor(
    private fb: FormBuilder,
@@ -25,7 +26,13 @@ export class MealComponent implements OnInit{
  ) {}
   ngOnInit() {
    const today=this.datePipe.transform(new Date(),'yyyy-MM-dd-HH:mm:ss');
-    this.adminId= this.adminService.getadminId();
+    const userIdStr = localStorage.getItem('userId');
+    if (userIdStr) {
+      this.userId = parseInt(userIdStr, 10);
+      console.log('Extracted userId:', this.userId);
+    }
+   this.adminId= this.adminService.getadminId();
+   console.log('Extracted adminId:', this.adminId);
     this.mealForm= this.fb.group({
       meal_id:"",
       description:"",

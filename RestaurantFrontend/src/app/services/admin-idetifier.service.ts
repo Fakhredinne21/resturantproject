@@ -4,13 +4,13 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class AdminIdetifierService {
-  private _adminId!: string;
+  private _adminId!: number;
 
-  getadminId(): string {
+  getadminId(): number {
     return this._adminId;
   }
 
-  setadminId(value: string) {
+  setadminId(value: number) {
     this._adminId = value;
   }
 

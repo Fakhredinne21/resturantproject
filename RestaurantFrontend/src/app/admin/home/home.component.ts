@@ -1,19 +1,21 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 import {SignupService} from "../../services/signup.service";
 import { AdminIdetifierService } from '../../services/admin-idetifier.service';
+import {TicketControllerService} from "../../servs/services/ticket-controller.service";
+import {TokenService} from "../../servs/token/token.service";
 
 @Component({
   selector: 'admin-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy{
 
-  adminId!: any;
+  userId!: number ;
   adminInfo: any = {
-    id: '',
+    userId: '',
     firstName: "",
     lastName: "",
     email: "",
@@ -22,13 +24,15 @@ export class HomeComponent {
     role: "",
     isSubscribed: ""
   }
+  sumofticets:number=0;
+  price:number=200;
   getUserDetails(): void {
-    if(!this.adminId) {
-      console.log('Invalid userId:', this.adminId);
+    if(!this.userId) {
+      console.log('Invalid userId:', this.userId);
       return;
     }
     // Fetch user details using the service
-    this.signupService.getById(this.adminId).subscribe(
+    this.signupService.getById(this.userId).subscribe(
       (res: any) => {
         console.log('Fetched user details:', res);
         this.adminInfo = res;
@@ -44,17 +48,32 @@ export class HomeComponent {
                private route: ActivatedRoute,
                private signupService: SignupService,
                private adminService:AdminIdetifierService,
+               private ticketService :TicketControllerService,
+               private tokenService: TokenService,
   ) {}
 
   ngOnInit() {
     this._document.body.classList.add('main-body');
     // Create the form using FormBuilder
-    this.adminId=this.adminService.getadminId();
-    this.getUserDetails()
+    const userIdStr = localStorage.getItem('userId');
+    if (userIdStr) {
+      this.userId = parseInt(userIdStr, 10);
+      console.log('Extracted userId:', this.userId);
+    }
+    this.getUserDetails();
+    this.sumoftickts();
   }
-
+  sumoftickts(){
+    this.ticketService.getAllTickets().subscribe(
+      (res:any)=>{
+        this.sumofticets=res.length;
+      }
+    )
+  }
   ngOnDestroy() {
     // remove the class form body tag
     this._document.body.classList.remove('main-body');
   }
+
+  protected readonly print = print;
 }

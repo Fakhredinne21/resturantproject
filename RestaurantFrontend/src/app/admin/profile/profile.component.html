@@ -1,4 +1,23 @@
-<div class="container">
-  <span class="f-b primary-text">Lorem Ipsum</span>
-  <span >{{ 'lorem@email.com' }}</span>
-</div>
+<form [formGroup]="changeadminInfo" (ngSubmit)="updateUser()" class="form form-profile">
+  <span class="form-title f-m">Update your profile</span>
+  <div>
+    <label>name</label>
+    <input formControlName="firstName" type="text" id="firstName" name="firstName" [value]="adminInfo.firstName" required>
+  </div>
+  <div>
+    <label>lastname</label>
+    <input formControlName="lastName" type="text" id="lastName" name="lastName" [value]="adminInfo.lastName" required>
+
+  </div>
+  <div>
+    <label>email</label>
+    <input formControlName="email" type="email" id="email" name="email" [value]="adminInfo.email" required>
+  </div>
+  <div>
+    <label>password</label>
+    <input formControlName="password" type="password" id="password" name="password" required>
+  </div>
+  <input type="submit" value="test">
+
+</form>
+
