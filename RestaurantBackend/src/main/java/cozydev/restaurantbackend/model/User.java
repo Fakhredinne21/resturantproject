@@ -1,6 +1,4 @@
 package cozydev.restaurantbackend.model;
-
-
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.*;

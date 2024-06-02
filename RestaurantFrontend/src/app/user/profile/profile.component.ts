@@ -1,34 +1,30 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {SignupService} from "../../services/signup.service";
 import {UserControllerService} from "../../servs/services/user-controller.service";
 import {UpdateUser$Params} from "../../servs/fn/user-controller/update-user";
-import {UserIdentifierService} from "../../services/userIdentifier.service";
+import {TokenService} from "../../servs/token/token.service";
 
 @Component({
-  selector: 'user-profile',
+  selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   userId!: number;
-
   userinfo: any = {
-    userId: '',
+    userId:'',
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     profileImage: "",
     role: "",
-    isSubscribed: ""
+    isSubscribed:""
   }
-
-  changedUserInfo!: FormGroup;
-
+  changedUserInfo!:FormGroup;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -36,31 +32,38 @@ export class UserProfileComponent implements OnInit {
     private snackBar: MatSnackBar,
     private signupService: SignupService,
     private userService: UserControllerService,
-    private userIdentifierSevice: UserIdentifierService
-  ) {
-  }
+    private tokenService :TokenService,
 
+  ) {}
+  logout(){
+    localStorage.removeItem('userId');
+    this.tokenService.token == null ;
+    this.router.navigate(['login']);
+  }
   ngOnInit() {
-    this.userId = this.userIdentifierSevice.getUserId();
+    const userIdStr = localStorage.getItem('userId');
+    if (userIdStr) {
+      this.userId = parseInt(userIdStr, 10);
+      console.log('Extracted userId:', this.userId);
+    }
 
     this.getUserDetails();
 
     this.changedUserInfo = this.fb.group({
-      userId: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      profileImage: '',
-      role: '',
-      isSubscribed: ''
+      userId:'',
+      firstName:'',
+      lastName:'',
+      email:'',
+      password:'',
+      profileImage:'',
+      role:'',
+      isSubscribed:''
     });
   }
 
   private getUserDetails() {
     if (!this.userId) {
-      console.log('Invalid userId:', this.userId);
-      return;
+      this.router.navigate(['login']);
     }
     this.signupService.getById(this.userId).subscribe(
       (response: any) => {
@@ -73,7 +76,6 @@ export class UserProfileComponent implements OnInit {
       }
     );
   }
-
   updateUserDetails() {
     if (!this.userId) {
       console.log('Invalid userId:', this.userId);
@@ -94,19 +96,19 @@ export class UserProfileComponent implements OnInit {
     if (this.changedUserInfo.value.email === '') {
       this.changedUserInfo.patchValue({email: this.userinfo.email});
     }
-    const params: UpdateUser$Params = {
+    const params:UpdateUser$Params = {
       userId: this.userId,
       body: this.changedUserInfo.value
     }
-    this.userService.updateUser(params).subscribe(
-      (response: any) => {
-        console.log('User details updated:', response);
-        this.snackBar.open('User details updated', 'Close');
-      },
-      (error: any) => {
-        console.error('Failed to update user details:', error);
-        this.snackBar.open('Failed to update user details', 'Close');
-      }
-    );
+      this.userService.updateUser(params).subscribe(
+        (response: any) => {
+          console.log('User details updated:', response);
+          this.snackBar.open('User details updated', 'Close');
+        },
+        (error: any) => {
+          console.error('Failed to update user details:', error);
+          this.snackBar.open('Failed to update user details', 'Close');
+        }
+      );
+    }
   }
-}

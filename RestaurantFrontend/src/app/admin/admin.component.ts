@@ -1,69 +1,80 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SignupService} from "../services/signup.service";
+import {AdminIdetifierService} from "../services/admin-idetifier.service";
 import {TicketControllerService} from "../servs/services/ticket-controller.service";
 import {TokenService} from "../servs/token/token.service";
-import {AdminIdentifierService} from "../services/adminIdentifier.service";
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
-export class AdminComponent implements OnInit {
-  admininfo: any = {
-    userId: '',
+export class AdminComponent implements OnInit, OnDestroy {
+
+  adminId!: number;
+  price:number=200;
+  admininfo:any={
+    userId:'',
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     profileImage: "",
     role: "",
-    isSubscribed: ""
+    isSubscribed:""
   }
-  sumofticets: number = 0;
-  userId!: number;
+  sumofticets:number=0;
+  userId!:number;
 
 
   constructor(
-    private route: ActivatedRoute,
-    private signupService: SignupService,
-    private router: Router,
-    private adminService: AdminIdentifierService,
-    private ticketService: TicketControllerService,
-    private tokenService: TokenService
-  ) {
-  }
+               private route: ActivatedRoute,
+               private signupService: SignupService,
+               private router: Router,
+               private adminService:AdminIdetifierService,
+               private ticketService :TicketControllerService,
+               private tokenService: TokenService
+  ) {}
 
   ngOnInit() {
-    this.userId = parseInt(this.adminService.getAdminId());
+    /*@Inject(DOCUMENT) private _document,*/
+    //this._document.body.classList.add('main-body');
+    const userIdStr = localStorage.getItem('userId');
+    if (userIdStr) {
+      this.userId = parseInt(userIdStr, 10);
+      console.log('Extracted userId:', this.userId);
+    }
     this.router.navigate(['/admin/home']);
     this.sumoftickts();
     this.getuserdetails();
   }
-
-  getuserdetails() {
-    if (!this.userId) {
+  getuserdetails(){
+    if(!this.userId){
       this.router.navigate(['login']);
-    } else {
+    }
+    else{
       this.signupService.getById(this.userId).subscribe(
-        (res: any) => {
-          this.admininfo = res;
+        (res:any)=>{
+          this.admininfo=res;
         }
       );
-    }
   }
-
-  sumoftickts() {
+  }
+  sumoftickts(){
     this.ticketService.getAllTickets().subscribe(
-      (res: any) => {
-        this.sumofticets = this.sumofticets * res.length;
+      (res:any)=>{
+        this.sumofticets=this.sumofticets*res.length;
       },
-      (error: any) => {
+      (error:any)=>{
         console.log(error);
       }
     )
+  }
+  ngOnDestroy() {
+    // remove the class form body tag
+    //this._document.body.classList.remove('main-body');
   }
 
 }

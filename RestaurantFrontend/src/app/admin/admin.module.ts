@@ -6,7 +6,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HomeComponent} from './home/home.component';
 import {NavBarComponent} from "../components/nav-bar/nav-bar.component";
-import {MealComponent} from './meal/meal.component';
+import { MealComponent } from './meal/meal.component';
 
 @NgModule({
   providers: [DatePipe],
@@ -14,14 +14,18 @@ import {MealComponent} from './meal/meal.component';
     AdminComponent,
     ProfileComponent,
     HomeComponent,
+    NavBarComponent,
     MealComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule,
-    NavBarComponent
+    ReactiveFormsModule
   ],
+  exports: [
+
+    MealComponent
+  ]
 })
 export class AdminModule {
 }

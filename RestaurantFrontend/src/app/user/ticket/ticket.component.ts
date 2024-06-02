@@ -1,13 +1,12 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TicketService} from "../../services/ticket.service";
 import {SignupService} from "../../services/signup.service";
 import {TicketControllerService} from "../../servs/services/ticket-controller.service";
 import {UserControllerService} from "../../servs/services/user-controller.service";
-import {UserIdentifierService} from "../../services/userIdentifier.service";
-import {DOCUMENT} from "@angular/common";
+import {TokenService} from "../../servs/token/token.service";
 
 
 @Component({
@@ -16,8 +15,7 @@ import {DOCUMENT} from "@angular/common";
   styleUrl: './ticket.component.css'
 })
 export class TicketComponent implements OnInit {
-  numberticket!: number;
-
+  numberticket!:number;
   userId!: number;
   userinfo: any = {
     id: '',
@@ -29,10 +27,8 @@ export class TicketComponent implements OnInit {
     role: "",
     isSubscribed: ""
   }
-
   buyForm!: FormGroup;
-  ticket!: FormGroup;
-
+  ticket!:FormGroup;
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
@@ -40,29 +36,31 @@ export class TicketComponent implements OnInit {
     private snackBar: MatSnackBar,
     private ticketservice: TicketService,
     private signupService: UserControllerService,
-    private userService: UserIdentifierService,
+    private tokenService :TokenService,
   ) {
   }
-
+  logout(){
+    localStorage.removeItem('userId');
+    this.tokenService.token == null ;
+    this.router.navigate(['login']);
+  }
   ngOnInit() {
     this.buyForm = this.fb.group({
-      number: '',
+      number:'',
     });
-    this.userId = this.userService.getUserId();
-    this.getUserDetails();
-
-    this.buyForm = this.fb.group({
-      number: [1, [Validators.required, Validators.min(1), Validators.max(5)]],
-    });
+    const userIdStr = localStorage.getItem('userId');
+    if (userIdStr) {
+      this.userId = parseInt(userIdStr, 10);
+      console.log('Extracted userId:', this.userId);
+    }
+      this.getUserDetails();
   }
-
   getUserDetails(): void {
     if (!this.userId) {
-      console.log('Invalid userId:', this.userId);
-      return;
+      this.router.navigate(['login']);
     }
     // Fetch user details using the service
-    this.signupService.getUserById({userId: this.userId}).subscribe(
+    this.signupService.getUserById({userId:this.userId}).subscribe(
       (res: any) => {
         console.log('Fetched user details:', res);
         this.userinfo = res;
@@ -83,7 +81,6 @@ export class TicketComponent implements OnInit {
     }
     });
   }*/
-
   /*getUserTickets(): void {
     if (!this.userId) {
       console.log('Invalid userId:', this.userId);
@@ -104,27 +101,10 @@ export class TicketComponent implements OnInit {
       }
     );
   }*/
-
-  add() {
-    const ticketsInput = document.querySelector("#number") as HTMLInputElement;
-    if (parseInt(ticketsInput.value) < 5) {
-      let ticket = parseInt(ticketsInput.value) + 1;
-      ticketsInput.value = String(ticket);
-    }
-  }
-
-  subtract() {
-    const ticketsInput = document.querySelector("#number") as HTMLInputElement;
-    if (parseInt(ticketsInput.value) > 1) {
-      let ticket = parseInt(ticketsInput.value) - 1;
-      ticketsInput.value = String(ticket);
-    }
-  }
-
   buyTicket(): void {
     if (this.buyForm.valid) {
       const ticket = this.buyForm.value;
-      if (ticket.number < 6 && ticket.number > 0) {
+      if (ticket.number <6 && ticket.number >0) {
         this.ticketservice.buyTicket(this.userId, ticket.number).subscribe(
           response => {
             this.snackBar.open(ticket.number + "tickets bought successfully!", "close", {
@@ -132,7 +112,7 @@ export class TicketComponent implements OnInit {
               verticalPosition: 'top'
             });
             this.buyForm.reset();
-            this.router.navigate(['home/:userId'], {queryParams: {userId: this.userId}});
+            this.router.navigate(['home']);
           },
           error => {
             console.error("Error buying tickets:", error);
@@ -148,7 +128,8 @@ export class TicketComponent implements OnInit {
           verticalPosition: 'top'
         });
       }
-    } else {
+    }
+    else {
       this.snackBar.open('Please fill out all required fields.', 'close', {
         duration: 4000,
         verticalPosition: 'top'

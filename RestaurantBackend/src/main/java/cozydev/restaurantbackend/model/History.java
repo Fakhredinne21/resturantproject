@@ -1,13 +1,10 @@
 package cozydev.restaurantbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import org.springframework.data.annotation.CreatedDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -33,5 +30,7 @@ public class History {
     @JsonBackReference
     private Ticket ticket;
 
+    @CreatedDate
+    @Column(nullable = false,updatable = false)
     private LocalDateTime occuredAt;
 }

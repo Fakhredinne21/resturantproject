@@ -1,17 +1,8 @@
-<p>{{adminInfo.id}}</p>
-<p>{{adminInfo.firstName}}</p>
-<p>{{adminInfo.email}}</p>
-<p>{{adminInfo.role}}</p>
-<p>sum of ticket sales{{ticketCount*price}}</p>
-
-<div class="container">
-  <div class="row">
-    <div class="column">
-      <span class="f-b primary-text" style="font-size: 1.6rem;">{{ adminInfo.firstname }} {{ adminInfo.lastname }}</span>
-      <span style="font-size: 1.2rem">{{ adminInfo.email }}</span>
-    </div>
-  </div>
+<div class="imgtext">
+  <img src="/assets/Avatar.svg">
+  <p>{{ adminInfo.firstName }}<br>{{ adminInfo.email }}</p>
 </div>
+<p class="pp">Tickets {{ sumofticets * price }}</p>
 <div class="container">
 </div>
 <div class="row">

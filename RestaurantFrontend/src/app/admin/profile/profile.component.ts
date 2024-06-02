@@ -5,31 +5,34 @@ import {DOCUMENT} from "@angular/common";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {UserControllerService} from "../../servs/services/user-controller.service";
 import {UpdateUser$Params} from "../../servs/fn/user-controller/update-user";
-import {AdminIdentifierService} from "../../services/adminIdentifier.service";
 
 @Component({
   selector: 'admin-profile',
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private signupService: SignupService,
-    private fb: FormBuilder,
-    private userService: UserControllerService,
-    private adminService: AdminIdentifierService
+  constructor(/*@Inject(DOCUMENT) private document: _document,*/
+              private route: ActivatedRoute,
+              private router: Router,
+              private signupService: SignupService,
+              private fb: FormBuilder,
+              private userService: UserControllerService
   ) {
   }
 
   changeadminInfo!: FormGroup;
 
   ngOnInit() {
-    this.userId = parseInt(this.adminService.getAdminId());
+    //console.log(this._document.body.querySelector('app-admin'));
 
-    this.getUserDetails();
+    const userIdStr = localStorage.getItem('userId');
+    if (userIdStr) {
+      this.userId = parseInt(userIdStr, 10);
+      console.log('Extracted userId:', this.userId);
+    }
+    this.getUserDetails()
     this.changeadminInfo = this.fb.group({
       userId: '',
       firstName: '',
@@ -42,8 +45,12 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  userId!: number;
+  ngOnDestroy() {
+    //this._document.body.querySelector('app-admin').classList.remove('profile-loaded');
 
+  }
+
+  userId!: number;
   adminInfo: any = {
     id: '',
     firstName: "",
@@ -54,9 +61,8 @@ export class ProfileComponent implements OnInit {
     role: "",
     isSubscribed: ""
   }
-
   updateUser() {
-    if (!this.userId) {
+    if (!this.userId){
       this.router.navigate(['/login']);
     }
     this.changeadminInfo.patchValue({
@@ -88,7 +94,6 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
-
   getUserDetails(): void {
     if (!this.userId) {
       this.router.navigate(['/login']);
@@ -97,6 +102,7 @@ export class ProfileComponent implements OnInit {
     // Fetch user details using the service
     this.signupService.getById(this.userId).subscribe(
       (res: any) => {
+
         console.log('Fetched user details:', res);
         this.adminInfo = res;
       },
